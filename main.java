@@ -114,7 +114,7 @@ public class main {
 					}
 					break;
 				case 5:
-					System.out.println("Thoat chuong trinh");
+					System.out.println("Thoat chuong trinh.");
 					scanner.close();
 					return;
 				default:
