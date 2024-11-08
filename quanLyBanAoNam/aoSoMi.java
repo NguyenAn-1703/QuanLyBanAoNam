@@ -34,4 +34,21 @@ public class aoSoMi extends ao{
 	public void xuat() {
 		System.out.println(this.toString());
 	}
+
+	public String getKieuCoAo() {
+		return kieuCoAo;
+	}
+
+	public void setKieuCoAo(String kieuCoAo) {
+		this.kieuCoAo = kieuCoAo;
+	}
+
+	public String getKieuNutAo() {
+		return kieuNutAo;
+	}
+
+	public void setKieuNutAo(String kieuNutAo) {
+		this.kieuNutAo = kieuNutAo;
+	}
+	
 }

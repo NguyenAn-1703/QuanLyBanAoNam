@@ -28,7 +28,6 @@ public class ao {
 		this.vai = vai;
 		this.kieuTayAo = kieuTayAo;
 		this.soLuongTonKho = soLuongTonKho;
-		this.soLuongBan = soLuongBan;
 	}
 	
 	public void nhap() {
@@ -59,13 +58,72 @@ public class ao {
 		return("id : " + this.id + "\n ten : " + this.ten + "\n size : " + this.size + "\n mau : " + this.mau
 				+ "\n gia : " + this.gia + "\n thuong hieu : " + this.thuongHieu + "\n vai : " + this.vai + 
 				"\n kieu tay ao : " + this.kieuTayAo + "\n so luong ton kho : " + this.soLuongTonKho + "\n");
-		
-		
-		
 	}
 	
 	public void xuat() {
 		System.out.println(this.toString());
 	}
+	public String getId() {
+		return id;
+	}
+	public String getTen() {
+		return ten;
+	}
+	public String getSize() {
+		return size;
+	}
+	public String getMau() {
+		return mau;
+	}
+	public float getGia() {
+		return gia;
+	}
+	public String getThuongHieu() {
+		return thuongHieu;
+	}
+	public String getVai() {
+		return vai;
+	}
+	public String getKieuTayAo() {
+		return kieuTayAo;
+	}
+	public int getSoLuongTonKho() {
+		return soLuongTonKho;
+	}
+	public int getSoLuongBan() {
+		return soLuongBan;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	public void setTen(String ten) {
+		this.ten = ten;
+	}
+	public void setSize(String size) {
+		this.size = size;
+	}
+	public void setMau(String mau) {
+		this.mau = mau;
+	}
+	public void setGia(float gia) {
+		this.gia = gia;
+	}
+	public void setThuongHieu(String thuongHieu) {
+		this.thuongHieu = thuongHieu;
+	}
+	public void setVai(String vai) {
+		this.vai = vai;
+	}
+	public void setKieuTayAo(String kieuTayAo) {
+		this.kieuTayAo = kieuTayAo;
+	}
+	public void setSoLuongTonKho(int soLuongTonKho) {
+		this.soLuongTonKho = soLuongTonKho;
+	}
+	public void setSoLuongBan(int soLuongBan) {
+		this.soLuongBan = soLuongBan;
+	}
+	
 	
 }

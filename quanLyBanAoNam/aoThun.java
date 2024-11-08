@@ -29,5 +29,14 @@ public class aoThun extends ao {
 	public void xuat() {
 		System.out.println(this.toString());
 	}
+
+	public String getKieuCoAo() {
+		return kieuCoAo;
+	}
+
+	public void setKieuCoAo(String kieuCoAo) {
+		this.kieuCoAo = kieuCoAo;
+	}
+	
 	
 }

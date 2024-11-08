@@ -38,4 +38,30 @@ public class aoTheThao extends ao {
 	public void xuat() {
 		System.out.println(this.toString());
 	}
+
+	public String getDoiTuyen() {
+		return doiTuyen;
+	}
+
+	public void setDoiTuyen(String doiTuyen) {
+		this.doiTuyen = doiTuyen;
+	}
+
+	public int getInSoAo() {
+		return inSoAo;
+	}
+
+	public void setInSoAo(int inSoAo) {
+		this.inSoAo = inSoAo;
+	}
+
+	public String getMonTheThao() {
+		return monTheThao;
+	}
+
+	public void setMonTheThao(String monTheThao) {
+		this.monTheThao = monTheThao;
+	}
+
+	
 }
