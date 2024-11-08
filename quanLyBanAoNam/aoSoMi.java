@@ -3,7 +3,7 @@ package quanLyBanAoNam;
 import java.util.Scanner;
 
 public class aoSoMi extends ao{
-	private String kieuCoAo; // cổ bẻ, cổ trụ
+	private String kieuCoAo; // cổ bẻ, cổ trụ //test
 	private String kieuNutAo;
 	
 	public aoSoMi() {
