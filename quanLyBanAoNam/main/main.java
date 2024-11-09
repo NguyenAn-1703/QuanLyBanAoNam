@@ -129,7 +129,7 @@ public class main {
 		DS_Ao a = new DS_Ao();
 		a.nhapNPhanTuDau();
 		a.xuat();
-		a.timKiemTheoID();
+		a.thongKe();
 		//test
 	}
 

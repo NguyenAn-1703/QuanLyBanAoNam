@@ -8,7 +8,8 @@ public class DS_Ao {
 	private static int soLuong;
 	public static Scanner sc = new Scanner(System.in);
 	//làm theo file yêu cầu đồ án
-	public void nhapNPhanTuDau() {		// p.thức nhập n phần tử đầu cho danh sách
+
+	public void nhapNPhanTuDau() {		// p.thức nhập n phần tử đầu cho danh sách - yêu cầu 2a)
 		if(soLuong == 0){
 			System.out.println("Nhap vao so luong ao muon nhap : ");
 			int n = Integer.parseInt(sc.nextLine());
@@ -24,13 +25,13 @@ public class DS_Ao {
 						break;
 					}
 					else if(key.equals("2")){
-						ao x = new aoThun();
+						ao x = new aoTheThao();
 						x.nhap();
 						them1Ao(x);
 						break;
 					}
 					else if(key.equals("3")){
-						ao x = new aoTheThao();
+						ao x = new aoThun();
 						x.nhap();
 						them1Ao(x);
 						break;
@@ -44,14 +45,21 @@ public class DS_Ao {
 		}
 	}
 
-	public void them1Ao(ao x){	//Overloading
+	public void xuat(){				//yêu cầu 2b)
+		for (int i = 0; i < soLuong; i++){
+			System.out.println("----------------------------------");
+			ds[i].xuat();
+		}
+	}
+
+	public void them1Ao(ao x){	//Yêu cầu 2c)
 		ao[] dsnew = Arrays.copyOf(ds, soLuong + 1);
 		dsnew[soLuong] = x;
 		ds = dsnew;
 		soLuong++;
 	}
 
-	public void them1Ao(){	//Overloading	p.thức thêm 1 áo
+	public void them1Ao(){	//Overloading - Yêu cầu 2c)
 		while(true){
 			String key;
 			this.MenuAo();
@@ -63,13 +71,13 @@ public class DS_Ao {
 				break;
 			}
 			else if(key.equals("2")){
-				ao x = new aoThun();
+				ao x = new aoTheThao();
 				x.nhap();
 				them1Ao(x);
 				break;
 			}
 			else if(key.equals("3")){
-				ao x = new aoTheThao();
+				ao x = new aoThun();
 				x.nhap();
 				them1Ao(x);
 				break;
@@ -78,7 +86,7 @@ public class DS_Ao {
 		}
 	}
 
-	public void themKAo(){
+	public void themKAo(){	//Yêu cầu 2c)
 		System.out.println("Vui long nhap so luong ao muon them : ");
 		int k = Integer.parseInt(sc.nextLine());
 		for(int i = 0; i < k; i++){
@@ -93,15 +101,8 @@ public class DS_Ao {
 		System.out.println("3) Ao Thun.");
 	}
 
-	public void xuat(){
-		for (int i = 0; i < soLuong; i++){
-			System.out.println("----------------------------------");
-			ds[i].xuat();
-		}
-	}
-
 	
-	public void timKiemTheoID(){
+	public void timKiemTheoID(){	//Yêu cầu 2f) - còn thiếu khóa tìm kiếm **
 		System.out.println("Vui long nhap vao id ao can tim : ");
 		String ID = sc.nextLine();
 		ao x = getAoByID(ID);
@@ -124,8 +125,8 @@ public class DS_Ao {
 		return(null);
 	}
 
-	// public void timKiemTheoTen(String ten){
-	// 	boolen timThay = false;
+	// public void timKiemTheoTen(String ten){	// từ từ sửa
+	// 	boolean timThay = false;
 	// 	for (int i = 0; i < soLuong; i++){
 	// 		if (ds[i].getTen().equalsIgnoreCase(ten)){
 	// 			ds[i].xuat();
@@ -159,4 +160,26 @@ public class DS_Ao {
 	// public void getDSAoTuFile(String path){
 
 	// }
+
+	public void thongKe(){		//yêu cầu 2g)
+		int soLuongAoSoMi, soLuongAoTheThao, soLuongAoThun;
+			soLuongAoSoMi = soLuongAoTheThao = soLuongAoThun = 0;
+		for(int i = 0; i < soLuong; i++){
+			if(ds[i] instanceof aoSoMi){
+				soLuongAoSoMi++;
+			}
+			if(ds[i] instanceof aoTheThao){
+				soLuongAoTheThao++;
+			}
+			if(ds[i] instanceof aoThun){
+				soLuongAoThun++;
+			}
+		}
+		System.out.println("Thong ke so luong ao ton kho trong danh sach : ");
+		System.out.println("+ So luong ao ton kho : " + soLuong);
+		System.out.println("So luong ao so mi : " + soLuongAoSoMi);
+		System.out.println("So luong ao the thao : " + soLuongAoTheThao);
+		System.out.println("So luong ao thun : " + soLuongAoThun);
+
+	}
 }
