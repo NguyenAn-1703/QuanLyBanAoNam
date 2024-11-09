@@ -101,34 +101,28 @@ public class DS_Ao {
 	}
 
 	
+	public void timKiemTheoID(){
+		System.out.println("Vui long nhap vao id ao can tim : ");
+		String ID = sc.nextLine();
+		ao x = getAoByID(ID);
+		if(x != null){
+			System.out.println("Thong tin cua ao id so " + ID + " : ");
+			x.xuat();
+		}
+		else{
+			return;
+		}
+	}
 
-	// public void themKAo(int k){
-	// 	Scanner scanner = new Scanner(System.in);
-	// 	for (int i = 0; i < k; i++){
-	// 		if (soLuong < ds.length){
-	// 			Ao ao = new Ao();
-	// 			ao.nhap();
-	// 			them1Ao(ao);
-	// 		} else {
-	// 			System.out.println("Danh sach da day, khong them them ao moi.");
-	// 			break;
-	// 		}
-	// 	}
-	// }
-
-	// public void timKiemTheoID(String id){
-	// 	boolean timThay = false;
-	// 	for (int i = 0; i < soLuong; i++){
-	// 		if (ds[i].getId().equals(id)){
-	// 			ds[i].xuat();
-	// 			timThay = true;
-	// 			break;
-	// 		}
-	// 	}
-	// 	if (!timThay){
-	// 		System.out.println("Khong tim thay ao voi ID: " + id);
-	// 	}
-	// }
+	public ao getAoByID(String ID){	//Xài thêm cho chức năng chọn áo trong class hóa đơn
+		for(int i = 0; i < soLuong; i++){
+			if(ds[i].getId().equals(ID)){
+				return(ds[i]);
+			}
+		}
+		System.out.println("Khong tim thay ao trong danh sach !!!");
+		return(null);
+	}
 
 	// public void timKiemTheoTen(String ten){
 	// 	boolen timThay = false;
