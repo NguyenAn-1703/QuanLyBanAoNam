@@ -3,15 +3,15 @@ package quanLyBanAoNam;
 import java.util.Scanner;
 
 public class ao {
-	protected String id;
-	protected String ten;
+	protected String id; //id lưu kiểu String
+	protected String ten; // lên web coi
 	protected String size; // M L XL XXL
 	protected String mau; // trắng, đen, xanh...
 	protected float gia;
-	protected String thuongHieu;
-	protected String vai;
+	protected String thuongHieu; // lên web coi
+	protected String vai; // lên web coi
 	protected String kieuTayAo; // tay dài, tay ngắn
-	protected int soLuongTonKho;
+	protected int soLuongTonKho; 
 	protected int soLuongBan;
 	public Scanner sc = new Scanner(System.in);
 	

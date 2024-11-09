@@ -124,16 +124,9 @@ public class main {
 		// }
 
 		//test:
-		ao a3 = new aoSoMi(); 
-		ao a1 = new aoTheThao();
-		ao a2 = new aoThun();
-
-		a1.nhap();
-		a1.xuat();
-		a2.nhap();
-		a2.xuat();
-		a3.nhap();
-		a3.xuat();
+		DS_Ao a = new DS_Ao();
+		a.nhapNPhanTuDau();
+		a.xuat();
 		//test
 	}
 
