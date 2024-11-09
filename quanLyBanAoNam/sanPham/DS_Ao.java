@@ -1,4 +1,4 @@
-package quanLyBanAoNam;
+package quanLyBanAoNam.sanPham;
 
 import java.util.Scanner;
 import java.util.Arrays;
@@ -7,8 +7,8 @@ public class DS_Ao {
 	private ao[] ds = new ao[0];
 	private static int soLuong;
 	public static Scanner sc = new Scanner(System.in);
-
-	public void nhapNPhanTuDau() {	//làm theo file yêu cầu đề án
+	//làm theo file yêu cầu đồ án
+	public void nhapNPhanTuDau() {		// p.thức nhập n phần tử đầu cho danh sách
 		if(soLuong == 0){
 			System.out.println("Nhap vao so luong ao muon nhap : ");
 			int n = Integer.parseInt(sc.nextLine());
@@ -44,11 +44,46 @@ public class DS_Ao {
 		}
 	}
 
-	public void them1Ao(ao x){
+	public void them1Ao(ao x){	//Overloading
 		ao[] dsnew = Arrays.copyOf(ds, soLuong + 1);
 		dsnew[soLuong] = x;
 		ds = dsnew;
 		soLuong++;
+	}
+
+	public void them1Ao(){	//Overloading	p.thức thêm 1 áo
+		while(true){
+			String key;
+			this.MenuAo();
+			key = sc.nextLine();
+			if(key.equals("1")){
+				ao x = new aoSoMi();
+				x.nhap();
+				them1Ao(x);
+				break;
+			}
+			else if(key.equals("2")){
+				ao x = new aoThun();
+				x.nhap();
+				them1Ao(x);
+				break;
+			}
+			else if(key.equals("3")){
+				ao x = new aoTheThao();
+				x.nhap();
+				them1Ao(x);
+				break;
+			}
+			System.out.println("Du lieu khong hop le, vui long nhap lai !!! ");
+		}
+	}
+
+	public void themKAo(){
+		System.out.println("Vui long nhap so luong ao muon them : ");
+		int k = Integer.parseInt(sc.nextLine());
+		for(int i = 0; i < k; i++){
+			them1Ao();
+		}
 	}
 
 	public static void MenuAo(){
@@ -59,20 +94,13 @@ public class DS_Ao {
 	}
 
 	public void xuat(){
-		System.out.println("----------------------------------");
 		for (int i = 0; i < soLuong; i++){
+			System.out.println("----------------------------------");
 			ds[i].xuat();
 		}
 	}
 
-	// public void them1Ao(Ao ao){
-	// 	if (soLuong < ds.length){
-	// 		ds[soLuong] = ao;
-	// 		soLuong++;
-	// 	} else {
-	// 		System.out.print("Danh sach da day, khong the them ao moi.");
-	// 	}
-	// }
+	
 
 	// public void themKAo(int k){
 	// 	Scanner scanner = new Scanner(System.in);

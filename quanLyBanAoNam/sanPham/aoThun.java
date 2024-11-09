@@ -1,4 +1,4 @@
-package quanLyBanAoNam;
+package quanLyBanAoNam.sanPham;
 
 public class aoThun extends ao {
 	private String kieuCoAo; // cổ bẻ, không có cổ

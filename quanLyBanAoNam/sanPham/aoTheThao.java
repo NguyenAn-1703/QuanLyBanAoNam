@@ -1,4 +1,4 @@
-package quanLyBanAoNam;
+package quanLyBanAoNam.sanPham;
 
 public class aoTheThao extends ao {
 	private String doiTuyen;

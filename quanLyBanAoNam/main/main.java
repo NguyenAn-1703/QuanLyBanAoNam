@@ -1,6 +1,8 @@
-package quanLyBanAoNam;
+package quanLyBanAoNam.main;
 
 import java.util.Scanner;
+
+import quanLyBanAoNam.sanPham.DS_Ao;
 
 public class main {
 	public static void main(String[] args) {
@@ -126,6 +128,10 @@ public class main {
 		//test:
 		DS_Ao a = new DS_Ao();
 		a.nhapNPhanTuDau();
+		a.xuat();
+		a.them1Ao();
+		a.xuat();
+		a.themKAo();
 		a.xuat();
 		//test
 	}
