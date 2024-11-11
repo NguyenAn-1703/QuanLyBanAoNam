@@ -1,4 +1,4 @@
-package quanLyBanAoNam;
+package quanLyBanAoNam.sanPham;
 
 public class aoTheThao extends ao {
 	private String doiTuyen;
@@ -58,8 +58,39 @@ public class aoTheThao extends ao {
 		return(super.toString() + " doi tuyen : " + this.doiTuyen + 
 				"\n so ao : " + this.inSoAo + "\n mon the thao : " + this.monTheThao + "\n");
 	}
+
+	@Override
+	public String toString2(){
+		return(super.toString2() + "\t" + this.doiTuyen + "\t" + this.inSoAo + "\t" + this.monTheThao);
+	}
 	
 	public void xuat() {
 		System.out.println(this.toString());
 	}
+
+	public String getDoiTuyen() {
+		return doiTuyen;
+	}
+
+	public void setDoiTuyen(String doiTuyen) {
+		this.doiTuyen = doiTuyen;
+	}
+
+	public int getInSoAo() {
+		return inSoAo;
+	}
+
+	public void setInSoAo(int inSoAo) {
+		this.inSoAo = inSoAo;
+	}
+
+	public String getMonTheThao() {
+		return monTheThao;
+	}
+
+	public void setMonTheThao(String monTheThao) {
+		this.monTheThao = monTheThao;
+	}
+
+	
 }

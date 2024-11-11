@@ -1,4 +1,4 @@
-package quanLyBanAoNam;
+package quanLyBanAoNam.sanPham;
 
 public interface Comparator {
     int compareID(ao o1, ao o2);

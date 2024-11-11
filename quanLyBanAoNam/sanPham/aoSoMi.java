@@ -1,7 +1,7 @@
-package quanLyBanAoNam;
+package quanLyBanAoNam.sanPham;
 
 public class aoSoMi extends ao{
-	private String kieuCoAo; // cổ bẻ, cổ trụ
+	private String kieuCoAo; // cổ bẻ, cổ trụ //test
 	private String kieuNutAo;
 	
 	public aoSoMi() {
@@ -44,8 +44,30 @@ public class aoSoMi extends ao{
 	public String toString() {
 		return(super.toString() + " kieu co ao : " + this.kieuCoAo + "\n kieu nut ao : " + this.kieuNutAo + "\n");
 	}
+
+	@Override
+	public String toString2(){
+		return(super.toString2() + "\t" + this.kieuCoAo + "\t" + this.kieuNutAo);
+	}
 	
 	public void xuat() {
 		System.out.println(this.toString());
 	}
+
+	public String getKieuCoAo() {
+		return kieuCoAo;
+	}
+
+	public void setKieuCoAo(String kieuCoAo) {
+		this.kieuCoAo = kieuCoAo;
+	}
+
+	public String getKieuNutAo() {
+		return kieuNutAo;
+	}
+
+	public void setKieuNutAo(String kieuNutAo) {
+		this.kieuNutAo = kieuNutAo;
+	}
+	
 }

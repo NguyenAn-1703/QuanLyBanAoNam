@@ -1,4 +1,4 @@
-package quanLyBanAoNam;
+package quanLyBanAoNam.sanPham;
 
 public class soSanhIDAo implements Comparator{
     @Override
