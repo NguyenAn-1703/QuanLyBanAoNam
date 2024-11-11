@@ -130,7 +130,9 @@ public class main {
 		a.nhapNPhanTuDau();
 		a.xuat();
 		a.thongKe();
-		//test
+		a.ghiDSVaoFile();
+		a.docDSTuFile();
+		a.xuat();
 	}
 
 }

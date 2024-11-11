@@ -12,7 +12,7 @@ public class ao {
 	protected String vai; // lên web coi
 	protected String kieuTayAo; // tay dài, tay ngắn
 	protected int soLuongTonKho; 
-	protected int soLuongBan;
+	protected int soLuongBan; // sau phần hóa đơn xóa thuộc tính này **
 	public Scanner sc = new Scanner(System.in);
 	
 	
@@ -58,6 +58,11 @@ public class ao {
 		return("id : " + this.id + "\n ten : " + this.ten + "\n size : " + this.size + "\n mau : " + this.mau
 				+ "\n gia : " + this.gia + "\n thuong hieu : " + this.thuongHieu + "\n vai : " + this.vai + 
 				"\n kieu tay ao : " + this.kieuTayAo + "\n so luong ton kho : " + this.soLuongTonKho + "\n");
+	}
+
+	public String toString2(){
+		return(this.id + "\t" + this.ten + "\t" + this.size + "\t" + this.mau + "\t" + this.gia 
+		+ "\t" + this.thuongHieu + "\t" + this.vai + "\t" + this.kieuTayAo + "\t" + this.soLuongTonKho);
 	}
 	
 	public void xuat() {

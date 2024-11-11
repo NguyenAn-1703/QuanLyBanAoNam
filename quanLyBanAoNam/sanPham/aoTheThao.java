@@ -34,6 +34,11 @@ public class aoTheThao extends ao {
 		return(super.toString() + " doi tuyen : " + this.doiTuyen + 
 				"\n so ao : " + this.inSoAo + "\n mon the thao : " + this.monTheThao + "\n");
 	}
+
+	@Override
+	public String toString2(){
+		return(super.toString2() + "\t" + this.doiTuyen + "\t" + this.inSoAo + "\t" + this.monTheThao);
+	}
 	
 	public void xuat() {
 		System.out.println(this.toString());

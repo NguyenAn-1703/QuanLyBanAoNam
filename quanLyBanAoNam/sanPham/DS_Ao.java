@@ -2,6 +2,10 @@ package quanLyBanAoNam.sanPham;
 
 import java.util.Scanner;
 import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.FileReader;
 
 public class DS_Ao {
 	private ao[] ds = new ao[0];
@@ -180,6 +184,110 @@ public class DS_Ao {
 		System.out.println("So luong ao so mi : " + soLuongAoSoMi);
 		System.out.println("So luong ao the thao : " + soLuongAoTheThao);
 		System.out.println("So luong ao thun : " + soLuongAoThun);
+	}
+
+	public void ghiDSVaoFile(){	//mỗi loại áo sẽ ghi một file khác nhau
+		try {
+			FileWriter file1 = new FileWriter("aoSoMi.txt", false);
+			BufferedWriter bw1 = new BufferedWriter(file1);
+
+			FileWriter file2 = new FileWriter("aoTheThao.txt", false);
+			BufferedWriter bw2 = new BufferedWriter(file2);
+
+			FileWriter file3 = new FileWriter("aoThun.txt", false);
+			BufferedWriter bw3 = new BufferedWriter(file3);
+
+			for(int i = 0; i < soLuong; i++){
+				if(ds[i] instanceof aoSoMi){
+					bw1.write(ds[i].toString2());
+					bw1.newLine();
+				}
+
+				if(ds[i] instanceof aoTheThao){
+					bw2.write(ds[i].toString2());
+					bw2.newLine();
+				}
+
+				if(ds[i] instanceof aoThun){
+					bw3.write(ds[i].toString2());
+					bw3.newLine();
+				}
+			}
+			bw1.close();
+			file1.close();
+			bw2.close();
+			file2.close();
+			bw3.close();
+			file3.close();
+		} catch (Exception e) {
+			System.out.println("Loi khi mo file ghi");
+		}
+	}
+
+	public void docDSTuFile(){
+		ds = new ao[0]; // Mỗi lần đọc sẽ xóa hết các phần tử trong mảng
+		soLuong = 0;
+		try {
+			FileReader fr1 = new FileReader("aoSoMi.txt");
+			BufferedReader br1 = new BufferedReader(fr1);
+			FileReader fr2 = new FileReader("aoTheThao.txt");
+			BufferedReader br2 = new BufferedReader(fr2);
+			FileReader fr3 = new FileReader("aoThun.txt");
+			BufferedReader br3 = new BufferedReader(fr3);
+
+			String line = "";
+			while (true){		//đọc file áo sơ mi.
+				line = br1.readLine();
+				if(line == null){
+					break;
+				}
+				String txt[] = line.split("\\s+"); //tach chuoi mien co khoang cach
+				float n = Float.parseFloat(txt[4]);
+				int m = Integer.parseInt(txt[8]);
+				ao x = new aoSoMi(txt[0], txt[1], txt[2], txt[3], n, 
+				txt[5], txt[6], txt[7], m, txt[9], txt[10]);
+				this.them1Ao(x);
+			}
+
+			fr1.close();
+			br1.close();
+
+			while(true){		//đọc file áo thể thao
+				line = br2.readLine();
+				if(line == null){
+					break;
+				}
+				String txt[] = line.split("\\s+"); //tach chuoi mien co khoang cach
+				float n = Float.parseFloat(txt[4]);
+				int m = Integer.parseInt(txt[8]);
+				int p = Integer.parseInt(txt[10]);
+				ao x = new aoTheThao(txt[0], txt[1], txt[2], txt[3], n, 
+				txt[5], txt[6], txt[7], m, txt[9], p, txt[11]);
+				this.them1Ao(x);
+			}
+			
+			fr2.close();
+			br2.close();
+
+			while(true){		//đọc file áo thun
+				line = br3.readLine();
+				if(line == null){
+					break;
+				}
+				String txt[] = line.split("\\s+"); //tach chuoi mien co khoang cach
+				float n = Float.parseFloat(txt[4]);
+				int m = Integer.parseInt(txt[8]);
+				ao x = new aoThun(txt[0], txt[1], txt[2], txt[3], n, 
+				txt[5], txt[6], txt[7], m, txt[9]);
+				this.them1Ao(x);
+			}
+			
+			fr3.close();
+			br3.close();
+
+		} catch (Exception e) {
+			System.out.println("Loi khi mo file doc ");
+		}
 
 	}
 }
