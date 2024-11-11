@@ -1,5 +1,6 @@
 package quanLyBanAoNam.sanPham;
 
+import quanLyBanAoNam.keBien.keBien;
 import java.util.Scanner;
 import java.util.Arrays;
 import java.io.BufferedReader;
@@ -12,6 +13,61 @@ public class DS_Ao {
 	private static int soLuong;
 	public static Scanner sc = new Scanner(System.in);
 	//làm theo file yêu cầu đồ án
+
+	public static void MenuChinh(){
+		keBien.ke();
+		System.out.println("Vui long nhao lua chon.");
+		System.out.println("1) Nhap n phan tu dau.");
+		System.out.println("2) Xuat danh sach.");
+		System.out.println("3) Them 1 ao.");
+		System.out.println("4) Them k ao.");
+		System.out.println("5) Tim kiem theo ID ao.");
+		System.out.println("6) Thong ke ao ton kho.");
+		System.out.println("7) Ghi danh sach vao file.");
+		System.out.println("8) Doc danh sach tu file.");
+		System.out.println("9) Thoat chuc nang");
+		keBien.ke();
+	}
+
+	public void startUp(){
+		String key;
+		while(true){
+			this.MenuChinh();
+			key = sc.nextLine();
+			if(key.equals("1")){		//Nhap n phan tu dau
+				this.nhapNPhanTuDau();
+			}
+			else if(key.equals("2")){	//Xuat danh sach
+				this.xuat();
+			}
+			else if(key.equals("3")){	//Them 1 ao
+				this.them1Ao();
+			}
+			else if(key.equals("4")){	//Them k ao
+				this.themKAo();
+			}
+			else if(key.equals("5")){	//Tim kiem theo ID
+				this.timKiemTheoID();
+			}
+			else if(key.equals("6")){	//Thong ke so luong
+				this.thongKe();
+			}
+			else if(key.equals("7")){	//ghi danh sach vao file
+				this.ghiDSVaoFile();
+			}
+			else if(key.equals("8")){	//doc danh sach tu file
+				this.docDSTuFile();
+			}
+			else if(key.equals("9")){
+				keBien.ke();
+				System.out.println("Da thoat chuc nang.");
+				break;
+			}
+			else{
+				System.out.println("Du lieu khong hop le vui long nhap lai !!!");
+			}		
+		}
+	}
 
 	public void nhapNPhanTuDau() {		// p.thức nhập n phần tử đầu cho danh sách - yêu cầu 2a)
 		if(soLuong == 0){
@@ -51,7 +107,7 @@ public class DS_Ao {
 
 	public void xuat(){				//yêu cầu 2b)
 		for (int i = 0; i < soLuong; i++){
-			System.out.println("----------------------------------");
+			keBien.ke();
 			ds[i].xuat();
 		}
 	}
@@ -140,17 +196,6 @@ public class DS_Ao {
 	// 	if (!timThay){
 	// 		System.out.println("Khong tim thay ao voi ten: " + ten);
 	// 	}
-	// }
-	
-	// public void thongKe(){
-	// 	int tongSoLuongTonKho = 0;
-	// 	int tongSoLuongBan = 0;
-	// 	for (int i = 0; i < soLuong; i++){
-	// 		tongSoLuongTonKho += ds[i].getSoLuongTonKho();
-	// 		tongSoLuongBan += ds[i].getSoLuongBan();
-	// 	}
-	// 	System.out.println("Tong so luong ton kho : " + tongSoLuongTonKho);
-	// 	System.out.println("Tong so luong da ban: " + tongSoLuongBan);
 	// }
 
 	// public void sapXepTheoID(){

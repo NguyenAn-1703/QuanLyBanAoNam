@@ -127,12 +127,14 @@ public class main {
 
 		//test:
 		DS_Ao a = new DS_Ao();
-		a.nhapNPhanTuDau();
-		a.xuat();
-		a.thongKe();
-		a.ghiDSVaoFile();
-		a.docDSTuFile();
-		a.xuat();
+		// // a.nhapNPhanTuDau();
+		// // a.xuat();
+		// // a.thongKe();
+		// // a.ghiDSVaoFile();
+		// a.docDSTuFile();
+		// a.xuat();
+		a.startUp();
+		//test
 	}
 
 }

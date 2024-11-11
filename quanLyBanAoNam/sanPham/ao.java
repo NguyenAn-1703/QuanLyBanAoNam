@@ -12,7 +12,7 @@ public class ao {
 	protected String vai; // lên web coi
 	protected String kieuTayAo; // tay dài, tay ngắn
 	protected int soLuongTonKho; 
-	protected int soLuongBan; // sau phần hóa đơn xóa thuộc tính này **
+	protected boolean trangThai;
 	public Scanner sc = new Scanner(System.in);
 	
 	
@@ -95,9 +95,6 @@ public class ao {
 	public int getSoLuongTonKho() {
 		return soLuongTonKho;
 	}
-	public int getSoLuongBan() {
-		return soLuongBan;
-	}
 
 	public void setId(String id) {
 		this.id = id;
@@ -125,9 +122,6 @@ public class ao {
 	}
 	public void setSoLuongTonKho(int soLuongTonKho) {
 		this.soLuongTonKho = soLuongTonKho;
-	}
-	public void setSoLuongBan(int soLuongBan) {
-		this.soLuongBan = soLuongBan;
 	}
 	
 	
