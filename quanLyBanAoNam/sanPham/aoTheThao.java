@@ -18,6 +18,7 @@ public class aoTheThao extends ao {
 		this.monTheThao = monTheThao;
 	}
 	
+	
 	@Override
 	public void nhap() {
 		super.nhap();

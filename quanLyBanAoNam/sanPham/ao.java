@@ -29,7 +29,6 @@ public class ao {
 		this.kieuTayAo = kieuTayAo;
 		this.soLuongTonKho = soLuongTonKho;
 	}
-	
 	public void nhap() {
 		System.out.println("Vui long nhap id ao :");
 		this.id = sc.nextLine();
@@ -53,7 +52,6 @@ public class ao {
 	}
 	
 	@Override
-	
 	public String toString() {
 		return("id : " + this.id + "\n ten : " + this.ten + "\n size : " + this.size + "\n mau : " + this.mau
 				+ "\n gia : " + this.gia + "\n thuong hieu : " + this.thuongHieu + "\n vai : " + this.vai + 

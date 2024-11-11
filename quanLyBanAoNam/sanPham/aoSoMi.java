@@ -1,7 +1,5 @@
 package quanLyBanAoNam.sanPham;
 
-import java.util.Scanner;
-
 public class aoSoMi extends ao{
 	private String kieuCoAo; // cổ bẻ, cổ trụ //test
 	private String kieuNutAo;
@@ -16,7 +14,7 @@ public class aoSoMi extends ao{
 		this.kieuCoAo = kieuCoAo;
 		this.kieuNutAo = kieuNutAo;
 	}
-	
+
 	@Override
 	public void nhap() {
 		super.nhap();
