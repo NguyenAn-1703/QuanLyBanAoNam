@@ -17,6 +17,30 @@ public class aoTheThao extends ao {
 		this.inSoAo = inSoAo;
 		this.monTheThao = monTheThao;
 	}
+
+	public String getDoiTuyen() {
+		return this.doiTuyen;
+	}
+
+	public void setDoiTuyen(String doiTuyen) {
+		this.doiTuyen = doiTuyen;
+	}
+
+	public int getInSoAo() {
+		return this.inSoAo;
+	}
+
+	public void setInSoAo(int inSoAo) {
+		this.inSoAo = inSoAo;
+	}
+
+	public String getMonTheThao() {
+		return this.monTheThao;
+	}
+
+	public void setMonTheThao(String monTheThao) {
+		this.monTheThao = monTheThao;
+	}
 	
 	@Override
 	public void nhap() {

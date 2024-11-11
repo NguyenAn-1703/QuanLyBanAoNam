@@ -31,6 +31,86 @@ public class ao {
 		this.soLuongBan = soLuongBan;
 	}
 	
+	public String getId() {
+		return this.id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getTen() {
+		return this.ten;
+	}
+
+	public void setTen(String ten) {
+		this.ten = ten;
+	}
+
+	public String getSize() {
+		return this.size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+	public String getMau() {
+		return this.mau;
+	}
+
+	public void setMau(String mau) {
+		this.mau = mau;
+	}
+
+	public float getGia() {
+		return this.gia;
+	}
+
+	public void setGia(float gia) {
+		this.gia = gia;
+	}
+
+	public String getThuongHieu() {
+		return this.thuongHieu;
+	}	
+
+	public void setThuongHieu(String thuongHieu) {
+		this.thuongHieu = thuongHieu;
+	}
+
+	public String getVai() {
+		return this.vai;
+	}
+
+	public void setVai(String vai) {
+		this.vai = vai;
+	}
+
+	public String getKieuTayAo() {
+		return this.kieuTayAo;
+	}
+
+	public void setKieuTayAo(String kieuTayAo) {
+		this.kieuTayAo = kieuTayAo;
+	}
+
+	public int getSoLuongTonKho() {
+		return this.soLuongTonKho;
+	}
+
+	public void setSoLuongTonKho(int soLuongTonKho) {
+		this.soLuongTonKho = soLuongTonKho;
+	}
+
+	public int getSoLuongBan() {
+		return this.soLuongBan;
+	}
+
+	public void setSoLuongBan(int soLuongBan) {
+		this.soLuongBan = soLuongBan;
+	}
+	
 	public void nhap() {
 		System.out.println("Vui long nhap id ao :");
 		this.id = sc.nextLine();
@@ -54,7 +134,6 @@ public class ao {
 	}
 	
 	@Override
-	
 	public String toString() {
 		return("id : " + this.id + "\n ten : " + this.ten + "\n size : " + this.size + "\n mau : " + this.mau
 				+ "\n gia : " + this.gia + "\n thuong hieu : " + this.thuongHieu + "\n vai : " + this.vai + 

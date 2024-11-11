@@ -13,6 +13,14 @@ public class aoThun extends ao {
 		super(id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongTonKho);
 		this.kieuCoAo = kieuCoAo;
 	}
+
+	public String getKieuCoAo() {
+		return this.kieuCoAo;
+	}
+
+	public void setKieuCoAo(String kieuCoAo) {
+		this.kieuCoAo = kieuCoAo;
+	}
 	
 	@Override
 	public void nhap() {
