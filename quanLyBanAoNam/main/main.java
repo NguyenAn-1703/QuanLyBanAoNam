@@ -1,18 +1,21 @@
 package quanLyBanAoNam.main;
 
-import quanLyBanAoNam.sanPham.DS_Ao;
+import quanLyBanAoNam.sanPham.phieuNhap;
 
 public class main {
 	public static void main(String[] args) {
-		//test
-		DS_Ao a = new DS_Ao();
-		
-		a.startUp();
-		//test
-		
+		phieuNhap pn = new phieuNhap();
+		pn.nhapNPhanTuDau();
+		pn.them1Ao();
+		pn.thongKe();
+		pn.xuat();
 	}
-	
 }
+//test
+// DS_Ao a = new DS_Ao();
+
+// a.startUp();
+//test
 
 // aoSoMi[] aoSoMiList = new aoSoMi[10];
 // aoThun[] aoThunList = new aoThun[10];
