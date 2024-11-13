@@ -15,8 +15,8 @@ public class DS_Ao {
 	//làm theo file yêu cầu đồ án
 
 	public static void MenuChinh(){
-		keBien.ke();
-		System.out.println("Vui long nhao lua chon.");
+		keBien.keBienAo();
+		System.out.println("Vui long nhap lua chon.");
 		System.out.println("1) Nhap n phan tu dau.");
 		System.out.println("2) Xuat danh sach.");
 		System.out.println("3) Them 1 ao.");
@@ -71,7 +71,7 @@ public class DS_Ao {
 
 	public void nhapNPhanTuDau() {		// p.thức nhập n phần tử đầu cho danh sách - yêu cầu 2a)
 		if(soLuong == 0){
-			System.out.println("Nhap vao so luong ao muon nhap : ");
+			System.out.println("Nhap vao so loai ao muon nhap : ");
 			int n = Integer.parseInt(sc.nextLine());
 			for(int i = 0; i < n; i++){
 				while(true){
@@ -147,7 +147,7 @@ public class DS_Ao {
 	}
 
 	public void themKAo(){	//Yêu cầu 2c)
-		System.out.println("Vui long nhap so luong ao muon them : ");
+		System.out.println("Vui long nhap so loai ao muon them : ");
 		int k = Integer.parseInt(sc.nextLine());
 		for(int i = 0; i < k; i++){
 			them1Ao();
@@ -155,7 +155,7 @@ public class DS_Ao {
 	}
 
 	public static void MenuAo(){
-		System.out.println("Vui long chon loai ao :");
+		System.out.println("Vui long chon kieu ao :");
 		System.out.println("1) Ao So Mi.");
 		System.out.println("2) Ao The Thao.");
 		System.out.println("3) Ao Thun.");
@@ -211,21 +211,22 @@ public class DS_Ao {
 	// }
 
 	public void thongKe(){		//yêu cầu 2g)
-		int soLuongAoSoMi, soLuongAoTheThao, soLuongAoThun;
-			soLuongAoSoMi = soLuongAoTheThao = soLuongAoThun = 0;
+		int soLuongAoSoMi, soLuongAoTheThao, soLuongAoThun, tongSoAo;
+			soLuongAoSoMi = soLuongAoTheThao = soLuongAoThun = tongSoAo = 0;
 		for(int i = 0; i < soLuong; i++){
 			if(ds[i] instanceof aoSoMi){
-				soLuongAoSoMi++;
+				soLuongAoSoMi += ds[i].getSoLuongTonKho();
 			}
 			if(ds[i] instanceof aoTheThao){
-				soLuongAoTheThao++;
+				soLuongAoTheThao += ds[i].getSoLuongTonKho();
 			}
 			if(ds[i] instanceof aoThun){
-				soLuongAoThun++;
+				soLuongAoThun += ds[i].getSoLuongTonKho();
 			}
 		}
+		tongSoAo = soLuongAoSoMi + soLuongAoTheThao + soLuongAoThun;
 		System.out.println("Thong ke so luong ao ton kho trong danh sach : ");
-		System.out.println("+ So luong ao ton kho : " + soLuong);
+		System.out.println("+ So luong ao ton kho : " + tongSoAo);
 		System.out.println("So luong ao so mi : " + soLuongAoSoMi);
 		System.out.println("So luong ao the thao : " + soLuongAoTheThao);
 		System.out.println("So luong ao thun : " + soLuongAoThun);

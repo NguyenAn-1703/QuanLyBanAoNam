@@ -46,7 +46,7 @@ public class ao {
 		this.vai = sc.nextLine();
 		System.out.println("Vui long nhap kieu tay ao : ");
 		this.kieuTayAo = sc.nextLine();
-		System.out.println("Vui long nhap so luong ton kho : ");
+		System.out.println("Vui long nhap so luong : ");
 		this.soLuongTonKho = Integer.parseInt(sc.nextLine());
 		
 	}
