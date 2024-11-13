@@ -38,7 +38,7 @@ public class aoTheThao extends ao {
 
 	@Override
 	public String toString2(){
-		return(super.toString2() + "\t" + this.doiTuyen + "\t" + this.inSoAo + "\t" + this.monTheThao);
+		return(super.toString2() + this.doiTuyen + "#" + this.inSoAo + "#" + this.monTheThao);
 	}
 	
 	public void xuat() {

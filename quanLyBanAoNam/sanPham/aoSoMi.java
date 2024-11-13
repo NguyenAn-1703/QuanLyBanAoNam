@@ -31,7 +31,7 @@ public class aoSoMi extends ao{
 
 	@Override
 	public String toString2(){
-		return(super.toString2() + "\t" + this.kieuCoAo + "\t" + this.kieuNutAo);
+		return(super.toString2() + this.kieuCoAo + "#" + this.kieuNutAo);
 	}
 	
 	public void xuat() {

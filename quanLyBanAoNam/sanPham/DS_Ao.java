@@ -10,32 +10,30 @@ import java.io.FileReader;
 
 public class DS_Ao {
 	private ao[] ds = new ao[0];
-	private static int soLuong;
+	private int soLuong = 0;
 	public static Scanner sc = new Scanner(System.in);
 	//làm theo file yêu cầu đồ án
 
 	public static void MenuChinh(){
 		keBien.keBienAo();
 		System.out.println("Vui long nhap lua chon.");
-		System.out.println("1) Nhap n phan tu dau.");
+		System.out.println("1) Doc danh sach dau tien tu file.");	// phần này đổi thành đọc từ file
 		System.out.println("2) Xuat danh sach.");
 		System.out.println("3) Them 1 ao.");
 		System.out.println("4) Them k ao.");
 		System.out.println("5) Tim kiem theo ID ao.");
 		System.out.println("6) Thong ke ao ton kho.");
-		System.out.println("7) Ghi danh sach vao file.");
-		System.out.println("8) Doc danh sach tu file.");
-		System.out.println("9) Thoat chuc nang");
+		System.out.println("7) Thoat chuc nang.");
 		keBien.ke();
 	}
 
-	public void startUp(){
+	public void startUp(){				// sửa sau
 		String key;
 		while(true){
-			this.MenuChinh();
+			MenuChinh();
 			key = sc.nextLine();
-			if(key.equals("1")){		//Nhap n phan tu dau
-				this.nhapNPhanTuDau();
+			if(key.equals("1")){		//Doc ds dau tien
+				docDSTuFile();
 			}
 			else if(key.equals("2")){	//Xuat danh sach
 				this.xuat();
@@ -52,13 +50,7 @@ public class DS_Ao {
 			else if(key.equals("6")){	//Thong ke so luong
 				this.thongKe();
 			}
-			else if(key.equals("7")){	//ghi danh sach vao file
-				this.ghiDSVaoFile();
-			}
-			else if(key.equals("8")){	//doc danh sach tu file
-				this.docDSTuFile();
-			}
-			else if(key.equals("9")){
+			else if(key.equals("7")){
 				keBien.ke();
 				System.out.println("Da thoat chuc nang.");
 				break;
@@ -69,9 +61,9 @@ public class DS_Ao {
 		}
 	}
 
-	public void nhapNPhanTuDau() {		// p.thức nhập n phần tử đầu cho danh sách - yêu cầu 2a)
-		if(soLuong == 0){
-			System.out.println("Nhap vao so loai ao muon nhap : ");
+	public void nhapNPTPhieuNhap() {		// p.thức nhập n phần tử đầu cho danh sách - yêu cầu 2a)
+		if(soLuong == 0){				// đổi thành đọc dữ liệu từ file
+			System.out.println("Nhap vao so loai ao muon nhap hang : ");	//xài cho chức năng nhập hàng
 			int n = Integer.parseInt(sc.nextLine());
 			for(int i = 0; i < n; i++){
 				while(true){
@@ -106,10 +98,8 @@ public class DS_Ao {
 	}
 
 	public void xuat(){				//yêu cầu 2b)
-		for (int i = 0; i < soLuong; i++){
-			keBien.ke();
-			ds[i].xuat();
-		}
+		docDSTuFile();
+		System.out.println(this.toString());
 	}
 
 	public void them1Ao(ao x){	//Yêu cầu 2c)
@@ -119,10 +109,11 @@ public class DS_Ao {
 		soLuong++;
 	}
 
-	public void them1Ao(){	//Overloading - Yêu cầu 2c)
+	public void them1Ao(){	//Overloading - Yêu cầu 2c
+		docDSTuFile();
 		while(true){
 			String key;
-			this.MenuAo();
+			MenuAo();
 			key = sc.nextLine();
 			if(key.equals("1")){
 				ao x = new aoSoMi();
@@ -144,14 +135,25 @@ public class DS_Ao {
 			}
 			System.out.println("Du lieu khong hop le, vui long nhap lai !!! ");
 		}
+		ghiDSVaoFile();
 	}
 
 	public void themKAo(){	//Yêu cầu 2c)
+		docDSTuFile();
 		System.out.println("Vui long nhap so loai ao muon them : ");
 		int k = Integer.parseInt(sc.nextLine());
 		for(int i = 0; i < k; i++){
 			them1Ao();
 		}
+		ghiDSVaoFile();
+	}
+
+	public void themKAo(ao[] a, int n){	// sử dụng cho chức năng nhập hàng
+		docDSTuFile();
+		for(int i = 0; i < n; i++){
+			them1Ao(a[i]);
+		}
+		ghiDSVaoFile();
 	}
 
 	public static void MenuAo(){
@@ -163,6 +165,7 @@ public class DS_Ao {
 
 	
 	public void timKiemTheoID(){	//Yêu cầu 2f) - còn thiếu khóa tìm kiếm **
+		docDSTuFile();
 		System.out.println("Vui long nhap vao id ao can tim : ");
 		String ID = sc.nextLine();
 		ao x = getAoByID(ID);
@@ -202,15 +205,9 @@ public class DS_Ao {
 	// 	Arrays.sort(ds, 0, soLuong, (ao1, ao2) -> ao1.getId().compareTo(ao2.getId()));
 	// }
 
-	// public void docDSAoTuFile(String path){
-
-	// }
-
-	// public void getDSAoTuFile(String path){
-
-	// }
 
 	public void thongKe(){		//yêu cầu 2g)
+		docDSTuFile();
 		int soLuongAoSoMi, soLuongAoTheThao, soLuongAoThun, tongSoAo;
 			soLuongAoSoMi = soLuongAoTheThao = soLuongAoThun = tongSoAo = 0;
 		for(int i = 0; i < soLuong; i++){
@@ -230,6 +227,15 @@ public class DS_Ao {
 		System.out.println("So luong ao so mi : " + soLuongAoSoMi);
 		System.out.println("So luong ao the thao : " + soLuongAoTheThao);
 		System.out.println("So luong ao thun : " + soLuongAoThun);
+	}
+
+	@Override
+	public String toString(){
+		String s = "";
+		for(int i = 0; i < soLuong; i++){
+			s += ds[i].toString();
+		}
+		return(s);
 	}
 
 	public void ghiDSVaoFile(){	//mỗi loại áo sẽ ghi một file khác nhau
@@ -284,10 +290,10 @@ public class DS_Ao {
 			String line = "";
 			while (true){		//đọc file áo sơ mi.
 				line = br1.readLine();
-				if(line == null){
+				if(line == null || line.equals("")){
 					break;
 				}
-				String txt[] = line.split("\\s+"); //tach chuoi mien co khoang cach
+				String txt[] = line.split("#"); //tách chuỗi bằng dấu #
 				float n = Float.parseFloat(txt[4]);
 				int m = Integer.parseInt(txt[8]);
 				ao x = new aoSoMi(txt[0], txt[1], txt[2], txt[3], n, 
@@ -300,10 +306,10 @@ public class DS_Ao {
 
 			while(true){		//đọc file áo thể thao
 				line = br2.readLine();
-				if(line == null){
+				if(line == null || line.equals("")){
 					break;
 				}
-				String txt[] = line.split("\\s+"); //tach chuoi mien co khoang cach
+				String txt[] = line.split("#"); //tach chuoi mien co khoang cach
 				float n = Float.parseFloat(txt[4]);
 				int m = Integer.parseInt(txt[8]);
 				int p = Integer.parseInt(txt[10]);
@@ -317,10 +323,10 @@ public class DS_Ao {
 
 			while(true){		//đọc file áo thun
 				line = br3.readLine();
-				if(line == null){
+				if(line == null || line.equals("")){
 					break;
 				}
-				String txt[] = line.split("\\s+"); //tach chuoi mien co khoang cach
+				String txt[] = line.split("#"); //tach chuoi mien co khoang cach
 				float n = Float.parseFloat(txt[4]);
 				int m = Integer.parseInt(txt[8]);
 				ao x = new aoThun(txt[0], txt[1], txt[2], txt[3], n, 
@@ -333,7 +339,25 @@ public class DS_Ao {
 
 		} catch (Exception e) {
 			System.out.println("Loi khi mo file doc ");
+			System.out.println(e);
 		}
-
 	}
+
+	public ao[] getDs() {
+		return ds;
+	}
+
+	public void setDs(ao[] ds) {
+		this.ds = ds;
+	}
+
+	public int getSoLuong() {
+		return soLuong;
+	}
+
+	public void setSoLuong(int soLuong) {
+		this.soLuong = soLuong;
+	}
+
+	
 }

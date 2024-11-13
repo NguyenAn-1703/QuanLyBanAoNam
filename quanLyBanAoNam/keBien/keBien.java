@@ -10,4 +10,8 @@ public class keBien {
     public static void keBienKhach(){
         System.out.println("<<----------------------Khach Hang---------------------->>");
     }
+
+    public static String ke2(){
+        return("<<----------------------<<>>---------------------->> \n");
+    }
 }

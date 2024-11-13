@@ -2,6 +2,8 @@ package quanLyBanAoNam.sanPham;
 
 import java.util.Scanner;
 
+import quanLyBanAoNam.keBien.keBien;
+
 public class ao {
 	protected String id; //id lưu kiểu String
 	protected String ten; // lên web coi
@@ -53,14 +55,14 @@ public class ao {
 	
 	@Override
 	public String toString() {
-		return("id : " + this.id + "\n ten : " + this.ten + "\n size : " + this.size + "\n mau : " + this.mau
+		return(keBien.ke2() + "id : " + this.id + "\n ten : " + this.ten + "\n size : " + this.size + "\n mau : " + this.mau
 				+ "\n gia : " + this.gia + "\n thuong hieu : " + this.thuongHieu + "\n vai : " + this.vai + 
 				"\n kieu tay ao : " + this.kieuTayAo + "\n so luong ton kho : " + this.soLuongTonKho + "\n");
 	}
 
 	public String toString2(){
-		return(this.id + "\t" + this.ten + "\t" + this.size + "\t" + this.mau + "\t" + this.gia 
-		+ "\t" + this.thuongHieu + "\t" + this.vai + "\t" + this.kieuTayAo + "\t" + this.soLuongTonKho);
+		return(this.id + "#" + this.ten + "#" + this.size + "#" + this.mau + "#" + this.gia 
+		+ "#" + this.thuongHieu + "#" + this.vai + "#" + this.kieuTayAo + "#" + this.soLuongTonKho + "#");
 	}
 	
 	public void xuat() {

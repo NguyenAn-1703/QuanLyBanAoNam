@@ -27,7 +27,7 @@ public class aoThun extends ao {
 	}
 	@Override
 	public String toString2(){
-		return(super.toString2() + "\t" + this.kieuCoAo);
+		return(super.toString2() + this.kieuCoAo);
 	}
 	
 	public void xuat() {
