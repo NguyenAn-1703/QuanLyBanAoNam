@@ -148,14 +148,6 @@ public class DS_Ao {
 		ghiDSVaoFile();
 	}
 
-	public void themKAo(ao[] a, int n){	// sử dụng cho chức năng nhập hàng
-		docDSTuFile();
-		for(int i = 0; i < n; i++){
-			them1Ao(a[i]);
-		}
-		ghiDSVaoFile();
-	}
-
 	public static void MenuAo(){
 		System.out.println("Vui long chon kieu ao :");
 		System.out.println("1) Ao So Mi.");
@@ -212,17 +204,17 @@ public class DS_Ao {
 			soLuongAoSoMi = soLuongAoTheThao = soLuongAoThun = tongSoAo = 0;
 		for(int i = 0; i < soLuong; i++){
 			if(ds[i] instanceof aoSoMi){
-				soLuongAoSoMi += ds[i].getSoLuongTonKho();
+				soLuongAoSoMi += ds[i].getSoLuongSP();
 			}
 			if(ds[i] instanceof aoTheThao){
-				soLuongAoTheThao += ds[i].getSoLuongTonKho();
+				soLuongAoTheThao += ds[i].getSoLuongSP();
 			}
 			if(ds[i] instanceof aoThun){
-				soLuongAoThun += ds[i].getSoLuongTonKho();
+				soLuongAoThun += ds[i].getSoLuongSP();
 			}
 		}
 		tongSoAo = soLuongAoSoMi + soLuongAoTheThao + soLuongAoThun;
-		System.out.println("Thong ke so luong ao ton kho trong danh sach : ");
+		System.out.println("Thong ke so luong ao ton kho : ");
 		System.out.println("+ So luong ao ton kho : " + tongSoAo);
 		System.out.println("So luong ao so mi : " + soLuongAoSoMi);
 		System.out.println("So luong ao the thao : " + soLuongAoTheThao);
@@ -234,6 +226,14 @@ public class DS_Ao {
 		String s = "";
 		for(int i = 0; i < soLuong; i++){
 			s += ds[i].toString();
+		}
+		return(s);
+	}
+
+	public String toStringNhap(){	// toString cho phiếu nhập
+		String s = "";
+		for(int i = 0; i < soLuong; i++){
+			s += ds[i].toStringNhap();
 		}
 		return(s);
 	}

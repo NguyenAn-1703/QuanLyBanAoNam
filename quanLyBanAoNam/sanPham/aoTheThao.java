@@ -11,8 +11,8 @@ public class aoTheThao extends ao {
 	}
 	
 	public aoTheThao(String id, String ten, String size, String mau, float gia, String thuongHieu,
-			String vai, String kieuTayAo, int soLuongTonKho, String doiTuyen, int inSoAo, String monTheThao) {
-		super(id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongTonKho);
+			String vai, String kieuTayAo, int soLuongSP, String doiTuyen, int inSoAo, String monTheThao) {
+		super(id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongSP);
 		this.doiTuyen = doiTuyen;
 		this.inSoAo = inSoAo;
 		this.monTheThao = monTheThao;

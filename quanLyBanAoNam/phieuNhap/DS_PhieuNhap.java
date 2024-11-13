@@ -15,9 +15,8 @@ public class DS_PhieuNhap {
         
     }
 
-    public void them1PhieuNhap(){       //Nhập hàng 
-        phieuNhap x = new phieuNhap();
-        x.nhapPhieuNhap();
+    public void them1PhieuNhap(phieuNhap x){       //Nhập hàng 
+        
         phieuNhap[] dsnew = Arrays.copyOf(ds, soLuong + 1);
         dsnew[soLuong] = x;
         ds = dsnew;
@@ -29,7 +28,8 @@ public class DS_PhieuNhap {
         System.out.println("Vui long nhap lua chon : ");
         System.out.println("1) Xuat danh sach san pham. "); // làm thêm phần xuất danh sách nhân viên
         System.out.println("2) Tao phieu nhap moi. ");
-        System.out.println("3) Thoat chuc nang nhap hang.");
+        System.out.println("3) Xuat danh sach phieu nhap.");
+        System.out.println("4) Thoat chuc nang nhap hang.");
     }
 
     public void nhapHang(){
@@ -42,9 +42,14 @@ public class DS_PhieuNhap {
                 p.xuat();
             }
             else if(key.equals("2")){
-                them1PhieuNhap();
+                phieuNhap x = new phieuNhap();
+                x.nhapPhieuNhap();
+                them1PhieuNhap(x);
             }
             else if(key.equals("3")){
+                this.xuat();
+            }
+            else if(key.equals("4")){
                 break;
             }
             else{
@@ -52,6 +57,19 @@ public class DS_PhieuNhap {
             }
         }
     }                                   //Nhập hàng
+
+    @Override
+    public String toString(){
+        String s = "";
+            for(int i = 0; i < soLuong; i++){
+                s += ds[i].toString();
+            }
+            return(s);
+    }
+
+    public void xuat(){
+        System.out.println(this.toString());
+    }
 
     public phieuNhap[] getDs() {
         return ds;

@@ -73,28 +73,49 @@ public class phieuNhap{
 
     @Override
     public String toString() {
-        return "Phieu Nhap: " +
-        "IDphieuNhap : '" + IDphieuNhap + '\'' +
+        return keBien.ke2() + "Phieu Nhap: " + "\n" + 
+        "IDphieuNhap : '" + IDphieuNhap + '\'' 
+        + "\n" + dsNhap.toStringNhap() +
         ", ngayNhap : " + ngayNhap +
-        ", IDnhanVien : '" + IDnhanVien + '\'' + '.'
-        + "\n" + keBien.ke2() + dsNhap.toString() + keBien.ke2();
+        " IDnhanVien : '" + IDnhanVien + '\'' + '\n';
     }
 
     public void nhapPhieuNhap(){
         System.out.println("Nhap ID phieu nhap: ");
-        IDphieuNhap = sc.nextLine();
+        this.IDphieuNhap = sc.nextLine();
         System.out.println("Ngay nhap: " + new Date());
-        ngayNhap = new Date();
+        this.ngayNhap = new Date();
         System.out.println("Nhap ID nhan vien: ");
-        IDnhanVien = sc.nextLine();
-        dsNhap.nhapNPTPhieuNhap();
-        DS_Ao p = new DS_Ao();                          //cập nhật lại file sau khi nhập hàng
-        p.themKAo(dsNhap.getDs() ,dsNhap.getSoLuong());
+        this.IDnhanVien = sc.nextLine();
+        DS_Ao p = new DS_Ao();
+        p.docDSTuFile();
+        while(true){    // nhập 1 danh sách các áo có sẵn, nhấn y để kết thúc
+            String key;
+            System.out.println("Nhap vao id de them san pham nhap, nhan y de hoan tat nhap hang");
+            key = sc.nextLine();
+            if(key.equals("y")){
+                break;
+            }
+            String ID = key;
+            if(p.getAoByID(ID) != null){
+                ao x = new ao(); x = p.getAoByID(ID);
+                dsNhap.them1Ao(x);    // đã tăng biến soLuong trong class DS_Ao
+                System.out.println("Vui long nhap vao so luong muon nhap hang : ");
+                int n = Integer.parseInt(sc.nextLine());    
+                int m = dsNhap.getSoLuong() - 1;    // chỉ số phần tử vừa thêm vào mảng dsNhap.ds
+                dsNhap.getDs()[m].setSoLuongNhap(n) ; // thêm số lượng nhập cho danh sách nhập hàng
+                int soLuongNew = n + p.getAoByID(ID).getSoLuongSP();    // cộng số lượng trong danh sách tồn kho
+                p.getAoByID(ID).setSoLuongSP(soLuongNew);
+                p.ghiDSVaoFile();
+            }
+            else{
+                System.out.println("Vui long nhap lai !");
+            }
+        }
     }
 
     public void xuat(){
         System.out.println(toString());
-        dsNhap.xuat();
     }
 
     
