@@ -1,5 +1,6 @@
 package quanLyBanAoNam.phieuNhap;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -83,8 +84,10 @@ public class phieuNhap{
     public void nhapPhieuNhap(){
         System.out.println("Nhap ID phieu nhap: ");
         this.IDphieuNhap = sc.nextLine();
-        System.out.println("Ngay nhap: " + new Date());
-        this.ngayNhap = new Date();
+        Date dt = new Date();
+        SimpleDateFormat dt1 = new SimpleDateFormat("dd-MM-yyyy"); 
+        System.out.println("Ngay nhap: " + dt1.format(dt));
+        this.ngayNhap = dt;
         System.out.println("Nhap ID nhan vien: ");
         this.IDnhanVien = sc.nextLine();
         DS_Ao p = new DS_Ao();
