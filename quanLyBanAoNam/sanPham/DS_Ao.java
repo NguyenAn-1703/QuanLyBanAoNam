@@ -27,7 +27,7 @@ public class DS_Ao {
 		keBien.ke();
 	}
 
-	public void startUp(){				// sửa sau
+	public void startUp(){				
 		String key;
 		while(true){
 			MenuChinh();
@@ -61,45 +61,55 @@ public class DS_Ao {
 		}
 	}
 
-	public void nhapNPTPhieuNhap() {		// p.thức nhập n phần tử đầu cho danh sách - yêu cầu 2a)
-		if(soLuong == 0){				// đổi thành đọc dữ liệu từ file
-			System.out.println("Nhap vao so loai ao muon nhap hang : ");	//xài cho chức năng nhập hàng
-			int n = Integer.parseInt(sc.nextLine());
-			for(int i = 0; i < n; i++){
-				while(true){
-					String key;
-					this.MenuAo();
-					key = sc.nextLine();
-					if(key.equals("1")){
-						ao x = new aoSoMi();
-						x.nhap();
-						them1Ao(x);
-						break;
-					}
-					else if(key.equals("2")){
-						ao x = new aoTheThao();
-						x.nhap();
-						them1Ao(x);
-						break;
-					}
-					else if(key.equals("3")){
-						ao x = new aoThun();
-						x.nhap();
-						them1Ao(x);
-						break;
-					}
-					System.out.println("Du lieu khong hop le, vui long nhap lai !!! ");
-				}
-			}
-		}
-		else{
-			System.out.println("Da co san danh sach !!!");
-		}
-	}
+	// public void nhapNPTPhieuNhap() {		// p.thức nhập n phần tử đầu cho danh sách - yêu cầu 2a)
+	// 	if(soLuong == 0){				// đổi thành đọc dữ liệu từ file
+	// 		System.out.println("Nhap vao so loai ao muon nhap hang : ");	//xài cho chức năng nhập hàng
+	// 		int n = Integer.parseInt(sc.nextLine());
+	// 		for(int i = 0; i < n; i++){
+	// 			while(true){
+	// 				String key;
+	// 				this.MenuAo();
+	// 				key = sc.nextLine();
+	// 				if(key.equals("1")){
+	// 					ao x = new aoSoMi();
+	// 					x.nhap();
+	// 					them1Ao(x);
+	// 					break;
+	// 				}
+	// 				else if(key.equals("2")){
+	// 					ao x = new aoTheThao();
+	// 					x.nhap();
+	// 					them1Ao(x);
+	// 					break;
+	// 				}
+	// 				else if(key.equals("3")){
+	// 					ao x = new aoThun();
+	// 					x.nhap();
+	// 					them1Ao(x);
+	// 					break;
+	// 				}
+	// 				System.out.println("Du lieu khong hop le, vui long nhap lai !!! ");
+	// 			}
+	// 		}
+	// 	}
+	// 	else{
+	// 		System.out.println("Da co san danh sach !!!");
+	// 	}
+	// }
 
 	public void xuat(){				//yêu cầu 2b)
 		docDSTuFile();
 		System.out.println(this.toString());
+	}
+
+	public boolean existID(String ID){	//kiểm tra có trùng id trong danh sách không
+		docDSTuFile();
+		for(ao i : this.ds){
+			if(ID.equals(i.id)){
+				return(true);
+			}
+		}
+		return(false);
 	}
 
 	public void them1Ao(ao x){	//Yêu cầu 2c)
@@ -116,21 +126,48 @@ public class DS_Ao {
 			MenuAo();
 			key = sc.nextLine();
 			if(key.equals("1")){
-				ao x = new aoSoMi();
-				x.nhap();
-				them1Ao(x);
+				while(true){
+					ao x = new aoSoMi();
+					x.nhap();
+					if(!this.existID(x.id)){
+						x.type = "SM";
+						them1Ao(x);
+						break;
+					}
+					else{
+						System.out.println("id bi trung, vui long nhap lai !!!");
+					}
+				}
 				break;
 			}
 			else if(key.equals("2")){
-				ao x = new aoTheThao();
-				x.nhap();
-				them1Ao(x);
+				while(true){
+					ao x = new aoTheThao();
+					x.nhap();
+					if(!existID(x.id)){
+						x.type = "TT";
+						them1Ao(x);
+						break;
+					}
+					else{
+						System.out.println("id bi trung, vui long nhap lai !!!");
+					}
+				}
 				break;
 			}
 			else if(key.equals("3")){
-				ao x = new aoThun();
-				x.nhap();
-				them1Ao(x);
+				while(true){
+					ao x = new aoThun();
+					x.nhap();
+					if(!existID(x.id)){
+						x.type = "T";
+						them1Ao(x);
+						break;
+					}
+					else{
+						System.out.println("id bi trung, vui long nhap lai !!!");
+					}
+				}
 				break;
 			}
 			System.out.println("Du lieu khong hop le, vui long nhap lai !!! ");
@@ -238,39 +275,18 @@ public class DS_Ao {
 		return(s);
 	}
 
-	public void ghiDSVaoFile(){	//mỗi loại áo sẽ ghi một file khác nhau
+	public void ghiDSVaoFile(){	//ghi chung 1 file
 		try {
-			FileWriter file1 = new FileWriter("aoSoMi.txt", false);
-			BufferedWriter bw1 = new BufferedWriter(file1);
 
-			FileWriter file2 = new FileWriter("aoTheThao.txt", false);
-			BufferedWriter bw2 = new BufferedWriter(file2);
-
-			FileWriter file3 = new FileWriter("aoThun.txt", false);
-			BufferedWriter bw3 = new BufferedWriter(file3);
+			FileWriter file = new FileWriter("sanPham.txt", false);
+			BufferedWriter bw = new BufferedWriter(file);
 
 			for(int i = 0; i < soLuong; i++){
-				if(ds[i] instanceof aoSoMi){
-					bw1.write(ds[i].toString2());
-					bw1.newLine();
-				}
-
-				if(ds[i] instanceof aoTheThao){
-					bw2.write(ds[i].toString2());
-					bw2.newLine();
-				}
-
-				if(ds[i] instanceof aoThun){
-					bw3.write(ds[i].toString2());
-					bw3.newLine();
-				}
+				bw.write(ds[i].toString2());
+				bw.newLine();
 			}
-			bw1.close();
-			file1.close();
-			bw2.close();
-			file2.close();
-			bw3.close();
-			file3.close();
+			bw.close();
+			file.close();
 		} catch (Exception e) {
 			System.out.println("Loi khi mo file ghi");
 		}
@@ -280,62 +296,40 @@ public class DS_Ao {
 		ds = new ao[0]; // Mỗi lần đọc sẽ xóa hết các phần tử trong mảng
 		soLuong = 0;
 		try {
-			FileReader fr1 = new FileReader("aoSoMi.txt");
-			BufferedReader br1 = new BufferedReader(fr1);
-			FileReader fr2 = new FileReader("aoTheThao.txt");
-			BufferedReader br2 = new BufferedReader(fr2);
-			FileReader fr3 = new FileReader("aoThun.txt");
-			BufferedReader br3 = new BufferedReader(fr3);
+			FileReader file = new FileReader("sanPham.txt");
+			BufferedReader br = new BufferedReader(file);
 
 			String line = "";
-			while (true){		//đọc file áo sơ mi.
-				line = br1.readLine();
+			while (true){		
+				line = br.readLine();
 				if(line == null || line.equals("")){
 					break;
 				}
 				String txt[] = line.split("#"); //tách chuỗi bằng dấu #
-				float n = Float.parseFloat(txt[4]);
-				int m = Integer.parseInt(txt[8]);
-				ao x = new aoSoMi(txt[0], txt[1], txt[2], txt[3], n, 
-				txt[5], txt[6], txt[7], m, txt[9], txt[10]);
-				this.them1Ao(x);
-			}
-
-			fr1.close();
-			br1.close();
-
-			while(true){		//đọc file áo thể thao
-				line = br2.readLine();
-				if(line == null || line.equals("")){
-					break;
+				float m = Float.parseFloat(txt[5]);	//chuyển giá
+				int n = Integer.parseInt(txt[9]);	//chuyển số lượng
+				int p = Integer.parseInt(txt[10]);	//chuyển số lượng nhập
+				int q = Integer.parseInt(txt[11]);	//chuyển số lượng bán
+				if(txt[0].equals("SM")){
+					ao x = new aoSoMi(txt[0], txt[1], txt[2], txt[3], txt[4], m, 
+					txt[6], txt[7], txt[8], n, p, q, txt[12], txt[13]);
+					this.them1Ao(x);
 				}
-				String txt[] = line.split("#"); //tach chuoi mien co khoang cach
-				float n = Float.parseFloat(txt[4]);
-				int m = Integer.parseInt(txt[8]);
-				int p = Integer.parseInt(txt[10]);
-				ao x = new aoTheThao(txt[0], txt[1], txt[2], txt[3], n, 
-				txt[5], txt[6], txt[7], m, txt[9], p, txt[11]);
-				this.them1Ao(x);
-			}
-			
-			fr2.close();
-			br2.close();
-
-			while(true){		//đọc file áo thun
-				line = br3.readLine();
-				if(line == null || line.equals("")){
-					break;
+				else if(txt[0].equals("TT")){
+					int y = Integer.parseInt(txt[12]);	//chuyển số áo
+					ao x = new aoTheThao(txt[0], txt[1], txt[2], txt[3], txt[4], m, 
+					txt[6], txt[7], txt[8], n, p, q, txt[12], y, txt[14]);
+					this.them1Ao(x);
 				}
-				String txt[] = line.split("#"); //tach chuoi mien co khoang cach
-				float n = Float.parseFloat(txt[4]);
-				int m = Integer.parseInt(txt[8]);
-				ao x = new aoThun(txt[0], txt[1], txt[2], txt[3], n, 
-				txt[5], txt[6], txt[7], m, txt[9]);
-				this.them1Ao(x);
+				else if(txt[0].equals("T")){
+					ao x = new aoThun(txt[0], txt[1], txt[2], txt[3], txt[4], m, 
+					txt[6], txt[7], txt[8], n, p, q, txt[12]);
+					this.them1Ao(x);
+				}
 			}
-			
-			fr3.close();
-			br3.close();
+
+			br.close();
+			file.close();
 
 		} catch (Exception e) {
 			System.out.println("Loi khi mo file doc ");

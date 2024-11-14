@@ -8,9 +8,9 @@ public class aoThun extends ao {
 		
 	}
 	
-	public aoThun(String id, String ten, String size, String mau, float gia, String thuongHieu,
-			String vai, String kieuTayAo, int soLuongSP, String kieuCoAo) {
-		super(id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongSP);
+	public aoThun(String type, String id, String ten, String size, String mau, float gia, String thuongHieu,
+			String vai, String kieuTayAo, int soLuongSP, int soLuongNhap, int soLuongBan, String kieuCoAo) {
+		super(type, id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongSP, soLuongNhap, soLuongBan);
 		this.kieuCoAo = kieuCoAo;
 	}
 	

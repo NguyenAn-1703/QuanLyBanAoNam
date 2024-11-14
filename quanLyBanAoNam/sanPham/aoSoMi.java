@@ -8,9 +8,9 @@ public class aoSoMi extends ao{
 		
 	}
 	
-	public aoSoMi(String id, String ten, String size, String mau, float gia, String thuongHieu,
-			String vai, String kieuTayAo, int soLuongSP, String kieuCoAo, String kieuNutAo) {
-		super(id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongSP);
+	public aoSoMi(String type, String id, String ten, String size, String mau, float gia, String thuongHieu,
+			String vai, String kieuTayAo, int soLuongSP, int soLuongNhap, int soLuongBan, String kieuCoAo, String kieuNutAo) {
+		super(type, id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongSP, soLuongNhap, soLuongBan);
 		this.kieuCoAo = kieuCoAo;
 		this.kieuNutAo = kieuNutAo;
 	}

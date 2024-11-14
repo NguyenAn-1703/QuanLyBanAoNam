@@ -5,6 +5,7 @@ import java.util.Scanner;
 import quanLyBanAoNam.keBien.keBien;
 
 public class ao {
+	protected String type;
 	protected String id; //id lưu kiểu String
 	protected String ten; // lên web coi
 	protected String size; // M L XL XXL
@@ -16,13 +17,14 @@ public class ao {
 	protected int soLuongSP = 0;
 	protected int soLuongNhap = 0;
 	protected int soLuongBan = 0; 
-	protected boolean trangThai;
+	protected boolean trangThai = true;
 	public Scanner sc = new Scanner(System.in);
 	
 	
 	public ao() {};
-	public ao(String id, String ten, String size, String mau, float gia, String thuongHieu,
-			String vai, String kieuTayAo, int soLuongSP) {
+	public ao(String type, String id, String ten, String size, String mau, float gia, String thuongHieu,
+			String vai, String kieuTayAo, int soLuongSP, int soLuongNhap, int soLuongBan) {
+		this.type = type;
 		this.id = id;
 		this.ten = ten;
 		this.size = size;
@@ -32,6 +34,8 @@ public class ao {
 		this.vai = vai;
 		this.kieuTayAo = kieuTayAo;
 		this.soLuongSP = soLuongSP;
+		this.soLuongNhap = soLuongNhap;
+		this.soLuongBan = soLuongBan;
 	}
 	public void nhap() {
 		System.out.println("Vui long nhap id ao :");
@@ -61,8 +65,9 @@ public class ao {
 	}
 
 	public String toString2(){		//toString để đọc và ghi file
-		return(this.id + "#" + this.ten + "#" + this.size + "#" + this.mau + "#" + this.gia 
-		+ "#" + this.thuongHieu + "#" + this.vai + "#" + this.kieuTayAo + "#" + this.soLuongSP + "#");
+		return(this.type + "#" + this.id + "#" + this.ten + "#" + this.size + "#" + this.mau + "#" + this.gia 
+		+ "#" + this.thuongHieu + "#" + this.vai + "#" + this.kieuTayAo + "#" + this.soLuongSP + "#" + this.soLuongNhap
+		+ "#" + this.soLuongBan + "#");
 	}
 	
 	public String toStringNhap(){	//toString cho phiếu nhập

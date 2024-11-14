@@ -71,6 +71,14 @@ public class DS_PhieuNhap {
         System.out.println(this.toString());
     }
 
+    public void docDSPhieuNhapTuFile(){
+        
+    }
+
+    public void ghiDSPhieuNhapVaoFile(){
+
+    }
+
     public phieuNhap[] getDs() {
         return ds;
     }
