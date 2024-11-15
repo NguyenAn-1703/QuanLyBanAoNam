@@ -267,13 +267,13 @@ public class DS_Ao {
 		return(s);
 	}
 
-	public String toStringNhap(){	// toString cho phiếu nhập
-		String s = "";
-		for(int i = 0; i < soLuong; i++){
-			s += ds[i].toStringNhap();
-		}
-		return(s);
-	}
+	// public String toStringNhap(){	// toString cho phiếu nhập
+	// 	String s = "";
+	// 	for(int i = 0; i < soLuong; i++){
+	// 		s += ds[i].toStringNhap();
+	// 	}
+	// 	return(s);
+	// }
 
 	public void ghiDSVaoFile(){	//ghi chung 1 file
 		try {
@@ -308,22 +308,20 @@ public class DS_Ao {
 				String txt[] = line.split("#"); //tách chuỗi bằng dấu #
 				float m = Float.parseFloat(txt[5]);	//chuyển giá
 				int n = Integer.parseInt(txt[9]);	//chuyển số lượng
-				int p = Integer.parseInt(txt[10]);	//chuyển số lượng nhập
-				int q = Integer.parseInt(txt[11]);	//chuyển số lượng bán
 				if(txt[0].equals("SM")){
 					ao x = new aoSoMi(txt[0], txt[1], txt[2], txt[3], txt[4], m, 
-					txt[6], txt[7], txt[8], n, p, q, txt[12], txt[13]);
+					txt[6], txt[7], txt[8], n, txt[10], txt[11]);
 					this.them1Ao(x);
 				}
 				else if(txt[0].equals("TT")){
-					int y = Integer.parseInt(txt[12]);	//chuyển số áo
+					int y = Integer.parseInt(txt[11]);	//chuyển số áo
 					ao x = new aoTheThao(txt[0], txt[1], txt[2], txt[3], txt[4], m, 
-					txt[6], txt[7], txt[8], n, p, q, txt[12], y, txt[14]);
+					txt[6], txt[7], txt[8], n, txt[10], y, txt[12]);
 					this.them1Ao(x);
 				}
 				else if(txt[0].equals("T")){
 					ao x = new aoThun(txt[0], txt[1], txt[2], txt[3], txt[4], m, 
-					txt[6], txt[7], txt[8], n, p, q, txt[12]);
+					txt[6], txt[7], txt[8], n, txt[10]);
 					this.them1Ao(x);
 				}
 			}

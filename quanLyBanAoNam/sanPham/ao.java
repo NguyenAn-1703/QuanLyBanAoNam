@@ -23,7 +23,7 @@ public class ao {
 	
 	public ao() {};
 	public ao(String type, String id, String ten, String size, String mau, float gia, String thuongHieu,
-			String vai, String kieuTayAo, int soLuongSP, int soLuongNhap, int soLuongBan) {
+			String vai, String kieuTayAo, int soLuongSP) {
 		this.type = type;
 		this.id = id;
 		this.ten = ten;
@@ -34,8 +34,6 @@ public class ao {
 		this.vai = vai;
 		this.kieuTayAo = kieuTayAo;
 		this.soLuongSP = soLuongSP;
-		this.soLuongNhap = soLuongNhap;
-		this.soLuongBan = soLuongBan;
 	}
 	public void nhap() {
 		System.out.println("Vui long nhap id ao :");
@@ -66,14 +64,13 @@ public class ao {
 
 	public String toString2(){		//toString để đọc và ghi file
 		return(this.type + "#" + this.id + "#" + this.ten + "#" + this.size + "#" + this.mau + "#" + this.gia 
-		+ "#" + this.thuongHieu + "#" + this.vai + "#" + this.kieuTayAo + "#" + this.soLuongSP + "#" + this.soLuongNhap
-		+ "#" + this.soLuongBan + "#");
+		+ "#" + this.thuongHieu + "#" + this.vai + "#" + this.kieuTayAo + "#" + this.soLuongSP + "#");
 	}
 	
-	public String toStringNhap(){	//toString cho phiếu nhập
+	public String toString3(){	//toString cho phiếu nhập và hóa đơn
 		return(keBien.ke2() + "id : " + this.id + "\n ten : " + this.ten + "\n size : " + this.size + "\n mau : " + this.mau
 				+ "\n gia : " + this.gia + "\n thuong hieu : " + this.thuongHieu + "\n vai : " + this.vai + 
-				"\n kieu tay ao : " + this.kieuTayAo + "\n so luong nhap : " + this.soLuongNhap + "\n");
+				"\n kieu tay ao : " + this.kieuTayAo + "\n");
 	}
 
 	public void xuat() {

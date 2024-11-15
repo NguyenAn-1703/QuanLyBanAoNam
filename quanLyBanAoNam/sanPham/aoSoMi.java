@@ -9,8 +9,8 @@ public class aoSoMi extends ao{
 	}
 	
 	public aoSoMi(String type, String id, String ten, String size, String mau, float gia, String thuongHieu,
-			String vai, String kieuTayAo, int soLuongSP, int soLuongNhap, int soLuongBan, String kieuCoAo, String kieuNutAo) {
-		super(type, id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongSP, soLuongNhap, soLuongBan);
+			String vai, String kieuTayAo, int soLuongSP, String kieuCoAo, String kieuNutAo) {
+		super(type, id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongSP);
 		this.kieuCoAo = kieuCoAo;
 		this.kieuNutAo = kieuNutAo;
 	}
@@ -32,6 +32,11 @@ public class aoSoMi extends ao{
 	@Override
 	public String toString2(){
 		return(super.toString2() + this.kieuCoAo + "#" + this.kieuNutAo);
+	}
+
+	@Override
+	public String toString3(){
+		return(super.toString3() + " kieu co ao : " + this.kieuCoAo + "\n kieu nut ao : " + this.kieuNutAo + "\n");
 	}
 	
 	public void xuat() {

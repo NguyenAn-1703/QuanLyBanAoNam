@@ -1,6 +1,7 @@
 package quanLyBanAoNam.phieuNhap;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -10,84 +11,72 @@ import quanLyBanAoNam.sanPham.ao;
 
 public class phieuNhap{
     private String IDphieuNhap;
-    private Date ngayNhap;
+    SimpleDateFormat dF = new SimpleDateFormat("dd-MM-yyyy");
+    private String ngayNhap = dF.format(new Date());
     private String IDnhanVien;
+    private chiTietPhieuNhap[] dsChiTietPhieuNhap = new chiTietPhieuNhap[0];
+    private int soLuongChiTiet = 0; //quản lý mảng chi tiết
     private DS_Ao dsNhap = new DS_Ao();
+    Scanner sc = new Scanner(System.in);
     
     public phieuNhap(){};
 
-    public phieuNhap(String IDphieuNhap, Date ngayNhap, String IDnhanVien, DS_Ao dsNhap) {
+    public phieuNhap(String IDphieuNhap, String ngayNhap, String IDnhanVien, chiTietPhieuNhap[] dsChiTietPhieuNhap,
+            DS_Ao dsNhap) {
         this.IDphieuNhap = IDphieuNhap;
         this.ngayNhap = ngayNhap;
         this.IDnhanVien = IDnhanVien;
+        this.dsChiTietPhieuNhap = dsChiTietPhieuNhap;
         this.dsNhap = dsNhap;
     }
 
-    public String getIDphieuNhap() {
-        return IDphieuNhap;
-    }
-
-    public void setIDphieuNhap(String IDphieuNhap) {
+    public phieuNhap(String IDphieuNhap, String ngayNhap, String IDnhanVien){
         this.IDphieuNhap = IDphieuNhap;
-    }
-
-    public Date getNgayNhap() {
-        return ngayNhap;
-    }
-
-    public void setNgayNhap(Date ngayNhap) {
         this.ngayNhap = ngayNhap;
-    }
-
-    public String getIDnhanVien() {
-        return IDnhanVien;
-    }
-
-    public void setIDnhanVien(String IDnhanVien) {
         this.IDnhanVien = IDnhanVien;
     }
-
-    Scanner sc = new Scanner(System.in);
-
-
-    public void them1Ao(ao x){
-        dsNhap.them1Ao(x);
-    }
-
-    public void them1Ao(){
-        dsNhap.them1Ao();
-    }
-
-
-    public void themKAo(){
-        dsNhap.themKAo();
-    }
-    
-    public void thongKe(){
-        dsNhap.thongKe();
-    }
-
-    // public void ghiDSVaoFile(){
-    // }
-
-    // public void docDSAoTuFile(){}
 
     @Override
     public String toString() {
         return keBien.ke2() + "Phieu Nhap: " + "\n" + 
         "IDphieuNhap : '" + IDphieuNhap + '\'' 
-        + "\n" + dsNhap.toStringNhap() +
-        ", ngayNhap : " + ngayNhap +
+        + "\n" + this.toStringNhap() +
+        " ngayNhap : " + ngayNhap +
         " IDnhanVien : '" + IDnhanVien + '\'' + '\n';
+    }
+
+    public String toStringNhap(){
+        String s = "";
+        for(int i = 0; i < this.dsNhap.getSoLuong(); i++){
+            s += this.dsNhap.getDs()[i].toString3();
+            s += "So luong nhap : " + this.dsChiTietPhieuNhap[i].getSoLuongChiTietNhap() + "\n";
+        }
+        return(s);
+    }
+
+    public String toString2(){  //to string cho file
+        String s = "";
+        s += this.IDphieuNhap + "#" + this.ngayNhap + "#" + this.IDnhanVien + "\n";
+        for(int i = 0; i < dsNhap.getSoLuong(); i++){
+            s += this.dsChiTietPhieuNhap[i].getIdChiTietNhap() + "#"
+            + this.dsChiTietPhieuNhap[i].getSoLuongChiTietNhap() + "#";
+        }
+        s += "end";
+        return(s);
+    }
+
+    public void them1ChiTietNhap(chiTietPhieuNhap x){
+        chiTietPhieuNhap[] dsChiTietPhieuNhapNew = 
+        Arrays.copyOf(this.dsChiTietPhieuNhap, soLuongChiTiet + 1);
+        dsChiTietPhieuNhapNew[soLuongChiTiet] = x;
+        this.dsChiTietPhieuNhap = dsChiTietPhieuNhapNew;
+        soLuongChiTiet++;
     }
 
     public void nhapPhieuNhap(){
         System.out.println("Nhap ID phieu nhap: ");
-        this.IDphieuNhap = sc.nextLine();
-        Date dt = new Date();
-        SimpleDateFormat dt1 = new SimpleDateFormat("dd-MM-yyyy"); 
-        System.out.println("Ngay nhap: " + dt1.format(dt));
-        this.ngayNhap = dt;
+        this.IDphieuNhap = sc.nextLine(); 
+        System.out.println("Ngay nhap: " + ngayNhap);
         System.out.println("Nhap ID nhan vien: ");
         this.IDnhanVien = sc.nextLine();
         DS_Ao p = new DS_Ao();
@@ -101,18 +90,19 @@ public class phieuNhap{
             }
             String ID = key;
             if(p.getAoByID(ID) != null){
-                ao x = new ao(); x = p.getAoByID(ID);
-                dsNhap.them1Ao(x);    // đã tăng biến soLuong trong class DS_Ao
+                dsNhap.them1Ao(p.getAoByID(ID));    // đã tăng biến soLuong trong class DS_Ao
                 System.out.println("Vui long nhap vao so luong muon nhap hang : ");
-                int n = Integer.parseInt(sc.nextLine());    
-                int m = dsNhap.getSoLuong() - 1;    // chỉ số phần tử vừa thêm vào mảng dsNhap.ds
-                dsNhap.getDs()[m].setSoLuongNhap(n) ; // thêm số lượng nhập cho danh sách nhập hàng
+                int n = Integer.parseInt(sc.nextLine());    //số lương nhập
+                //thêm chi tiết nhập cho dsChiTietPhieuNhap
+                chiTietPhieuNhap x = new chiTietPhieuNhap(ID, n);
+                them1ChiTietNhap(x);
+                //thêm chi tiết nhập cho dsChiTietPhieuNhap
                 int soLuongNew = n + p.getAoByID(ID).getSoLuongSP();    // cộng số lượng trong danh sách tồn kho
                 p.getAoByID(ID).setSoLuongSP(soLuongNew);
                 p.ghiDSVaoFile();
             }
             else{
-                System.out.println("Vui long nhap lai !");
+                System.out.println("Khong co ao id : " + ID + " ,Vui long nhap lai !");
             }
         }
     }
@@ -121,5 +111,46 @@ public class phieuNhap{
         System.out.println(toString());
     }
 
+    public String getIDphieuNhap() {
+        return IDphieuNhap;
+    }
+
+    public void setIDphieuNhap(String IDphieuNhap) {
+        this.IDphieuNhap = IDphieuNhap;
+    }
+
+    public String getNgayNhap() {
+        return ngayNhap;
+    }
+
+    public void setNgayNhap(String ngayNhap) {
+        this.ngayNhap = ngayNhap;
+    }
+
+    public String getIDnhanVien() {
+        return IDnhanVien;
+    }
+
+    public void setIDnhanVien(String IDnhanVien) {
+        this.IDnhanVien = IDnhanVien;
+    }
+
+    public chiTietPhieuNhap[] getDsChiTietPhieuNhap() {
+        return dsChiTietPhieuNhap;
+    }
+
+    public void setDsChiTietPhieuNhap(chiTietPhieuNhap[] dsChiTietPhieuNhap) {
+        this.dsChiTietPhieuNhap = dsChiTietPhieuNhap;
+    }
+
+    public DS_Ao getDsNhap() {
+        return dsNhap;
+    }
+
+    public void setDsNhap(DS_Ao dsNhap) {
+        this.dsNhap = dsNhap;
+    }
+
+    
     
 }

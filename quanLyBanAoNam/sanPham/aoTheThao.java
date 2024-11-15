@@ -11,8 +11,8 @@ public class aoTheThao extends ao {
 	}
 	
 	public aoTheThao(String type, String id, String ten, String size, String mau, float gia, String thuongHieu,
-			String vai, String kieuTayAo, int soLuongSP, int soLuongNhap, int soLuongBan, String doiTuyen, int inSoAo, String monTheThao) {
-		super(type,id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongSP, soLuongNhap, soLuongBan);
+			String vai, String kieuTayAo, int soLuongSP, String doiTuyen, int inSoAo, String monTheThao) {
+		super(type,id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongSP);
 		this.doiTuyen = doiTuyen;
 		this.inSoAo = inSoAo;
 		this.monTheThao = monTheThao;
@@ -39,6 +39,12 @@ public class aoTheThao extends ao {
 	@Override
 	public String toString2(){
 		return(super.toString2() + this.doiTuyen + "#" + this.inSoAo + "#" + this.monTheThao);
+	}
+
+	@Override
+	public String toString3(){
+		return(super.toString3() + " doi tuyen : " + this.doiTuyen + 
+		"\n so ao : " + this.inSoAo + "\n mon the thao : " + this.monTheThao + "\n");
 	}
 	
 	public void xuat() {

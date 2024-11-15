@@ -9,8 +9,8 @@ public class aoThun extends ao {
 	}
 	
 	public aoThun(String type, String id, String ten, String size, String mau, float gia, String thuongHieu,
-			String vai, String kieuTayAo, int soLuongSP, int soLuongNhap, int soLuongBan, String kieuCoAo) {
-		super(type, id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongSP, soLuongNhap, soLuongBan);
+			String vai, String kieuTayAo, int soLuongSP, String kieuCoAo) {
+		super(type, id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongSP);
 		this.kieuCoAo = kieuCoAo;
 	}
 	
@@ -28,6 +28,11 @@ public class aoThun extends ao {
 	@Override
 	public String toString2(){
 		return(super.toString2() + this.kieuCoAo);
+	}
+
+	@Override
+	public String toString3(){
+		return(super.toString3() + " kieu co ao : " + this.kieuCoAo + "\n");
 	}
 	
 	public void xuat() {
