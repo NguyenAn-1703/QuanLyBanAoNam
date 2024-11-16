@@ -66,7 +66,7 @@ public class DSNV {
     }
 
     public boolean existID(String ID){  //kiểm tra tồn tại id trong danh sách
-        //docDSNVTuFile();
+        docDSNVTuFile();
         for(nhanVien i : this.ds){
             if(i.getId().equals(ID)){
                 return(true);
