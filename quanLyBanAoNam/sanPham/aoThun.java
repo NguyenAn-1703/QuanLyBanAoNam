@@ -9,16 +9,31 @@ public class aoThun extends ao {
 	}
 	
 	public aoThun(String type, String id, String ten, String size, String mau, float gia, String thuongHieu,
-			String vai, String kieuTayAo, int soLuongSP, String kieuCoAo) {
-		super(type, id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongSP);
+			String vai, String kieuTayAo, int soLuongSP, boolean trangThai, String kieuCoAo) {
+		super(type, id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongSP, trangThai);
 		this.kieuCoAo = kieuCoAo;
 	}
 	
+	public boolean Validation(String kieuCoAo){
+		if(kieuCoAo.isEmpty()){
+			System.out.println("Kieu co ao khong duoc de trong. ");
+			return(false);
+		}
+		return(true);
+	}
+
 	@Override
 	public void nhap() {
-		super.nhap();
-		System.out.print("Vui long nhap kieu co ao : ");
-		this.kieuCoAo = sc.nextLine();
+		while(true){
+			super.nhap();
+			System.out.print("Vui long nhap kieu co ao : ");
+			String kieuCoAo = sc.nextLine();
+			if(this.Validation(kieuCoAo)){
+				this.kieuCoAo = kieuCoAo;
+				break;
+			}
+		}
+
 	}
 	
 	@Override

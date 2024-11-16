@@ -1,7 +1,9 @@
 package quanLyBanAoNam.sanPham;
 
+import java.lang.foreign.ValueLayout;
 import java.util.Scanner;
 
+import quanLyBanAoNam.Validate.Validate;
 import quanLyBanAoNam.keBien.keBien;
 
 public class ao {
@@ -15,15 +17,13 @@ public class ao {
 	protected String vai; // lên web coi
 	protected String kieuTayAo; // tay dài, tay ngắn
 	protected int soLuongSP = 0;
-	protected int soLuongNhap = 0;
-	protected int soLuongBan = 0; 
 	protected boolean trangThai = true;
 	public Scanner sc = new Scanner(System.in);
 	
 	
 	public ao() {};
 	public ao(String type, String id, String ten, String size, String mau, float gia, String thuongHieu,
-			String vai, String kieuTayAo, int soLuongSP) {
+			String vai, String kieuTayAo, int soLuongSP, boolean trangThai) {
 		this.type = type;
 		this.id = id;
 		this.ten = ten;
@@ -34,24 +34,75 @@ public class ao {
 		this.vai = vai;
 		this.kieuTayAo = kieuTayAo;
 		this.soLuongSP = soLuongSP;
+		this.trangThai = trangThai;
+	}
+
+	public boolean Validation(String id, String ten, String size, String mau,
+	 String gia, String thuongHieu, String vai, String kieuTayAo){
+		if(!Validate.isNumber(id) || id.isEmpty()){
+			System.out.println("id khong duoc de trong va phai la so. ");
+			return(false);
+		}
+		else if(ten.isEmpty()){
+			System.out.println("Ten khong duoc de trong. ");
+			return(false);
+		}
+		else if(size.isEmpty() || !Validate.isSize(size)){
+			System.out.println("Size khong duoc de trong va phai dung dinh dang. ");
+			return(false);
+		}
+		else if(mau.isEmpty()){
+			System.out.println("Mau khong duoc de trong. ");
+			return(false);
+		}
+		else if(gia.isEmpty() || !Validate.isNumber(gia)){
+			System.out.println("Gia khong duoc de trong va phai la so. ");
+			return(false);
+		}
+		else if(thuongHieu.isEmpty()){
+			System.out.println("Thuong hieu khong duoc de trong. ");
+			return(false);
+		}
+		else if(vai.isEmpty()){
+			System.out.println("Vai khong duoc de trong. ");
+			return(false);
+		}
+		else if(kieuTayAo.isEmpty()){
+			System.out.println("Kieu tay ao khong duoc de trong. ");
+			return(false);
+		}
+		return(true);
 	}
 	public void nhap() {
-		System.out.print("Vui long nhap id ao :");
-		this.id = sc.nextLine();
-		System.out.print("Vui long nhap ten ao : ");
-		this.ten = sc.nextLine();
-		System.out.print("Vui long nhap size ao : ");
-		this.size = sc.nextLine();
-		System.out.print("Vui long nhap mau ao : ");
-		this.mau = sc.nextLine();
-		System.out.print("Vui long nhap gia ao : ");
-		this.gia = Float.parseFloat(sc.nextLine());
-		System.out.print("Vui long nhap thuong hieu ao : ");
-		this.thuongHieu = sc.nextLine();
-		System.out.print("Vui long nhap vai ao : ");
-		this.vai = sc.nextLine();
-		System.out.print("Vui long nhap kieu tay ao : ");
-		this.kieuTayAo = sc.nextLine();
+		while(true){
+			System.out.print("Vui long nhap id ao : ");
+			String id = sc.nextLine();
+			System.out.print("Vui long nhap ten ao : ");
+			String ten = sc.nextLine();
+			System.out.print("Vui long nhap size ao : ");
+			String size = sc.nextLine();
+			System.out.print("Vui long nhap mau ao : ");
+			String mau = sc.nextLine();
+			System.out.print("Vui long nhap gia ao : ");
+			String gia = sc.nextLine();
+			System.out.print("Vui long nhap thuong hieu ao : ");
+			String thuongHieu = sc.nextLine();
+			System.out.print("Vui long nhap vai ao : ");
+			String vai = sc.nextLine();
+			System.out.print("Vui long nhap kieu tay ao : ");
+			String kieuTayAo = sc.nextLine();
+			if(Validation(id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo)){
+				this.id = id;
+				this.ten = ten;
+				this.size = size;
+				this.mau = mau;
+				this.gia = Float.parseFloat(gia);
+				this.thuongHieu = thuongHieu;
+				this.vai = vai;
+				this.kieuTayAo = kieuTayAo;
+				break;
+			}
+		}
 		
 	}
 	
@@ -64,7 +115,7 @@ public class ao {
 
 	public String toString2(){		//toString để đọc và ghi file
 		return(this.type + "#" + this.id + "#" + this.ten + "#" + this.size + "#" + this.mau + "#" + this.gia 
-		+ "#" + this.thuongHieu + "#" + this.vai + "#" + this.kieuTayAo + "#" + this.soLuongSP + "#");
+		+ "#" + this.thuongHieu + "#" + this.vai + "#" + this.kieuTayAo + "#" + this.soLuongSP + "#" + this.trangThai + "#");
 	}
 	
 	public String toString3(){	//toString cho phiếu nhập và hóa đơn
@@ -75,6 +126,12 @@ public class ao {
 
 	public void xuat() {
 		System.out.println(this.toString());
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	public String getId() {
 		return id;
@@ -130,26 +187,13 @@ public class ao {
 	public void setSoLuongSP(int soLuongSP) {
 		this.soLuongSP = soLuongSP;
 	}
-	
-	public int getSoLuongNhap() {
-		return soLuongNhap;
-	}
-	public void setSoLuongNhap(int soLuongNhap) {
-		this.soLuongNhap = soLuongNhap;
-	}
-	public int getSoLuongBan() {
-		return soLuongBan;
-	}
-	public void setSoLuongBan(int soLuongBan) {
-		this.soLuongBan = soLuongBan;
-	}
-	public boolean isTrangThai() {
+	public boolean getTrangThai() {
 		return trangThai;
 	}
 	public void setTrangThai(boolean trangThai) {
 		this.trangThai = trangThai;
 	}
-	
+
 	
 	
 }

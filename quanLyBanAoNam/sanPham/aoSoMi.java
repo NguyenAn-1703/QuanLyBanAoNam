@@ -9,19 +9,39 @@ public class aoSoMi extends ao{
 	}
 	
 	public aoSoMi(String type, String id, String ten, String size, String mau, float gia, String thuongHieu,
-			String vai, String kieuTayAo, int soLuongSP, String kieuCoAo, String kieuNutAo) {
-		super(type, id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongSP);
+			String vai, String kieuTayAo, int soLuongSP, boolean trangThai, String kieuCoAo, String kieuNutAo) {
+		super(type, id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongSP, trangThai);
 		this.kieuCoAo = kieuCoAo;
 		this.kieuNutAo = kieuNutAo;
 	}
 
+	public boolean Validation(String kieuCoAo, String kieuNutAo){
+		if(kieuCoAo.isEmpty()){
+			System.out.println("Kieu co ao khong duoc de trong. ");
+			return(false);
+		}
+		else if(kieuNutAo.isEmpty()){
+			System.out.println("Kieu nut ao khong duoc de trong. ");
+			return(false);
+		}
+		return(true);
+	}
+
 	@Override
 	public void nhap() {
-		super.nhap();
-		System.out.print("Vui long nhap kieu co ao : ");
-		this.kieuCoAo = sc.nextLine();
-		System.out.print("Vui long nhap kieu nut ao : ");
-		this.kieuNutAo = sc.nextLine();
+		while(true){
+			super.nhap();
+			System.out.print("Vui long nhap kieu co ao : ");
+			String kieuCoAo = sc.nextLine();
+			System.out.print("Vui long nhap kieu nut ao : ");
+			String kieuNutAo = sc.nextLine();
+			if(this.Validation(kieuCoAo, kieuNutAo)){
+				this.kieuCoAo = kieuCoAo;
+				this.kieuNutAo = kieuNutAo;
+				break;
+			}
+		}
+
 	}
 	
 	@Override

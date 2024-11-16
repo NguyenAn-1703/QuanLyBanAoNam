@@ -21,9 +21,10 @@ public class DS_Ao {
 		System.out.println("2) Xuat danh sach.");
 		System.out.println("3) Them 1 ao.");
 		System.out.println("4) Them k ao.");
-		System.out.println("5) Tim kiem theo ID ao.");
-		System.out.println("6) Thong ke ao ton kho.");
-		System.out.println("7) Thoat chuc nang.");
+		System.out.println("5) Xoa 1 ao. ");
+		System.out.println("6) Tim kiem theo ID ao.");
+		System.out.println("7) Thong ke ao ton kho.");
+		System.out.println("8) Thoat chuc nang.");
 		keBien.ke();
 	}
 
@@ -44,13 +45,16 @@ public class DS_Ao {
 			else if(key.equals("4")){	//Them k ao
 				this.themKAo();
 			}
-			else if(key.equals("5")){	//Tim kiem theo ID
+			else if(key.equals("5")){
+				this.xoa1Ao();
+			}
+			else if(key.equals("6")){	//Tim kiem theo ID
 				this.timKiemTheoID();
 			}
-			else if(key.equals("6")){	//Thong ke so luong
+			else if(key.equals("7")){	//Thong ke so luong
 				this.thongKe();
 			}
-			else if(key.equals("7")){
+			else if(key.equals("8")){
 				keBien.ke();
 				System.out.println("Da thoat chuc nang.");
 				break;
@@ -60,42 +64,6 @@ public class DS_Ao {
 			}		
 		}
 	}
-
-	// public void nhapNPTPhieuNhap() {		// p.thức nhập n phần tử đầu cho danh sách - yêu cầu 2a)
-	// 	if(soLuong == 0){				// đổi thành đọc dữ liệu từ file
-	// 		System.out.println("Nhap vao so loai ao muon nhap hang : ");	//xài cho chức năng nhập hàng
-	// 		int n = Integer.parseInt(sc.nextLine());
-	// 		for(int i = 0; i < n; i++){
-	// 			while(true){
-	// 				String key;
-	// 				this.MenuAo();
-	// 				key = sc.nextLine();
-	// 				if(key.equals("1")){
-	// 					ao x = new aoSoMi();
-	// 					x.nhap();
-	// 					them1Ao(x);
-	// 					break;
-	// 				}
-	// 				else if(key.equals("2")){
-	// 					ao x = new aoTheThao();
-	// 					x.nhap();
-	// 					them1Ao(x);
-	// 					break;
-	// 				}
-	// 				else if(key.equals("3")){
-	// 					ao x = new aoThun();
-	// 					x.nhap();
-	// 					them1Ao(x);
-	// 					break;
-	// 				}
-	// 				System.out.println("Du lieu khong hop le, vui long nhap lai !!! ");
-	// 			}
-	// 		}
-	// 	}
-	// 	else{
-	// 		System.out.println("Da co san danh sach !!!");
-	// 	}
-	// }
 
 	public void xuat(){				//yêu cầu 2b)
 		docDSTuFile();
@@ -192,18 +160,131 @@ public class DS_Ao {
 		System.out.println("3) Ao Thun.");
 	}
 
+	public void xoa1Ao(){
+		System.out.println("Vui long nhap vao id ao muon xoa : ");
+		String ID = sc.nextLine();
+		ao x = getAoByID(ID);
+		if(x != null){
+			x.setTrangThai(false);
+			ghiDSVaoFile();
+			System.out.println("Da xoa ao ID : " + x.getId() + "\n");
+		}
+		else{
+			return;
+		}
+	}
+
+	public static void MenuSua(){
+		System.out.println("1) Sua ten. ");
+		System.out.println("2) Sua size. ");
+		System.out.println("3) Sua mau. ");
+		System.out.println("4) Sua thuong hieu. ");
+		System.out.println("5) Sua vai. ");
+		System.out.println("6) Sua kieu tay ao. ");
+	}
+
+	public static void MenuSuaSM(){
+		MenuSua();
+		System.out.println("7) Sua kieu co ao. ");
+		System.out.println("8) Sua kieu nut ao. ");
+	}
+
+	public static void MenuSuaTT(){
+		MenuSua();
+		System.out.println("7) Sua doi tuyen. ");
+		System.out.println("8) Sua so ao. ");
+		System.out.println("9) Sua mon the thao. ");
+	}
+
+	public static void MenuSuaT(){
+		MenuSua();
+		System.out.println("7) Sua kieu co ao. ");
+	}
+
+	public void suaAo(){			//Đang lỗi
+		System.out.println("Vui long nhap vao id ao muon sua : ");
+		String ID = sc.nextLine();
+		ao x = getAoByID(ID);
+		if(x != null){
+			if(x.getType().equals("SM")){
+				MenuSuaSM();
+			}
+			else if(x.getType().equals("TT")){
+				MenuSuaTT();
+			}
+			else{
+				MenuSuaT();
+			}
+			while(true){			
+				String key = sc.nextLine();
+				if(key.equals("1")){
+					System.out.println("Nhap ten moi cho ao : ");
+					String newTen = sc.nextLine();
+					x.setTen(newTen);
+					System.out.println("Sua thanh cong !");
+				}
+				else if(key.equals("2")){
+					System.out.println("Nhap size moi cho ao : ");
+					String newSize = sc.nextLine();
+					x.setSize(newSize);
+					System.out.println("Sua thanh cong !");
+				}
+				else if(key.equals("3")){
+					System.out.println("Nhap mau moi cho ao : ");
+					String newMau = sc.nextLine();
+					x.setMau(newMau);
+					System.out.println("Sua thanh cong !");
+				}
+				else if(key.equals("4")){
+					System.out.println("Nhap thuong hieu moi cho ao : ");
+					String newThuongHieu = sc.nextLine();
+					x.setThuongHieu(newThuongHieu);
+					System.out.println("Sua thanh cong !");
+				}
+				else if(key.equals("5")){
+					System.out.println("Nhap vai moi cho ao : ");
+					String newVai = sc.nextLine();
+					x.setVai(newVai);
+					System.out.println("Sua thanh cong !");
+				}
+				else if(key.equals("6")){
+					System.out.println("Nhap kieu tay ao moi cho ao : ");
+					String newKieuTayAo = sc.nextLine();
+					x.setKieuTayAo(newKieuTayAo);
+					System.out.println("Sua thanh cong !");
+				}
+				// else if(key.equals("7") && x.getType().equals("SM")){
+				// 	System.out.println("Nhap kieu co ao moi cho ao : ");
+				// 	String newKieuCoAo = sc.nextLine();
+				// 	x.setKieuCoAo(newKieuCoAo);
+				// 	System.out.println();
+				// }
+				else if(key.equals("7")){
+					break;
+				}
+				else{
+					System.out.println("Du lieu sai, vui long nhap lai !!!");
+				}
+			}
+			ghiDSVaoFile();
+		}
+		else{
+			return;
+		}
+	}
 	
 	public void timKiemTheoID(){	//Yêu cầu 2f) - còn thiếu khóa tìm kiếm **
 		docDSTuFile();
 		System.out.println("Vui long nhap vao id ao can tim : ");
 		String ID = sc.nextLine();
 		ao x = getAoByID(ID);
-		if(x != null){
+		if(x.getTrangThai() == false){
+			System.out.println("San pham da bi xoa !!!");
+			return;
+		}
+		else if(x != null){
 			System.out.println("Thong tin cua ao id so " + ID + " : ");
 			x.xuat();
-		}
-		else{
-			return;
 		}
 	}
 
@@ -260,11 +341,12 @@ public class DS_Ao {
 
 	@Override
 	public String toString(){
-		String s = "";
-		for(int i = 0; i < soLuong; i++){
-			s += ds[i].toString();
-		}
-		return(s);
+        String s = "";
+        for(int i = 0; i < this.soLuong; i++){
+            if(this.ds[i].getTrangThai() == true)
+                s += this.ds[i].toString();
+        }
+        return(s);
 	}
 
 	// public String toStringNhap(){	// toString cho phiếu nhập
@@ -308,20 +390,21 @@ public class DS_Ao {
 				String txt[] = line.split("#"); //tách chuỗi bằng dấu #
 				float m = Float.parseFloat(txt[5]);	//chuyển giá
 				int n = Integer.parseInt(txt[9]);	//chuyển số lượng
+				boolean p = Boolean.parseBoolean(txt[10]);	//chuyển trạng thái
 				if(txt[0].equals("SM")){
 					ao x = new aoSoMi(txt[0], txt[1], txt[2], txt[3], txt[4], m, 
-					txt[6], txt[7], txt[8], n, txt[10], txt[11]);
+					txt[6], txt[7], txt[8], n, p, txt[11], txt[12]);
 					this.them1Ao(x);
 				}
 				else if(txt[0].equals("TT")){
-					int y = Integer.parseInt(txt[11]);	//chuyển số áo
+					int y = Integer.parseInt(txt[12]);	//chuyển số áo
 					ao x = new aoTheThao(txt[0], txt[1], txt[2], txt[3], txt[4], m, 
-					txt[6], txt[7], txt[8], n, txt[10], y, txt[12]);
+					txt[6], txt[7], txt[8], n, p, txt[11], y, txt[13]);
 					this.them1Ao(x);
 				}
 				else if(txt[0].equals("T")){
 					ao x = new aoThun(txt[0], txt[1], txt[2], txt[3], txt[4], m, 
-					txt[6], txt[7], txt[8], n, txt[10]);
+					txt[6], txt[7], txt[8], n, p, txt[11]);
 					this.them1Ao(x);
 				}
 			}
