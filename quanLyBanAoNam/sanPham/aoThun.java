@@ -17,7 +17,7 @@ public class aoThun extends ao {
 	@Override
 	public void nhap() {
 		super.nhap();
-		System.out.println("Vui long nhap kieu co ao : ");
+		System.out.print("Vui long nhap kieu co ao : ");
 		this.kieuCoAo = sc.nextLine();
 	}
 	

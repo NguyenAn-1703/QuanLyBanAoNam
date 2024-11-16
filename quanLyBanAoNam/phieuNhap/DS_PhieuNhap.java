@@ -54,6 +54,7 @@ public class DS_PhieuNhap {
     }
 
     public boolean existID(String ID){  //kiểm tra id đã tồn tại trong danh sách
+        docDSPhieuNhapTuFile();
         for(phieuNhap i : this.ds){
             if(i.getIDphieuNhap().equals(ID)){
                 return(true);

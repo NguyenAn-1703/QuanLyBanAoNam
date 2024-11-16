@@ -22,11 +22,11 @@ public class aoTheThao extends ao {
 	@Override
 	public void nhap() {
 		super.nhap();
-		System.out.println("Vui long nhap doi tuyen : ");
+		System.out.print("Vui long nhap doi tuyen : ");
 		this.doiTuyen = sc.nextLine();
-		System.out.println("Vui long nhap so ao : ");
+		System.out.print("Vui long nhap so ao : ");
 		this.inSoAo = Integer.parseInt(sc.nextLine());
-		System.out.println("Vui long nhap mon the thao : ");
+		System.out.print("Vui long nhap mon the thao : ");
 		this.monTheThao = sc.nextLine();
 	}
 	

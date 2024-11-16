@@ -18,9 +18,9 @@ public class aoSoMi extends ao{
 	@Override
 	public void nhap() {
 		super.nhap();
-		System.out.println("Vui long nhap kieu co ao : ");
+		System.out.print("Vui long nhap kieu co ao : ");
 		this.kieuCoAo = sc.nextLine();
-		System.out.println("Vui long nhap kieu nut ao : ");
+		System.out.print("Vui long nhap kieu nut ao : ");
 		this.kieuNutAo = sc.nextLine();
 	}
 	

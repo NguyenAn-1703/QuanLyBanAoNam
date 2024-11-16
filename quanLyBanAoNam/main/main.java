@@ -1,6 +1,7 @@
 package quanLyBanAoNam.main;
 
 import quanLyBanAoNam.keBien.keBien;
+import quanLyBanAoNam.nhanVien.DSNV;
 import quanLyBanAoNam.phieuNhap.DS_PhieuNhap;
 import quanLyBanAoNam.phieuNhap.phieuNhap;
 import quanLyBanAoNam.sanPham.DS_Ao;
@@ -21,12 +22,14 @@ public class Main {
 
 		DS_PhieuNhap p = new DS_PhieuNhap();
 		DS_Ao a = new DS_Ao();
+		DSNV nv = new DSNV();
 
 		while (true){
 			System.out.println("MENU");
 			System.out.println("1) Quan Ly San Pham.");
 			System.out.println("2) Quan Ly Nhap Hang.");
-			System.out.println("3) Thoat .");
+			System.out.println("3) Quan Ly Nhan Vien.");
+			System.out.println("4) Thoat .");
 			keBien.ke();
 			String key;
 			key = sc.nextLine();			
@@ -37,6 +40,9 @@ public class Main {
 				p.nhapHang();
 			}
 			else if(key.equals("3")){
+				nv.startUp();
+			}
+			else if(key.equals("4")){
 				break;
 			}
 			else{

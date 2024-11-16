@@ -74,10 +74,10 @@ public class phieuNhap{
     }
 
     public void nhapPhieuNhap(){
-        System.out.println("Nhap ID phieu nhap: ");
+        System.out.print("Nhap ID phieu nhap: ");
         this.IDphieuNhap = sc.nextLine(); 
-        System.out.println("Ngay nhap: " + ngayNhap);
-        System.out.println("Nhap ID nhan vien: ");
+        System.out.print("Ngay nhap: " + ngayNhap);
+        System.out.print("Nhap ID nhan vien: ");
         this.IDnhanVien = sc.nextLine();
         DS_Ao p = new DS_Ao();
         p.docDSTuFile();
@@ -91,7 +91,7 @@ public class phieuNhap{
             String ID = key;
             if(p.getAoByID(ID) != null){
                 dsNhap.them1Ao(p.getAoByID(ID));    // đã tăng biến soLuong trong class DS_Ao
-                System.out.println("Vui long nhap vao so luong muon nhap hang : ");
+                System.out.print("Vui long nhap vao so luong muon nhap hang : ");
                 int n = Integer.parseInt(sc.nextLine());    //số lương nhập
                 //thêm chi tiết nhập cho dsChiTietPhieuNhap
                 chiTietPhieuNhap x = new chiTietPhieuNhap(ID, n);

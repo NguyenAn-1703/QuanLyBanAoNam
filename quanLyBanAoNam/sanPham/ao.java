@@ -36,28 +36,28 @@ public class ao {
 		this.soLuongSP = soLuongSP;
 	}
 	public void nhap() {
-		System.out.println("Vui long nhap id ao :");
+		System.out.print("Vui long nhap id ao :");
 		this.id = sc.nextLine();
-		System.out.println("Vui long nhap ten ao : ");
+		System.out.print("Vui long nhap ten ao : ");
 		this.ten = sc.nextLine();
-		System.out.println("Vui long nhap size ao : ");
+		System.out.print("Vui long nhap size ao : ");
 		this.size = sc.nextLine();
-		System.out.println("Vui long nhap mau ao : ");
+		System.out.print("Vui long nhap mau ao : ");
 		this.mau = sc.nextLine();
-		System.out.println("Vui long nhap gia ao : ");
+		System.out.print("Vui long nhap gia ao : ");
 		this.gia = Float.parseFloat(sc.nextLine());
-		System.out.println("Vui long nhap thuong hieu ao : ");
+		System.out.print("Vui long nhap thuong hieu ao : ");
 		this.thuongHieu = sc.nextLine();
-		System.out.println("Vui long nhap vai ao : ");
+		System.out.print("Vui long nhap vai ao : ");
 		this.vai = sc.nextLine();
-		System.out.println("Vui long nhap kieu tay ao : ");
+		System.out.print("Vui long nhap kieu tay ao : ");
 		this.kieuTayAo = sc.nextLine();
 		
 	}
 	
 	@Override
 	public String toString() {
-		return(keBien.ke2() + "id : " + this.id + "\n ten : " + this.ten + "\n size : " + this.size + "\n mau : " + this.mau
+		return(keBien.ke2Nho() + "id : " + this.id + "\n ten : " + this.ten + "\n size : " + this.size + "\n mau : " + this.mau
 				+ "\n gia : " + this.gia + "\n thuong hieu : " + this.thuongHieu + "\n vai : " + this.vai + 
 				"\n kieu tay ao : " + this.kieuTayAo + "\n so luong ton kho : " + this.soLuongSP + "\n");
 	}
