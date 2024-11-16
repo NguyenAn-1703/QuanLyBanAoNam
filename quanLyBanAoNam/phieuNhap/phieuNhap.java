@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 import quanLyBanAoNam.keBien.keBien;
 import quanLyBanAoNam.sanPham.DS_Ao;
-import quanLyBanAoNam.sanPham.ao;
 
 public class phieuNhap{
     private String IDphieuNhap;
@@ -38,11 +37,11 @@ public class phieuNhap{
 
     @Override
     public String toString() {
-        return keBien.ke2() + "Phieu Nhap: " + "\n" + 
+        return keBien.ke2Nho() + "Phieu Nhap: " + "\n" + 
         "IDphieuNhap : '" + IDphieuNhap + '\'' 
         + "\n" + this.toStringNhap() +
         " ngayNhap : " + ngayNhap +
-        " IDnhanVien : '" + IDnhanVien + '\'' + '\n';
+        "\n IDnhanVien : '" + IDnhanVien + '\'' + '\n';
     }
 
     public String toStringNhap(){

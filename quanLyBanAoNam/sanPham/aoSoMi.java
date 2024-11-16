@@ -43,6 +43,44 @@ public class aoSoMi extends ao{
 		}
 
 	}
+
+	@Override
+	public void MenuSua(){
+		super.MenuSua();
+		System.out.println("7) Sua kieu co ao. ");
+		System.out.println("8) Sua kieu nut ao. ");
+	}
+
+	public boolean sua(String key){
+		if(super.sua(key)){
+			return(true);
+		}
+		else if(key.equals("7")){
+			System.out.println("Vui long nhap kieu co ao moi : ");
+			String kieuCoAo = sc.nextLine();
+			if(kieuCoAo.isEmpty()){
+				System.out.println("Kieu co ao khong duoc de trong. ");
+				return(false);
+			}
+			else{
+				this.kieuCoAo = kieuCoAo;
+				return(true);
+			}
+		}
+		else if(key.equals("8")){
+			System.out.println("Vui long nhap kieu nut ao moi : ");
+			String kieuNutAo = sc.nextLine();
+			if(kieuNutAo.isEmpty()){
+				System.out.println("Kieu nut ao khong duoc de trong. ");
+				return(false);
+			}
+			else{
+				this.kieuNutAo = kieuNutAo;
+				return(true);
+			}
+		}
+		return(false);
+	}
 	
 	@Override
 	public String toString() {

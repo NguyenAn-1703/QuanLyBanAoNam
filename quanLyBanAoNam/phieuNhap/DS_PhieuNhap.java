@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.Scanner;
 
 import quanLyBanAoNam.keBien.keBien;
@@ -12,7 +11,7 @@ import quanLyBanAoNam.sanPham.DS_Ao;
 
 public class DS_PhieuNhap {
     private phieuNhap[] ds = new phieuNhap[0];
-    private static int soLuong = 0;
+    private int soLuong = 0;
     Scanner sc = new Scanner(System.in);
 
     public DS_PhieuNhap(){
@@ -103,6 +102,7 @@ public class DS_PhieuNhap {
     }
 
     public void xuat(){
+        this.docDSPhieuNhapTuFile();
         System.out.println(this.toString());
     }
 

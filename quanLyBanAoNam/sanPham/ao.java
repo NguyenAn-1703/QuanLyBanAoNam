@@ -1,6 +1,5 @@
 package quanLyBanAoNam.sanPham;
 
-import java.lang.foreign.ValueLayout;
 import java.util.Scanner;
 
 import quanLyBanAoNam.Validate.Validate;
@@ -73,6 +72,7 @@ public class ao {
 		}
 		return(true);
 	}
+
 	public void nhap() {
 		while(true){
 			System.out.print("Vui long nhap id ao : ");
@@ -122,6 +122,91 @@ public class ao {
 		return(keBien.ke2() + "id : " + this.id + "\n ten : " + this.ten + "\n size : " + this.size + "\n mau : " + this.mau
 				+ "\n gia : " + this.gia + "\n thuong hieu : " + this.thuongHieu + "\n vai : " + this.vai + 
 				"\n kieu tay ao : " + this.kieuTayAo + "\n");
+	}
+
+	public void MenuSua(){
+		System.out.println("1) Sua ten. ");
+		System.out.println("2) Sua size. ");
+		System.out.println("3) Sua mau. ");
+		System.out.println("4) Sua thuong hieu. ");
+		System.out.println("5) Sua vai. ");
+		System.out.println("6) Sua kieu tay ao. ");
+	}
+
+	public boolean sua(String key){		//làm trong ds không dùng được setter
+		if(key.equals("1")){
+			System.out.println("Vui long nhap ten moi : ");
+			String ten = sc.nextLine();
+			if(ten.isEmpty()){
+				System.out.println("Ten khong duoc de trong . ");
+				return(false);
+			}
+			else{
+				this.ten = ten;
+				return(true);
+			}
+		}
+		else if(key.equals("2")){
+			System.out.println("Vui long nhap size moi : ");
+			String size = sc.nextLine();
+			if(size.isEmpty() || !Validate.isSize(size)){
+				System.out.println("Size khong duoc de trong va phai dung dinh dang. ");
+				return(false);
+			}
+			else{
+				this.size = size;
+				return(true);
+			}
+		}
+		else if(key.equals("3")){
+			System.out.println("Vui long nhap mau moi : ");
+			String mau = sc.nextLine();
+			if(mau.isEmpty()){
+				System.out.println("Mau khong duoc de trong . ");
+				return(false);
+			}
+			else{
+				this.mau = mau;
+				return(true);
+			}
+		}
+		else if(key.equals("4")){
+			System.out.println("Vui long nhap thuong hieu moi : ");
+			String thuongHieu = sc.nextLine();
+			if(thuongHieu.isEmpty()){
+				System.out.println("Thuong hieu khong duoc de trong . ");
+				return(false);
+			}
+			else{
+				this.thuongHieu = thuongHieu;
+				return(true);
+			}
+		}
+		else if(key.equals("5")){
+			System.out.println("Vui long nhap vai moi : ");
+			String vai = sc.nextLine();
+			if(vai.isEmpty()){
+				System.out.println("Vai khong duoc de trong . ");
+				return(false);
+			}
+			else{
+				this.vai = vai;
+				return(true);
+			}
+		}
+		else if(key.equals("6")){
+			System.out.println("Vui long nhap kieu tay ao moi : ");
+			String kieuTayAo = sc.nextLine();
+			if(kieuTayAo.isEmpty()){
+				System.out.println("Kieu tay ao khong duoc de trong . ");
+				return(false);
+			}
+			else{
+				this.kieuTayAo = kieuTayAo;
+				return(true);
+			}
+		}
+		return(false);
 	}
 
 	public void xuat() {

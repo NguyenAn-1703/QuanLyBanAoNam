@@ -56,6 +56,57 @@ public class aoTheThao extends ao {
 			}
 		}
 	}
+
+	@Override
+	public void MenuSua(){
+		super.MenuSua();
+		System.out.println("7) Sua doi tuyen. ");
+		System.out.println("8) Sua so ao. ");
+		System.out.println("9) Sua mon the thao. ");
+	}
+
+	public boolean sua(String key){
+		if(super.sua(key)){
+			return(true);
+		}
+		else if(key.equals("7")){
+			System.out.println("Vui long nhap doi tuyen moi : ");
+			String doiTuyen = sc.nextLine();
+			if(doiTuyen.isEmpty()){
+				System.out.println("Doi tuyen khong duoc de trong. ");
+				return(false);
+			}
+			else{
+				this.doiTuyen = doiTuyen;
+				return(true);
+			}
+		}
+		else if(key.equals("8")){
+			System.out.println("Vui long nhap so ao moi : ");
+			String soAo = sc.nextLine();
+			if(soAo.isEmpty() || !Validate.isNumber(soAo)){
+				System.out.println("So ao khong duoc de trong va phai la so. ");
+				return(false);
+			}
+			else{
+				this.inSoAo = Integer.parseInt(soAo);
+				return(true);
+			}
+		}
+		else if(key.equals("9")){
+			System.out.println("Vui long nhap mon the thao moi : ");
+			String monTheThao = sc.nextLine();
+			if(monTheThao.isEmpty()){
+				System.out.println("Mon the thao khong duoc de trong. ");
+				return(false);
+			}
+			else{
+				this.monTheThao = monTheThao;
+				return(true);
+			}
+		}
+		return(false);
+	}
 	
 	@Override
 	public String toString() {

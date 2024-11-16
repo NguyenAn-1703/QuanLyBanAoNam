@@ -22,9 +22,10 @@ public class DS_Ao {
 		System.out.println("3) Them 1 ao.");
 		System.out.println("4) Them k ao.");
 		System.out.println("5) Xoa 1 ao. ");
-		System.out.println("6) Tim kiem theo ID ao.");
-		System.out.println("7) Thong ke ao ton kho.");
-		System.out.println("8) Thoat chuc nang.");
+		System.out.println("6) Sua thong tin ao. ");
+		System.out.println("7) Tim kiem theo ID ao.");
+		System.out.println("8) Thong ke ao ton kho.");
+		System.out.println("9) Thoat chuc nang.");
 		keBien.ke();
 	}
 
@@ -49,12 +50,15 @@ public class DS_Ao {
 				this.xoa1Ao();
 			}
 			else if(key.equals("6")){	//Tim kiem theo ID
+				this.suaAo();
+			}
+			else if(key.equals("7")){	//Tim kiem theo ID
 				this.timKiemTheoID();
 			}
-			else if(key.equals("7")){	//Thong ke so luong
+			else if(key.equals("8")){	//Thong ke so luong
 				this.thongKe();
 			}
-			else if(key.equals("8")){
+			else if(key.equals("9")){
 				keBien.ke();
 				System.out.println("Da thoat chuc nang.");
 				break;
@@ -174,92 +178,20 @@ public class DS_Ao {
 		}
 	}
 
-	public static void MenuSua(){
-		System.out.println("1) Sua ten. ");
-		System.out.println("2) Sua size. ");
-		System.out.println("3) Sua mau. ");
-		System.out.println("4) Sua thuong hieu. ");
-		System.out.println("5) Sua vai. ");
-		System.out.println("6) Sua kieu tay ao. ");
-	}
-
-	public static void MenuSuaSM(){
-		MenuSua();
-		System.out.println("7) Sua kieu co ao. ");
-		System.out.println("8) Sua kieu nut ao. ");
-	}
-
-	public static void MenuSuaTT(){
-		MenuSua();
-		System.out.println("7) Sua doi tuyen. ");
-		System.out.println("8) Sua so ao. ");
-		System.out.println("9) Sua mon the thao. ");
-	}
-
-	public static void MenuSuaT(){
-		MenuSua();
-		System.out.println("7) Sua kieu co ao. ");
-	}
-
-	public void suaAo(){			//Đang lỗi
+	public void suaAo(){			
 		System.out.println("Vui long nhap vao id ao muon sua : ");
 		String ID = sc.nextLine();
 		ao x = getAoByID(ID);
 		if(x != null){
-			if(x.getType().equals("SM")){
-				MenuSuaSM();
-			}
-			else if(x.getType().equals("TT")){
-				MenuSuaTT();
-			}
-			else{
-				MenuSuaT();
-			}
-			while(true){			
+			while(true){	
+				System.out.println("Nhap vao x de ket thuc. ");
+				x.MenuSua();		
 				String key = sc.nextLine();
-				if(key.equals("1")){
-					System.out.println("Nhap ten moi cho ao : ");
-					String newTen = sc.nextLine();
-					x.setTen(newTen);
-					System.out.println("Sua thanh cong !");
+				if(x.sua(key)){
+					System.out.println("Sua thong tin thanh cong ! ");
+					break;
 				}
-				else if(key.equals("2")){
-					System.out.println("Nhap size moi cho ao : ");
-					String newSize = sc.nextLine();
-					x.setSize(newSize);
-					System.out.println("Sua thanh cong !");
-				}
-				else if(key.equals("3")){
-					System.out.println("Nhap mau moi cho ao : ");
-					String newMau = sc.nextLine();
-					x.setMau(newMau);
-					System.out.println("Sua thanh cong !");
-				}
-				else if(key.equals("4")){
-					System.out.println("Nhap thuong hieu moi cho ao : ");
-					String newThuongHieu = sc.nextLine();
-					x.setThuongHieu(newThuongHieu);
-					System.out.println("Sua thanh cong !");
-				}
-				else if(key.equals("5")){
-					System.out.println("Nhap vai moi cho ao : ");
-					String newVai = sc.nextLine();
-					x.setVai(newVai);
-					System.out.println("Sua thanh cong !");
-				}
-				else if(key.equals("6")){
-					System.out.println("Nhap kieu tay ao moi cho ao : ");
-					String newKieuTayAo = sc.nextLine();
-					x.setKieuTayAo(newKieuTayAo);
-					System.out.println("Sua thanh cong !");
-				}
-				// else if(key.equals("7") && x.getType().equals("SM")){
-				// 	System.out.println("Nhap kieu co ao moi cho ao : ");
-				// 	String newKieuCoAo = sc.nextLine();
-				// 	x.setKieuCoAo(newKieuCoAo);
-				// 	System.out.println();
-				// }
-				else if(key.equals("7")){
+				else if(key.equals("x")){
 					break;
 				}
 				else{
@@ -289,6 +221,7 @@ public class DS_Ao {
 	}
 
 	public ao getAoByID(String ID){	//Xài thêm cho chức năng chọn áo trong class hóa đơn
+		docDSTuFile();
 		for(int i = 0; i < soLuong; i++){
 			if(ds[i].getId().equals(ID)){
 				return(ds[i]);
