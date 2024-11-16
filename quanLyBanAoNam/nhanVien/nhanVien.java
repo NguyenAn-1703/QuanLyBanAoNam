@@ -1,6 +1,7 @@
 package quanLyBanAoNam.nhanVien;
 
 import java.util.Scanner;
+import quanLyBanAoNam.Validate.Validate;
 
 public class nhanVien {
     private boolean trangThai = true;
@@ -21,17 +22,50 @@ public class nhanVien {
         this.email = email;
     }
 
+    public boolean Validation(){
+        if(!Validate.isNumber(id) || id.isEmpty()){
+            System.out.println("Id khong duoc de trong va phai la so !!!");
+            return(false);
+        }
+        else if(ten.isEmpty()){
+            System.out.println("Ten khong duoc de trong !!!");
+            return(false);
+        }
+        else if(!Validate.isPhoneNumber(sdt) |sdt.isEmpty()){
+            System.out.println("So dien thoai khong duoc de trong va phai la 10 ky tu so !!!");
+            return(false);
+        }
+        else if(diaChi.isEmpty()){
+            System.out.println("Dia chi khong duoc de trong !!!");
+            return(false);
+        }
+        else if(!Validate.isEmail(email) || email.isEmpty()){
+            System.out.println("Email khong duoc de trong va phai dung dinh dang !!!");
+            return(false);
+        }
+        return(true);
+    }
+
     public void nhap(){
-        System.out.print("Vui long nhap ID: ");
-        this.id = sc.nextLine();
-        System.out.print("Vui long nhap ten: ");
-        this.ten = sc.nextLine();
-        System.out.print("Vui long nhap so dien thoai: ");
-        this.sdt = sc.nextLine();
-        System.out.print("Vui long nhap dia chi: ");
-        this.diaChi = sc.nextLine();
-        System.out.print("Vui long nhap email: ");
-        this.email = sc.nextLine();
+        while(true){
+            System.out.print("Vui long nhap ID: ");
+            this.id = sc.nextLine();
+            System.out.print("Vui long nhap ten: ");
+            this.ten = sc.nextLine();
+            System.out.print("Vui long nhap so dien thoai: ");
+            this.sdt = sc.nextLine();
+            System.out.print("Vui long nhap dia chi: ");
+            this.diaChi = sc.nextLine();
+            System.out.print("Vui long nhap email: ");
+            this.email = sc.nextLine();
+            if(this.Validation()){
+                break;
+            }
+            else{
+                System.out.println("Vui long nha lai !!!");
+            }
+        }
+        
     }
 
     @Override

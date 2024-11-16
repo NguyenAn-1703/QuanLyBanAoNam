@@ -83,6 +83,7 @@ public class DSNV {
     }
 
     public void them1NhanVien(){
+        this.docDSNVTuFile();
         while(true){
             nhanVien x = new nhanVien();
             x.nhap();
@@ -94,6 +95,7 @@ public class DSNV {
                 System.out.println("ID bi trung, vui long nhap lai !!!");
             }
         }
+        this.ghiDSNVVaoFile();
     }
 
     @Override
@@ -115,10 +117,12 @@ public class DSNV {
     }
 
     public void xuat(){
+        this.docDSNVTuFile();
         System.out.println(this.toString());
     }
 
     public nhanVien getNhanVienByID(String id){	
+        docDSNVTuFile();
 		for(int i = 0; i < soLuong; i++){
 			if(ds[i].getId().equals(id)){
 				return ds[i];
@@ -165,6 +169,7 @@ public class DSNV {
         if (x!= null){
             x.setTrangThai(false);
             System.out.println("Da xoa nhan vien ID " + ID + "\n");
+            this.ghiDSNVVaoFile();
         }
         else{
             return;
@@ -180,7 +185,6 @@ public class DSNV {
     }
 
     public void suaNhanVien(){
-        this.docDSNVTuFile();
         System.out.println("Vui long nhap ID nhan vien muon sua: ");
         String ID = sc.nextLine();
         nhanVien x = getNhanVienByID(ID);
@@ -235,7 +239,7 @@ public class DSNV {
             FileReader file = new FileReader("nhanVien.txt");
             BufferedReader br = new BufferedReader(file);
             String line;
-            while ((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null && !line.equals("")) {
                 String[] data = line.split("#");
                 boolean tT = Boolean.parseBoolean(data[0]);
                 nhanVien nv = new nhanVien(tT, data[1], data[2], data[3], data[4], data[5]);
