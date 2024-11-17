@@ -16,7 +16,7 @@
 //             System.out.println("Tiền tích lũy không đủ để áp dụng khuyến mãi.");
 //         }
 
-//         double accumulatedIncrease = billAmount * ACCUMULATION_RATE;
+//         double accumulatedIncrease = billAmount * ACCUMULATION_RATE;         //đem qua hóa đơn
 //         customer.setAccumulatedAmount(customer.getAccumulatedAmount() + accumulatedIncrease);
 
 //         System.out.println("Tiền tích lũy mới của khách hàng: " + customer.getAccumulatedAmount());

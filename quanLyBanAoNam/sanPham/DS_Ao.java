@@ -169,6 +169,10 @@ public class DS_Ao {
 		String ID = sc.nextLine();
 		ao x = getAoByID(ID);
 		if(x != null){
+			if(!x.getTrangThai()){
+				System.out.println("Ao da duoc xoa");
+				return;
+			}
 			x.setTrangThai(false);
 			ghiDSVaoFile();
 			System.out.println("Da xoa ao ID : " + x.getId() + "\n");
@@ -222,9 +226,11 @@ public class DS_Ao {
 
 	public ao getAoByID(String ID){	//Xài thêm cho chức năng chọn áo trong class hóa đơn
 		docDSTuFile();
-		for(int i = 0; i < soLuong; i++){
-			if(ds[i].getId().equals(ID)){
-				return(ds[i]);
+		if(!ID.equals("")){
+			for(int i = 0; i < soLuong; i++){
+				if(ds[i].getId().equals(ID)){
+					return(ds[i]);
+				}
 			}
 		}
 		System.out.println("Khong tim thay ao trong danh sach !!!");

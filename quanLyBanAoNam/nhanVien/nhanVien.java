@@ -62,7 +62,7 @@ public class nhanVien {
                 break;
             }
             else{
-                System.out.println("Vui long nha lai !!!");
+                System.out.println("Vui long nhap lai !!!");
             }
         }
         

@@ -1,35 +1,31 @@
 package quanLyBanAoNam.main;
 
+import quanLyBanAoNam.KhachHang.DS_KhachHang;
+import quanLyBanAoNam.hoaDon.DS_HoaDon;
 import quanLyBanAoNam.keBien.keBien;
 import quanLyBanAoNam.nhanVien.DSNV;
 import quanLyBanAoNam.phieuNhap.DS_PhieuNhap;
-import quanLyBanAoNam.phieuNhap.phieuNhap;
 import quanLyBanAoNam.sanPham.DS_Ao;
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		// //test
-		// DS_Ao a = new DS_Ao();
-		// a.startUp();
-		// //test
-		
-		// phieuNhap pn = new phieuNhap();
-		// pn.nhapPhieuNhap();
-		// pn.thongKe();
-		// pn.xuat();
 
 		DS_PhieuNhap p = new DS_PhieuNhap();
 		DS_Ao a = new DS_Ao();
 		DSNV nv = new DSNV();
+		DS_HoaDon hd = new DS_HoaDon();
+		DS_KhachHang kh = new DS_KhachHang();
 
 		while (true){
-			System.out.println("MENU");
+			System.out.println("MENU CHUC NANG");
 			System.out.println("1) Quan Ly San Pham.");
 			System.out.println("2) Quan Ly Nhap Hang.");
 			System.out.println("3) Quan Ly Nhan Vien.");
-			System.out.println("4) Thoat .");
+			System.out.println("4) Quan Ly Ban Hang. ");
+			System.out.println("5) Quan Ly Khach Hang. ");
+			System.out.println("6) Thoat .");
 			keBien.ke();
 			String key;
 			key = sc.nextLine();			
@@ -43,10 +39,16 @@ public class Main {
 				nv.startUp();
 			}
 			else if(key.equals("4")){
+				hd.banHang();
+			}
+			else if(key.equals("5")){
+				kh.startUp();
+			}
+			else if(key.equals("6")){
 				break;
 			}
 			else{
-				System.out.println("Nhap sai !");
+				System.out.println("Du lieu sai, vui long nhap lai");
 			}
 		}
 		

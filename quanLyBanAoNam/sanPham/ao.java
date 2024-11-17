@@ -1,5 +1,6 @@
 package quanLyBanAoNam.sanPham;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 import quanLyBanAoNam.Validate.Validate;
@@ -18,7 +19,6 @@ public class ao {
 	protected int soLuongSP = 0;
 	protected boolean trangThai = true;
 	public Scanner sc = new Scanner(System.in);
-	
 	
 	public ao() {};
 	public ao(String type, String id, String ten, String size, String mau, float gia, String thuongHieu,
@@ -119,7 +119,7 @@ public class ao {
 	}
 	
 	public String toString3(){	//toString cho phiếu nhập và hóa đơn
-		return(keBien.ke2() + "id : " + this.id + "\n ten : " + this.ten + "\n size : " + this.size + "\n mau : " + this.mau
+		return(keBien.ke2Nho() + "id : " + this.id + "\n ten : " + this.ten + "\n size : " + this.size + "\n mau : " + this.mau
 				+ "\n gia : " + this.gia + "\n thuong hieu : " + this.thuongHieu + "\n vai : " + this.vai + 
 				"\n kieu tay ao : " + this.kieuTayAo + "\n");
 	}

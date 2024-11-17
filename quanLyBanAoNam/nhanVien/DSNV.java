@@ -30,7 +30,7 @@ public class DSNV {
         System.out.println("4) Sua nhan vien. ");
         System.out.println("5) Doc danh sach nhan vien tu file.");
         System.out.println("6) Ghi danh sach nhan vien vao file.");
-        System.out.println("7) Thoat chuong trinh.");
+        System.out.println("7) Thoat chuc nang.");
     }
 
     public void startUp(){
@@ -123,11 +123,14 @@ public class DSNV {
 
     public nhanVien getNhanVienByID(String id){	
         docDSNVTuFile();
-		for(int i = 0; i < soLuong; i++){
-			if(ds[i].getId().equals(id)){
-				return ds[i];
-			}
-		}
+        if(!id.equals("")){
+            for(int i = 0; i < soLuong; i++){
+                if(ds[i].getId().equals(id)){
+                    return ds[i];
+                }
+            }
+        }
+
 		System.out.println("Khong tim thay nhan vien trong danh sach !!!");
 		return(null);
 	}

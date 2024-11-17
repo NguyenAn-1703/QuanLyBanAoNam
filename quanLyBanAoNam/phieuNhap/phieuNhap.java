@@ -7,41 +7,53 @@ import java.util.Scanner;
 
 import quanLyBanAoNam.keBien.keBien;
 import quanLyBanAoNam.sanPham.DS_Ao;
+import quanLyBanAoNam.nhanVien.DSNV;
+import quanLyBanAoNam.nhanVien.nhanVien;
 
 public class phieuNhap{
     private String IDphieuNhap;
     SimpleDateFormat dF = new SimpleDateFormat("dd-MM-yyyy");
     private String ngayNhap = dF.format(new Date());
-    private String IDnhanVien;
+    private nhanVien NhanVien;
     private chiTietPhieuNhap[] dsChiTietPhieuNhap = new chiTietPhieuNhap[0];
-    private int soLuongChiTiet = 0; //quản lý mảng chi tiết
+    private int soLuongChiTiet = 0; //quản lý mảng chi tiết phiếu nhập
+    private double tongGia = 0;
+    private boolean trangThai = true;
     private DS_Ao dsNhap = new DS_Ao();
     Scanner sc = new Scanner(System.in);
     
     public phieuNhap(){};
 
-    public phieuNhap(String IDphieuNhap, String ngayNhap, String IDnhanVien, chiTietPhieuNhap[] dsChiTietPhieuNhap,
-            DS_Ao dsNhap) {
-        this.IDphieuNhap = IDphieuNhap;
+    public phieuNhap(String iDphieuNhap, String ngayNhap, nhanVien nhanVien, chiTietPhieuNhap[] dsChiTietPhieuNhap,
+            int soLuongChiTiet, double tongGia, boolean trangThai, DS_Ao dsNhap) {
+        this.IDphieuNhap = iDphieuNhap;
         this.ngayNhap = ngayNhap;
-        this.IDnhanVien = IDnhanVien;
+        this.NhanVien = nhanVien;
         this.dsChiTietPhieuNhap = dsChiTietPhieuNhap;
+        this.soLuongChiTiet = soLuongChiTiet;
+        this.tongGia = tongGia;
+        this.trangThai = trangThai;
         this.dsNhap = dsNhap;
     }
 
-    public phieuNhap(String IDphieuNhap, String ngayNhap, String IDnhanVien){
+
+
+    public phieuNhap(String IDphieuNhap, String ngayNhap, nhanVien NhanVien, double tongGia, boolean trangThai){
         this.IDphieuNhap = IDphieuNhap;
         this.ngayNhap = ngayNhap;
-        this.IDnhanVien = IDnhanVien;
+        this.NhanVien = NhanVien;
+        this.tongGia = tongGia;
+        this.trangThai = trangThai;
     }
 
     @Override
     public String toString() {
-        return keBien.ke2Nho() + "Phieu Nhap: " + "\n" + 
+        return keBien.ke2() + "Phieu Nhap: " + "\n" + 
         "IDphieuNhap : '" + IDphieuNhap + '\'' 
-        + "\n" + this.toStringNhap() +
+        + "\n" + this.toStringNhap() + keBien.ke2Nho() +
+        "Tong gia tien : " + this.tongGia + "\n" + 
         " ngayNhap : " + ngayNhap +
-        "\n IDnhanVien : '" + IDnhanVien + '\'' + '\n';
+        "\n Nhan Vien Nhap : '" + this.NhanVien.getTen() + '\'' + '\n';
     }
 
     public String toStringNhap(){
@@ -55,7 +67,8 @@ public class phieuNhap{
 
     public String toString2(){  //to string cho file
         String s = "";
-        s += this.IDphieuNhap + "#" + this.ngayNhap + "#" + this.IDnhanVien + "\n";
+        s += this.IDphieuNhap + "#" + this.ngayNhap + "#" + this.NhanVien.getId() + "#" + 
+        this.tongGia + "#" + this.trangThai + "\n";
         for(int i = 0; i < dsNhap.getSoLuong(); i++){
             s += this.dsChiTietPhieuNhap[i].getIdChiTietNhap() + "#"
             + this.dsChiTietPhieuNhap[i].getSoLuongChiTietNhap() + "#";
@@ -75,9 +88,24 @@ public class phieuNhap{
     public void nhapPhieuNhap(){
         System.out.print("Nhap ID phieu nhap: ");
         this.IDphieuNhap = sc.nextLine(); 
-        System.out.print("Ngay nhap: " + ngayNhap);
-        System.out.print("Nhap ID nhan vien: ");
-        this.IDnhanVien = sc.nextLine();
+        System.out.println("Ngay nhap: " + ngayNhap);
+
+        DSNV q = new DSNV();
+        q.docDSNVTuFile();
+        while(true){
+            String key;
+            System.out.print("Nhap ID nhan vien: ");
+            key = sc.nextLine();
+            String ID = key;
+            if(q.getNhanVienByID(ID) != null){
+                this.NhanVien = q.getNhanVienByID(ID);
+                break;
+            }
+            else{
+                System.out.println("Khong co nhan vien ID : " + ID + ", vui long nhap lai");
+            }
+        }
+
         DS_Ao p = new DS_Ao();
         p.docDSTuFile();
         while(true){    // nhập 1 danh sách các áo có sẵn, nhấn y để kết thúc
@@ -104,6 +132,15 @@ public class phieuNhap{
                 System.out.println("Khong co ao id : " + ID + " ,Vui long nhap lai !");
             }
         }
+        this.tongGia = this.tinhTongGia();
+    }
+
+    public double tinhTongGia(){
+        double tong = 0;
+        for(int i = 0; i < this.dsNhap.getSoLuong(); i++){
+            tong += this.dsNhap.getDs()[i].getGia() * this.dsChiTietPhieuNhap[i].getSoLuongChiTietNhap();
+        }
+        return(tong);
     }
 
     public void xuat(){
@@ -126,12 +163,21 @@ public class phieuNhap{
         this.ngayNhap = ngayNhap;
     }
 
-    public String getIDnhanVien() {
-        return IDnhanVien;
+
+    public nhanVien getNhanVien() {
+        return NhanVien;
     }
 
-    public void setIDnhanVien(String IDnhanVien) {
-        this.IDnhanVien = IDnhanVien;
+    public void setNhanVien(nhanVien nhanVien) {
+        this.NhanVien = nhanVien;
+    }
+    
+    public boolean getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(boolean trangThai) {
+        this.trangThai = trangThai;
     }
 
     public chiTietPhieuNhap[] getDsChiTietPhieuNhap() {
