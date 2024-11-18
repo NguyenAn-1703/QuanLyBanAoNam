@@ -56,7 +56,7 @@ public class DS_Ao {
 				this.timKiemTheoID();
 			}
 			else if(key.equals("8")){	//Thong ke so luong
-				this.thongKe();
+				this.thongKeAo();
 			}
 			else if(key.equals("9")){
 				keBien.ke();
@@ -255,7 +255,7 @@ public class DS_Ao {
 	// }
 
 
-	public void thongKe(){		//yêu cầu 2g)
+	public void thongKeAo(){		//yêu cầu 2g)
 		docDSTuFile();
 		int soLuongAoSoMi, soLuongAoTheThao, soLuongAoThun, tongSoAo;
 			soLuongAoSoMi = soLuongAoTheThao = soLuongAoThun = tongSoAo = 0;

@@ -102,7 +102,7 @@ public class DS_KhachHang {
         String s = "";
         for(int i = 0; i < soLuong; i++){
             if(this.ds[i].getTrangThai() == true)
-                s += this.ds[i].toString();
+                s += this.ds[i].toString() + "\n";
         }
         return(s);
     }

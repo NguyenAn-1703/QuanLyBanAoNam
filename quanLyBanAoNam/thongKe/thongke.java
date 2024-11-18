@@ -1,13 +1,20 @@
-// public abstract class thongke {
-//     protected DS_HoaDon ds;
-//     protected int tongsoluongsanpham ;
-//     protected DS_AO dsaodaban ;
-//     public void ghivaodanhsach (DS_AO ao){
-//         dsaodaban.add(ao);
+package quanLyBanAoNam.thongKe;
 
-//     }
-//     public abstract void thongketheothang();
-//     public abstract void thongketheoquy();
-//     public abstract void thongketheonam();
+import java.util.Scanner;
 
-// }
+public abstract class thongKe {
+    protected String namThongKe;
+    protected String ngayThongKe;
+    protected String thangThongKe;
+    Scanner sc = new Scanner(System.in);
+
+    public thongKe(){}
+
+    public thongKe(String namThongKe, String ngayThongKe, String thangThongKe) {
+        this.namThongKe = namThongKe;
+        this.ngayThongKe = ngayThongKe;
+        this.thangThongKe = thangThongKe;
+    }
+    public abstract void thongKeTong();
+
+}
