@@ -7,6 +7,8 @@ TT#6#Nike#XL#Xanh#554000.0#Nike#Cotton#Tay dai#0#true#Argentina#10#Bong da
 TT#7#Nike#XL#Do#625000.0#Nike#Cotton#Tay ngan#0#true#Portugal#7#Bong da
 TT#8#Nike#XL#Do#625000.0#Nike#Cotton#Tay dai#0#true#Portugal#7#Bong da
 T#9#Unisex Bad Rabit#XL#Den#420000.0#Bad Rabit#Cotton#Tay ngan#0#true#Co tron
-T#10#Unisex Bad Rabit#XXL#Den#420000.0#Bad Rabit#Cotton#Tay ngan#0#true#Co tron
-T#11#Sevenciti#XL#Nau den#298000.0#SEVENCITI#Cotton#Tay ngan#0#true#Co tron
-T#12#Sevenciti#XXL#Nau den#298000.0#SEVENCITI#Cotton#Tay ngan#0#true#Co tron
+T#10#Unisex Bad Rabit#XXL#Den#420000.0#Bad Rabit#Cotton#Tay ngan#3#true#Co tron
+T#11#Sevenciti#XL#Nau den#298000.0#SEVENCITI#Cotton#Tay ngan#10#true#Co tron
+T#12#Sevenciti#XXL#Nau den#298000.0#SEVENCITI#Cotton#Tay ngan#3#true#Co tron
+SM#13#aaa#XL#den#200000.0#DIOR#cotton#tay ngan#0#false#co be#nut bam
+SM#14#e#XXL#den#21000.0#ee#cotton#tay ngan#0#false#co be#nut bam

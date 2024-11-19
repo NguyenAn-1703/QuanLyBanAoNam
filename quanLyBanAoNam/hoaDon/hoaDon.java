@@ -160,7 +160,17 @@ public class hoaDon {
                 chiTietHoaDon x = new chiTietHoaDon(ID, n);
                 them1ChiTietBan(x);
                 //thêm chi tiết hóa đơn cho dsChiTietPhieuNhap
-                int soLuongNew = p.getAoByID(ID).getSoLuongSP() - n;    // trừ số lượng trong danh sách tồn kho
+                int soLuongNew;
+                while(true){    //kiểm tra số lượng tồn kho đủ bán
+                    if(p.getAoByID(ID).getSoLuongSP() - n >= 0){
+                        soLuongNew = p.getAoByID(ID).getSoLuongSP() - n;    // trừ số lượng trong danh sách tồn kho
+                        break;
+                    }
+                    else{
+                        System.out.println("San pham ton kho khong du !!!");
+                    }
+                }
+
                 p.getAoByID(ID).setSoLuongSP(soLuongNew);
                 p.ghiDSVaoFile();
             }

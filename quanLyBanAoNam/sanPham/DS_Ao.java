@@ -1,5 +1,6 @@
 package quanLyBanAoNam.sanPham;
 
+import quanLyBanAoNam.Validate.Validate;
 import quanLyBanAoNam.keBien.keBien;
 import java.util.Scanner;
 import java.util.Arrays;
@@ -20,7 +21,7 @@ public class DS_Ao {
 		System.out.println("1) Doc danh sach dau tien tu file.");	// phần này đổi thành đọc từ file
 		System.out.println("2) Xuat danh sach.");
 		System.out.println("3) Them 1 ao.");
-		System.out.println("4) Them k ao.");
+		System.out.println("4) Them nhieu ao.");
 		System.out.println("5) Xoa 1 ao. ");
 		System.out.println("6) Sua thong tin ao. ");
 		System.out.println("7) Tim kiem theo ID ao.");
@@ -149,8 +150,18 @@ public class DS_Ao {
 
 	public void themKAo(){	//Yêu cầu 2c)
 		docDSTuFile();
-		System.out.println("Vui long nhap so loai ao muon them : ");
-		int k = Integer.parseInt(sc.nextLine());
+		String K;
+		while(true){
+			System.out.println("Vui long nhap so loai ao muon them : ");
+			K = sc.nextLine();
+			if(Validate.isNumber(K)){
+				break;
+			}
+			else{
+				System.out.println("Du lieu khong hop le vui long nhap lai !!!");
+			}
+		}
+		int k = Integer.parseInt(K);
 		for(int i = 0; i < k; i++){
 			them1Ao();
 		}
@@ -260,14 +271,16 @@ public class DS_Ao {
 		int soLuongAoSoMi, soLuongAoTheThao, soLuongAoThun, tongSoAo;
 			soLuongAoSoMi = soLuongAoTheThao = soLuongAoThun = tongSoAo = 0;
 		for(int i = 0; i < soLuong; i++){
-			if(ds[i] instanceof aoSoMi){
-				soLuongAoSoMi += ds[i].getSoLuongSP();
-			}
-			if(ds[i] instanceof aoTheThao){
-				soLuongAoTheThao += ds[i].getSoLuongSP();
-			}
-			if(ds[i] instanceof aoThun){
-				soLuongAoThun += ds[i].getSoLuongSP();
+			if(ds[i].getTrangThai()){
+				if(ds[i] instanceof aoSoMi){
+					soLuongAoSoMi += ds[i].getSoLuongSP();
+				}
+				if(ds[i] instanceof aoTheThao){
+					soLuongAoTheThao += ds[i].getSoLuongSP();
+				}
+				if(ds[i] instanceof aoThun){
+					soLuongAoThun += ds[i].getSoLuongSP();
+				}
 			}
 		}
 		tongSoAo = soLuongAoSoMi + soLuongAoTheThao + soLuongAoThun;

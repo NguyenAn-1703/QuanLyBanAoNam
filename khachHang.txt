@@ -1,4 +1,4 @@
-true#1#0972012012#Nguyen Kha Vy#0.0
+true#1#0972012012#Nguyen Kha Vy#59600.0
 true#2#0972013013#Nguyen Minh Thu#0.0
 true#3#0972014014#Ngoc Chau#0.0
 true#4#0972015015#Ngoc Anh#0.0

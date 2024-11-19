@@ -196,6 +196,14 @@ public class phieuNhap{
         this.dsNhap = dsNhap;
     }
 
+    public double getTongGia() {
+        return tongGia;
+    }
+
+    public void setTongGia(double tongGia) {
+        this.tongGia = tongGia;
+    }
+
     
     
 }

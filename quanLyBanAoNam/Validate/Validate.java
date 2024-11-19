@@ -8,7 +8,12 @@ public class Validate {
     public static boolean isNumber(String x){
         try {
             Double m = Double.parseDouble(x);
-            return(true);
+            if(m > 0){
+                return(true);
+            }
+            else{
+                return(false);
+            }
         } catch (Exception e) {
             return(false);
         }
@@ -49,7 +54,7 @@ public class Validate {
     }
     
     public static boolean isNam(String year){
-        String regex = "\\\\d{4}$";
+        String regex = "\\d{4}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(year);
         if(matcher.find()){

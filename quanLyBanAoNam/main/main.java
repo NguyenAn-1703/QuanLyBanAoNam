@@ -6,6 +6,9 @@ import quanLyBanAoNam.keBien.keBien;
 import quanLyBanAoNam.nhanVien.DSNV;
 import quanLyBanAoNam.phieuNhap.DS_PhieuNhap;
 import quanLyBanAoNam.sanPham.DS_Ao;
+import quanLyBanAoNam.thongKe.thongKe;
+import quanLyBanAoNam.thongKe.thongKeDonNhap;
+
 import java.util.Scanner;
 
 public class Main {
@@ -17,6 +20,7 @@ public class Main {
 		DSNV nv = new DSNV();
 		DS_HoaDon hd = new DS_HoaDon();
 		DS_KhachHang kh = new DS_KhachHang();
+		thongKeDonNhap tk = new thongKeDonNhap();
 
 		while (true){
 			System.out.println("MENU CHUC NANG");
@@ -25,7 +29,8 @@ public class Main {
 			System.out.println("3) Quan Ly Nhan Vien.");
 			System.out.println("4) Quan Ly Ban Hang. ");
 			System.out.println("5) Quan Ly Khach Hang. ");
-			System.out.println("6) Thoat .");
+			System.out.println("6) Thong Ke Nhap Hang.");	
+			System.out.println("7) Thoat Chuong Trinh. ");
 			keBien.ke();
 			String key;
 			key = sc.nextLine();			
@@ -45,6 +50,10 @@ public class Main {
 				kh.startUp();
 			}
 			else if(key.equals("6")){
+				tk.startUp();
+			}
+			else if(key.equals("7")){
+				System.out.println("Da thoat chuong trinh !");
 				break;
 			}
 			else{

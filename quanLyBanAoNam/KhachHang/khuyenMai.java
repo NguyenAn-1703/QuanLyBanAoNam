@@ -1,6 +1,5 @@
 package quanLyBanAoNam.KhachHang;
 
-import quanLyBanAoNam.hoaDon.hoaDon;
 
 public class khuyenMai {
     private static final double soTienToiThieuKM = 1000.0;
