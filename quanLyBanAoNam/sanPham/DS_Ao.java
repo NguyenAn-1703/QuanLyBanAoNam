@@ -204,7 +204,7 @@ public class DS_Ao {
 
 	public ao getAoByID(String ID){	//Xài thêm cho chức năng chọn áo trong class hóa đơn
 		docDSTuFile();
-		if(!ID.equals("")){
+		if(!ID.equals("") && ID != null){
 			for(int i = 0; i < soLuong; i++){
 				if(ds[i].getId().equals(ID)){
 					return(ds[i]);

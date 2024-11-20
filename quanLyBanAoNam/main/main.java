@@ -6,6 +6,7 @@ import quanLyBanAoNam.keBien.keBien;
 import quanLyBanAoNam.nhanVien.DSNV;
 import quanLyBanAoNam.phieuNhap.DS_PhieuNhap;
 import quanLyBanAoNam.sanPham.DS_Ao;
+import quanLyBanAoNam.taiKhoan.DS_TaiKhoan;
 import quanLyBanAoNam.thongKe.thongKeDoanhThu;
 import quanLyBanAoNam.thongKe.thongKeDonNhap;
 
@@ -20,6 +21,7 @@ public class Main {
 		DSNV nv = new DSNV();
 		DS_HoaDon hd = new DS_HoaDon();
 		DS_KhachHang kh = new DS_KhachHang();
+		DS_TaiKhoan tk = new DS_TaiKhoan();
 		thongKeDonNhap tkn = new thongKeDonNhap();
 		thongKeDoanhThu tkb = new thongKeDoanhThu();
 
@@ -30,9 +32,10 @@ public class Main {
 			System.out.println("3) Quan Ly Nhan Vien.");
 			System.out.println("4) Quan Ly Ban Hang. ");
 			System.out.println("5) Quan Ly Khach Hang. ");
-			System.out.println("6) Thong Ke Nhap Hang.");	
-			System.out.println("7) Thong Ke Doanh Thu.");
-			System.out.println("8) Thoat Chuong Trinh. ");
+			System.out.println("6) Quan Ly Tai Khoan. ");
+			System.out.println("7) Thong Ke Nhap Hang.");	
+			System.out.println("8) Thong Ke Doanh Thu.");
+			System.out.println("9) Thoat Chuong Trinh. ");
 			keBien.ke();
 			String key;
 			key = sc.nextLine();			
@@ -52,12 +55,15 @@ public class Main {
 				kh.startUp();
 			}
 			else if(key.equals("6")){
-				tkn.startUp();
+				tk.startUp();
 			}
 			else if(key.equals("7")){
-				tkb.startUp();
+				tkn.startUp();
 			}
 			else if(key.equals("8")){
+				tkb.startUp();
+			}
+			else if(key.equals("9")){
 				System.out.println("Da thoat chuong trinh !");
 				break;
 			}
