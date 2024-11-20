@@ -85,9 +85,7 @@ public class phieuNhap{
         soLuongChiTiet++;
     }
 
-    public void nhapPhieuNhap(){
-        System.out.print("Nhap ID phieu nhap: ");
-        this.IDphieuNhap = sc.nextLine(); 
+    public void nhapPhieuNhap(){ 
         System.out.println("Ngay nhap: " + ngayNhap);
 
         DSNV q = new DSNV();

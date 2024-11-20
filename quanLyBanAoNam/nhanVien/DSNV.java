@@ -65,36 +65,19 @@ public class DSNV {
         }
     }
 
-    public boolean existID(String ID){  //kiểm tra tồn tại id trong danh sách
-        docDSNVTuFile();
-        for(nhanVien i : this.ds){
-            if(i.getId().equals(ID)){
-                return(true);
-            }
-        }
-        return(false);
-    }
-
     public void them1NhanVien(nhanVien x){
         nhanVien[] dsNew = Arrays.copyOf(this.ds, soLuong + 1); 
         dsNew[soLuong] = x;
         this.ds = dsNew;
         soLuong++;
+        x.setId(Integer.toString(soLuong));
     }
 
     public void them1NhanVien(){
         this.docDSNVTuFile();
-        while(true){
-            nhanVien x = new nhanVien();
-            x.nhap();
-            if(!this.existID(x.getId())){
-                them1NhanVien(x);
-                break;
-            }
-            else{
-                System.out.println("ID bi trung, vui long nhap lai !!!");
-            }
-        }
+        nhanVien x = new nhanVien();
+        x.nhap();
+        them1NhanVien(x);
         this.ghiDSNVVaoFile();
     }
 

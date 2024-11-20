@@ -64,36 +64,19 @@ public class DS_KhachHang {
         }
     }
 
-    public boolean existID(String ID){  //kiểm tra tồn tại id trong danh sách
-        docDSKHTuFile();
-        for(khachHang i : this.ds){
-            if(i.getID().equals(ID)){
-                return(true);
-            }
-        }
-        return(false);
-    }
-
     public void them1KhachHang(khachHang x){
         khachHang[] dsNew = Arrays.copyOf(this.ds, soLuong + 1); 
         dsNew[soLuong] = x;
         this.ds = dsNew;
         soLuong++;
+        x.setID(Integer.toString(soLuong));
     }
 
     public void them1KhachHang(){
         this.docDSKHTuFile();
-        while(true){
-            khachHang x = new khachHang();
-            x.nhap();
-            if(!this.existID(x.getID())){
-                them1KhachHang(x);
-                break;
-            }
-            else{
-                System.out.println("ID bi trung, vui long nhap lai !!!");
-            }
-        }
+        khachHang x = new khachHang();
+        x.nhap();
+        them1KhachHang(x);
         this.ghiDSKHVaoFile();
     }
 

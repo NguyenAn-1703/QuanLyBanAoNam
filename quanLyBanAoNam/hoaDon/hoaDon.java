@@ -94,8 +94,6 @@ public class hoaDon {
     }
 
     public void nhapHoaDon(){
-        System.out.print("Nhap ID hoa don : ");
-        this.IDhoaDon = sc.nextLine(); 
         System.out.println("Ngay ban : " + this.ngayBan);
 
         DSNV q = new DSNV();

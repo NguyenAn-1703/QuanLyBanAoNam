@@ -28,21 +28,14 @@ public class DS_HoaDon {
         dsnew[soLuong] = x;
         ds = dsnew;
         soLuong++;
+        x.setIDHoaDon(Integer.toString(soLuong));
     }
 
     public void them1HoaDon(){
         this.docDSHoaDonTuFile();
-        while(true){
-            hoaDon x = new hoaDon();
-            x.nhapHoaDon();
-            if(!existID(x.getIDHoaDon())){
-                them1HoaDon(x);
-                break;
-            }
-            else{
-                System.out.println("id bi trung, vui long nhap lai !!!");
-            }
-        }
+        hoaDon x = new hoaDon();
+        x.nhapHoaDon();
+        them1HoaDon(x);
         this.ghiDSHoaDonVaoFile();
     }
 
@@ -54,16 +47,6 @@ public class DS_HoaDon {
         System.out.println("3) Xuat danh sach hoa don.");
         System.out.println("4) Xoa hoa don. ");
         System.out.println("5) Thoat chuc nang ban hang.");
-    }
-
-    public boolean existID(String ID){  //kiểm tra id đã tồn tại trong danh sách
-        docDSHoaDonTuFile();
-        for(hoaDon i : this.ds){
-            if(i.getIDHoaDon().equals(ID)){
-                return(true);
-            }
-        }
-        return(false);
     }
 
     public void banHang(){

@@ -6,7 +6,7 @@ import quanLyBanAoNam.keBien.keBien;
 import quanLyBanAoNam.nhanVien.DSNV;
 import quanLyBanAoNam.phieuNhap.DS_PhieuNhap;
 import quanLyBanAoNam.sanPham.DS_Ao;
-import quanLyBanAoNam.thongKe.thongKe;
+import quanLyBanAoNam.thongKe.thongKeDoanhThu;
 import quanLyBanAoNam.thongKe.thongKeDonNhap;
 
 import java.util.Scanner;
@@ -20,17 +20,19 @@ public class Main {
 		DSNV nv = new DSNV();
 		DS_HoaDon hd = new DS_HoaDon();
 		DS_KhachHang kh = new DS_KhachHang();
-		thongKeDonNhap tk = new thongKeDonNhap();
+		thongKeDonNhap tkn = new thongKeDonNhap();
+		thongKeDoanhThu tkb = new thongKeDoanhThu();
 
 		while (true){
-			System.out.println("MENU CHUC NANG");
-			System.out.println("1) Quan Ly San Pham.");
-			System.out.println("2) Quan Ly Nhap Hang.");
+			System.out.println("---MENU CHUC NANG---");	// tk gồm admin, nhân viên quản lý
+			System.out.println("1) Quan Ly San Pham.");	// nhân viên bán hàng, nhân viên nhập hàng
+			System.out.println("2) Quan Ly Nhap Hang.");	// Tự động lấy thông tin nhân viên ???
 			System.out.println("3) Quan Ly Nhan Vien.");
 			System.out.println("4) Quan Ly Ban Hang. ");
 			System.out.println("5) Quan Ly Khach Hang. ");
 			System.out.println("6) Thong Ke Nhap Hang.");	
-			System.out.println("7) Thoat Chuong Trinh. ");
+			System.out.println("7) Thong Ke Doanh Thu.");
+			System.out.println("8) Thoat Chuong Trinh. ");
 			keBien.ke();
 			String key;
 			key = sc.nextLine();			
@@ -50,9 +52,12 @@ public class Main {
 				kh.startUp();
 			}
 			else if(key.equals("6")){
-				tk.startUp();
+				tkn.startUp();
 			}
 			else if(key.equals("7")){
+				tkb.startUp();
+			}
+			else if(key.equals("8")){
 				System.out.println("Da thoat chuong trinh !");
 				break;
 			}
@@ -60,9 +65,6 @@ public class Main {
 				System.out.println("Du lieu sai, vui long nhap lai");
 			}
 		}
-		
-
-
 	}
 }
 

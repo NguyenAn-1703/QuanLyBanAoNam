@@ -26,11 +26,7 @@ public class khachHang {
     }
     
     public boolean Validation(){
-        if(!Validate.isNumber(id) || id.isEmpty()){
-            System.out.println("Id khong duoc de trong va phai la so !!!");
-            return(false);
-        }
-        else if(!Validate.isPhoneNumber(sdt) |sdt.isEmpty()){
+        if(!Validate.isPhoneNumber(sdt) |sdt.isEmpty()){
             System.out.println("So dien thoai khong duoc de trong va phai la 10 ky tu so !!!");
             return(false);
         }
@@ -43,8 +39,6 @@ public class khachHang {
 
     public void nhap(){
         while(true){
-            System.out.print("Vui long nhap ID: ");
-            this.id = sc.nextLine();
             System.out.print("Vui long nhap ten: ");
             this.ten = sc.nextLine();
             System.out.print("Vui long nhap so dien thoai: ");

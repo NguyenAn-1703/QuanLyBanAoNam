@@ -36,13 +36,9 @@ public class ao {
 		this.trangThai = trangThai;
 	}
 
-	public boolean Validation(String id, String ten, String size, String mau,
+	public boolean Validation(String ten, String size, String mau,
 	 String gia, String thuongHieu, String vai, String kieuTayAo){
-		if(!Validate.isNumber(id) || id.isEmpty()){
-			System.out.println("id khong duoc de trong va phai la so. ");
-			return(false);
-		}
-		else if(ten.isEmpty()){
+		if(ten.isEmpty()){
 			System.out.println("Ten khong duoc de trong. ");
 			return(false);
 		}
@@ -75,8 +71,6 @@ public class ao {
 
 	public void nhap() {
 		while(true){
-			System.out.print("Vui long nhap id ao : ");
-			String id = sc.nextLine();
 			System.out.print("Vui long nhap ten ao : ");
 			String ten = sc.nextLine();
 			System.out.print("Vui long nhap size ao : ");
@@ -91,8 +85,7 @@ public class ao {
 			String vai = sc.nextLine();
 			System.out.print("Vui long nhap kieu tay ao : ");
 			String kieuTayAo = sc.nextLine();
-			if(Validation(id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo)){
-				this.id = id;
+			if(Validation(ten, size, mau, gia, thuongHieu, vai, kieuTayAo)){
 				this.ten = ten;
 				this.size = size;
 				this.mau = mau;
@@ -278,7 +271,4 @@ public class ao {
 	public void setTrangThai(boolean trangThai) {
 		this.trangThai = trangThai;
 	}
-
-	
-	
 }

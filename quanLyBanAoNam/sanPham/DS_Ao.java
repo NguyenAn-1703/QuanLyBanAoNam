@@ -75,21 +75,12 @@ public class DS_Ao {
 		System.out.println(this.toString());
 	}
 
-	public boolean existID(String ID){	//kiểm tra có trùng id trong danh sách không
-		docDSTuFile();
-		for(ao i : this.ds){
-			if(ID.equals(i.id)){
-				return(true);
-			}
-		}
-		return(false);
-	}
-
 	public void them1Ao(ao x){	//Yêu cầu 2c)
 		ao[] dsnew = Arrays.copyOf(ds, soLuong + 1);
 		dsnew[soLuong] = x;
 		ds = dsnew;
 		soLuong++;
+		x.setId(Integer.toString(soLuong));
 	}
 
 	public void them1Ao(){	//Overloading - Yêu cầu 2c
@@ -99,48 +90,24 @@ public class DS_Ao {
 			MenuAo();
 			key = sc.nextLine();
 			if(key.equals("1")){
-				while(true){
-					ao x = new aoSoMi();
-					x.nhap();
-					if(!this.existID(x.id)){
-						x.type = "SM";
-						them1Ao(x);
-						break;
-					}
-					else{
-						System.out.println("id bi trung, vui long nhap lai !!!");
-					}
-				}
+				ao x = new aoSoMi();
+				x.nhap();
+				x.type = "SM";
+				them1Ao(x);
 				break;
 			}
 			else if(key.equals("2")){
-				while(true){
-					ao x = new aoTheThao();
-					x.nhap();
-					if(!existID(x.id)){
-						x.type = "TT";
-						them1Ao(x);
-						break;
-					}
-					else{
-						System.out.println("id bi trung, vui long nhap lai !!!");
-					}
-				}
+				ao x = new aoTheThao();
+				x.nhap();
+				x.type = "TT";
+				them1Ao(x);
 				break;
 			}
 			else if(key.equals("3")){
-				while(true){
-					ao x = new aoThun();
-					x.nhap();
-					if(!existID(x.id)){
-						x.type = "T";
-						them1Ao(x);
-						break;
-					}
-					else{
-						System.out.println("id bi trung, vui long nhap lai !!!");
-					}
-				}
+				ao x = new aoThun();
+				x.nhap();
+				x.type = "T";
+				them1Ao(x);
 				break;
 			}
 			System.out.println("Du lieu khong hop le, vui long nhap lai !!! ");
@@ -301,17 +268,8 @@ public class DS_Ao {
         return(s);
 	}
 
-	// public String toStringNhap(){	// toString cho phiếu nhập
-	// 	String s = "";
-	// 	for(int i = 0; i < soLuong; i++){
-	// 		s += ds[i].toStringNhap();
-	// 	}
-	// 	return(s);
-	// }
-
 	public void ghiDSVaoFile(){	//ghi chung 1 file
 		try {
-
 			FileWriter file = new FileWriter("sanPham.txt", false);
 			BufferedWriter bw = new BufferedWriter(file);
 

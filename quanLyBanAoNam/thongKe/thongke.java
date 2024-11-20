@@ -4,17 +4,16 @@ import java.util.Scanner;
 
 public abstract class thongKe {
     protected String namThongKe;
-    protected String ngayThongKe;
-    protected String thangThongKe;
+
     Scanner sc = new Scanner(System.in);
 
     public thongKe(){}
 
-    public thongKe(String namThongKe, String ngayThongKe, String thangThongKe) {
+    public thongKe(String namThongKe) {
         this.namThongKe = namThongKe;
-        this.ngayThongKe = ngayThongKe;
-        this.thangThongKe = thangThongKe;
+
     }
+    public abstract void Menu();
     public abstract void thongKeTong();
 
 }

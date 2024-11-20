@@ -25,21 +25,14 @@ public class DS_PhieuNhap {
         dsnew[soLuong] = x;
         ds = dsnew;
         soLuong++;
+        x.setIDphieuNhap(Integer.toString(soLuong));
     }
 
     public void them1PhieuNhap(){
         this.docDSPhieuNhapTuFile();
-        while(true){
-            phieuNhap x = new phieuNhap();
-            x.nhapPhieuNhap();
-            if(!existID(x.getIDphieuNhap())){
-                them1PhieuNhap(x);
-                break;
-            }
-            else{
-                System.out.println("id bi trung, vui long nhap lai !!!");
-            }
-        }
+        phieuNhap x = new phieuNhap();
+        x.nhapPhieuNhap();
+        them1PhieuNhap(x);
         this.ghiDSPhieuNhapVaoFile();
     }
 
@@ -51,16 +44,6 @@ public class DS_PhieuNhap {
         System.out.println("3) Xuat danh sach phieu nhap.");
         System.out.println("4) Xoa phieu nhap. ");
         System.out.println("5) Thoat chuc nang nhap hang.");
-    }
-
-    public boolean existID(String ID){  //kiểm tra id đã tồn tại trong danh sách
-        docDSPhieuNhapTuFile();
-        for(phieuNhap i : this.ds){
-            if(i.getIDphieuNhap().equals(ID)){
-                return(true);
-            }
-        }
-        return(false);
     }
 
     public void nhapHang(){

@@ -23,11 +23,7 @@ public class nhanVien {
     }
 
     public boolean Validation(){
-        if(!Validate.isNumber(id) || id.isEmpty()){
-            System.out.println("Id khong duoc de trong va phai la so !!!");
-            return(false);
-        }
-        else if(ten.isEmpty()){
+        if(ten.isEmpty()){
             System.out.println("Ten khong duoc de trong !!!");
             return(false);
         }
@@ -48,8 +44,6 @@ public class nhanVien {
 
     public void nhap(){
         while(true){
-            System.out.print("Vui long nhap ID: ");
-            this.id = sc.nextLine();
             System.out.print("Vui long nhap ten: ");
             this.ten = sc.nextLine();
             System.out.print("Vui long nhap so dien thoai: ");
