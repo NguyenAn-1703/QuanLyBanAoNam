@@ -1,7 +1,8 @@
-true#1#Nguyen Ngoc Thien An#0908222222#17/3 Nguyen Van Cu quan 5 tpHCM#nguyenan@gmail.com#QL
+true#1#Nguyen Ngoc Thien An#0908222222#17/3 Nguyen Van Cu quan 5 tpHCM#nguyenan@gmail.com#ADMIN
 true#2#Truong Phuc Hoang Anh#0908333333#17/3 Nguyen Van Cu quan 5 tpHCM#hoanganh@gmail.com#NVNH
 true#3#Mai Tan Tai#0908444444#17/3 Nguyen Van Cu quan 5 tpHCM#tantai@gmail.com#NVNH
 true#4#Vo Van Tai#0908555555#17/3 Nguyen Van Cu quan 5 tpHCM#vantai@gmail.com#NVBH
 true#5#Bui Huy Khai#0908666666#17/3 Nguyen Van Cu quan 5 tpHCM#huykhai@gmail.com#NVBH
-true#6#Ngoc Han#0908777777#3/17 Hung Long Binh Chanh#ngochan@gmail.com#NVBH
-true#7#Khanh Vy#0908888888#3/17 Hung Long Binh Chanh#khanhvy@gmail.com#NVBH
+true#6#Ngoc Han#0908777777#3/17 Hung Long Binh Chanh#ngochan@gmail.com#QL
+true#7#Khanh Vy#0908888888#3/17 Hung Long Binh Chanh#khanhvy@gmail.com#QL
+true#8#Nguyen Thi Khanh Huyen#0972030030#34/24 Binh Thanh#nguyenthikhanhhuyen@gmail.com#QL

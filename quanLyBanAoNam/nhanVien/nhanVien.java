@@ -67,7 +67,7 @@ public class nhanVien {
     @Override
     public String toString(){
         return("ID : " + this.id + "\n Ten: " + this.ten + "\n Dia chi : "
-         + this.diaChi + "\n Email : " + this.email + "\n");
+         + this.diaChi + "\n Email : " + this.email + "\n So dien thoai : " + this.sdt + "\n");
     }
 
     public String toString2(){  //toString cho nhập file
