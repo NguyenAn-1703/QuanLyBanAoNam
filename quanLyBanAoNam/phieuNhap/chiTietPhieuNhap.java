@@ -24,8 +24,4 @@ public class chiTietPhieuNhap {
     public void setSoLuongChiTietNhap(int soLuongChiTietNhap) {
         this.soLuongChiTietNhap = soLuongChiTietNhap;
     }
-
-
-    
-
 }

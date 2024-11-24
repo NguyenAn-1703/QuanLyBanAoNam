@@ -1,5 +1,6 @@
 package quanLyBanAoNam.sanPham;
 
+import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -12,23 +13,28 @@ public class ao {
 	protected String ten; // lên web coi
 	protected String size; // M L XL XXL
 	protected String mau; // trắng, đen, xanh...
-	protected float gia;
+	protected float giaNhapVao;	//gia nhap
+	protected float giaBanRa; //gia ban
 	protected String thuongHieu; // lên web coi
 	protected String vai; // lên web coi
 	protected String kieuTayAo; // tay dài, tay ngắn
 	protected int soLuongSP = 0;
 	protected boolean trangThai = true;
 	public Scanner sc = new Scanner(System.in);
+	@SuppressWarnings("deprecation")
+    Locale locale = new Locale("en", "EN");
+    NumberFormat nF = NumberFormat.getInstance(locale);
 	
 	public ao() {};
-	public ao(String type, String id, String ten, String size, String mau, float gia, String thuongHieu,
-			String vai, String kieuTayAo, int soLuongSP, boolean trangThai) {
+	public ao(String type, String id, String ten, String size, String mau, float giaNhapVao, float giaBanRa,
+	String thuongHieu, String vai, String kieuTayAo, int soLuongSP, boolean trangThai) {
 		this.type = type;
 		this.id = id;
 		this.ten = ten;
 		this.size = size;
 		this.mau = mau;
-		this.gia = gia;
+		this.giaNhapVao = giaNhapVao;
+		this.giaBanRa = giaBanRa;
 		this.thuongHieu = thuongHieu;
 		this.vai = vai;
 		this.kieuTayAo = kieuTayAo;
@@ -37,7 +43,7 @@ public class ao {
 	}
 
 	public boolean Validation(String ten, String size, String mau,
-	 String gia, String thuongHieu, String vai, String kieuTayAo){
+	 String giaNhapVao, String giaBanRa, String thuongHieu, String vai, String kieuTayAo){
 		if(ten.isEmpty()){
 			System.out.println("Ten khong duoc de trong. ");
 			return(false);
@@ -50,8 +56,12 @@ public class ao {
 			System.out.println("Mau khong duoc de trong. ");
 			return(false);
 		}
-		else if(gia.isEmpty() || !Validate.isNumber(gia)){
-			System.out.println("Gia khong duoc de trong va phai la so. ");
+		else if(giaNhapVao.isEmpty() || !Validate.isNumber(giaNhapVao)){
+			System.out.println("Gia nhap khong duoc de trong va phai la so. ");
+			return(false);
+		}
+		else if(giaBanRa.isEmpty() || !Validate.isNumber(giaBanRa)){
+			System.out.println("Gia ban khong duoc de trong va phai la so. ");
 			return(false);
 		}
 		else if(thuongHieu.isEmpty()){
@@ -77,19 +87,22 @@ public class ao {
 			String size = sc.nextLine();
 			System.out.print("Vui long nhap mau ao : ");
 			String mau = sc.nextLine();
-			System.out.print("Vui long nhap gia ao : ");
-			String gia = sc.nextLine();
+			System.out.print("Vui long nhap gia nhap hang cua ao : ");
+			String giaNhapVao = sc.nextLine();
+			System.out.print("Vui long nhap gia ban cua ao : ");
+			String giaBanRa = sc.nextLine();
 			System.out.print("Vui long nhap thuong hieu ao : ");
 			String thuongHieu = sc.nextLine();
 			System.out.print("Vui long nhap vai ao : ");
 			String vai = sc.nextLine();
 			System.out.print("Vui long nhap kieu tay ao : ");
 			String kieuTayAo = sc.nextLine();
-			if(Validation(ten, size, mau, gia, thuongHieu, vai, kieuTayAo)){
+			if(Validation(ten, size, mau, giaNhapVao, giaBanRa, thuongHieu, vai, kieuTayAo)){
 				this.ten = ten;
 				this.size = size;
 				this.mau = mau;
-				this.gia = Float.parseFloat(gia);
+				this.giaNhapVao = Float.parseFloat(giaNhapVao);
+				this.giaBanRa = Float.parseFloat(giaBanRa);
 				this.thuongHieu = thuongHieu;
 				this.vai = vai;
 				this.kieuTayAo = kieuTayAo;
@@ -101,19 +114,27 @@ public class ao {
 	
 	@Override
 	public String toString() {
-		return(keBien.ke2Nho() + "id : " + this.id + "\n ten : " + this.ten + "\n size : " + this.size + "\n mau : " + this.mau
-				+ "\n gia : " + this.gia + "\n thuong hieu : " + this.thuongHieu + "\n vai : " + this.vai + 
-				"\n kieu tay ao : " + this.kieuTayAo + "\n so luong ton kho : " + this.soLuongSP + "\n");
+		return(keBien.ke2Nho() + "id : " + this.id + "\n ten : " + this.ten + "\n size : " + this.size + 
+		"\n mau : " + this.mau + "\n gia nhap : " + nF.format(this.giaNhapVao) + 
+		"\n gia ban : " + nF.format(this.giaBanRa) + "\n thuong hieu : " + this.thuongHieu + "\n vai : " + this.vai + 
+		"\n kieu tay ao : " + this.kieuTayAo + "\n so luong ton kho : " + this.soLuongSP + "\n");
 	}
 
 	public String toString2(){		//toString để đọc và ghi file
-		return(this.type + "#" + this.id + "#" + this.ten + "#" + this.size + "#" + this.mau + "#" + this.gia 
-		+ "#" + this.thuongHieu + "#" + this.vai + "#" + this.kieuTayAo + "#" + this.soLuongSP + "#" + this.trangThai + "#");
+		return(this.type + "#" + this.id + "#" + this.ten + "#" + this.size + "#" + this.mau + "#" + 
+		this.giaNhapVao + "#" + this.giaBanRa + "#" + this.thuongHieu + "#" + this.vai + "#" + 
+		this.kieuTayAo + "#" + this.soLuongSP + "#" + this.trangThai + "#");
 	}
 	
-	public String toString3(){	//toString cho phiếu nhập và hóa đơn
+	public String toString3(){	//toString cho phiếu nhập
 		return(keBien.ke2Nho() + "id : " + this.id + "\n ten : " + this.ten + "\n size : " + this.size + "\n mau : " + this.mau
-				+ "\n gia : " + this.gia + "\n thuong hieu : " + this.thuongHieu + "\n vai : " + this.vai + 
+				+ "\n gia nhap : " + this.giaNhapVao + "\n thuong hieu : " + this.thuongHieu + "\n vai : " + this.vai + 
+				"\n kieu tay ao : " + this.kieuTayAo + "\n");
+	}
+
+	public String toString4(){	//toString cho phiếu hóa đơn
+		return(keBien.ke2Nho() + "id : " + this.id + "\n ten : " + this.ten + "\n size : " + this.size + "\n mau : " + this.mau
+				+ "\n gia ban : " + this.giaBanRa + "\n thuong hieu : " + this.thuongHieu + "\n vai : " + this.vai + 
 				"\n kieu tay ao : " + this.kieuTayAo + "\n");
 	}
 
@@ -235,11 +256,17 @@ public class ao {
 	public void setMau(String mau) {
 		this.mau = mau;
 	}
-	public float getGia() {
-		return gia;
+	public float getGiaNhapVao() {
+		return giaNhapVao;
 	}
-	public void setGia(float gia) {
-		this.gia = gia;
+	public void setGiaNhapVao(float giaNhapVao) {
+		this.giaNhapVao = giaNhapVao;
+	}
+	public float getGiaBanRa() {
+		return giaBanRa;
+	}
+	public void setGiaBanRa(float giaBanRa) {
+		this.giaBanRa = giaBanRa;
 	}
 	public String getThuongHieu() {
 		return thuongHieu;

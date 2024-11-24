@@ -64,12 +64,13 @@ public class DS_TaiKhoan {
     public void them1TaiKhoan(){
         this.docDSTaiKhoanTuFile();
         taiKhoan x = new taiKhoan();
-        x.nhap();
+        x.nhap();   // kiểm tra danh sách nhân viên trong hàm nhập rồi 
         if(this.getTaiKhoanByIDNhanVien(x.getNhanVien().getId()) != null){  //nhân viên đã được tạo tài khoản
             System.out.println("Nhan vien da duoc tao tai khoan, vui long nhap lai !!!");
             return;
         }
         them1TaiKhoan(x);
+
         this.ghiDSTaiKhoanVaoFile();
     }
 
@@ -114,6 +115,24 @@ public class DS_TaiKhoan {
     public void xuat(){
         this.docDSTaiKhoanTuFile();
         System.out.println(this.toString());
+    }
+
+    public taiKhoan getTaiKhoanByTenDangNhap(String tenDN){
+        this.docDSTaiKhoanTuFile();
+        for(int i = 0; i < soLuong; i++){
+            if(this.ds[i].getTenDangNhap().equals(tenDN)){
+                return(this.ds[i]);
+            }
+        }
+        return(null);
+    }
+
+    public boolean checkPassWord(String tenDN, String matKhau){
+        this.docDSTaiKhoanTuFile();
+        if(getTaiKhoanByTenDangNhap(tenDN).getMatKhau().equals(matKhau)){
+            return(true);
+        }
+        return(false);
     }
 
     public void docDSTaiKhoanTuFile(){

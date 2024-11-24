@@ -228,7 +228,7 @@ public class DSNV {
             while ((line = br.readLine()) != null && !line.equals("")) {
                 String[] data = line.split("#");
                 boolean tT = Boolean.parseBoolean(data[0]);
-                nhanVien nv = new nhanVien(tT, data[1], data[2], data[3], data[4], data[5]);
+                nhanVien nv = new nhanVien(tT, data[1], data[2], data[3], data[4], data[5], data[6]);
                 this.them1NhanVien(nv);
             }
             br.close();

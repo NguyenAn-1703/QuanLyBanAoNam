@@ -12,15 +12,15 @@ public class aoTheThao extends ao {
 		
 	}
 	
-	public aoTheThao(String type, String id, String ten, String size, String mau, float gia, String thuongHieu,
-			String vai, String kieuTayAo, int soLuongSP, boolean trangThai, String doiTuyen, int inSoAo, String monTheThao) {
-		super(type,id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongSP, trangThai);
+	public aoTheThao(String type, String id, String ten, String size, String mau, float giaNhapVao, float giaBanRa,
+			String thuongHieu, String vai, String kieuTayAo, int soLuongSP, boolean trangThai, String doiTuyen,
+			int inSoAo, String monTheThao) {
+		super(type, id, ten, size, mau, giaNhapVao, giaBanRa, thuongHieu, vai, kieuTayAo, soLuongSP, trangThai);
 		this.doiTuyen = doiTuyen;
 		this.inSoAo = inSoAo;
 		this.monTheThao = monTheThao;
 	}
-	
-	
+
 	public boolean Validation(String doiTuyen, String inSoAo, String monTheThao){
 		if(doiTuyen.isEmpty()){
 			System.out.println("Doi tuyen khong duoc de trong. ");
@@ -152,6 +152,4 @@ public class aoTheThao extends ao {
 	public void setMonTheThao(String monTheThao) {
 		this.monTheThao = monTheThao;
 	}
-
-	
 }

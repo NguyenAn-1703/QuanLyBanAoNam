@@ -10,16 +10,18 @@ public class nhanVien {
     private String sdt;
     private String diaChi;
     private String email;
+    private String quyen = "Chua phan quyen";
     Scanner sc = new Scanner(System.in);
     public nhanVien(){
     }
-    public nhanVien(boolean trangThai, String id, String ten, String sdt, String diaChi, String email) {
+    public nhanVien(boolean trangThai, String id, String ten, String sdt, String diaChi, String email, String quyen) {
         this.trangThai = trangThai;
         this.id = id;
         this.ten = ten;
         this.sdt = sdt;
         this.diaChi = diaChi;
         this.email = email;
+        this.quyen = quyen;
     }
 
     public boolean Validation(){
@@ -27,7 +29,7 @@ public class nhanVien {
             System.out.println("Ten khong duoc de trong !!!");
             return(false);
         }
-        else if(!Validate.isPhoneNumber(sdt) |sdt.isEmpty()){
+        else if(!Validate.isPhoneNumber(sdt) || sdt.isEmpty()){
             System.out.println("So dien thoai khong duoc de trong va phai la 10 ky tu so !!!");
             return(false);
         }
@@ -69,7 +71,7 @@ public class nhanVien {
     }
 
     public String toString2(){  //toString cho nhập file
-        return(this.trangThai + "#" + this.id + "#" + this.ten + "#" + this.sdt + "#" + this.diaChi + "#" + this.email);
+        return(this.trangThai + "#" + this.id + "#" + this.ten + "#" + this.sdt + "#" + this.diaChi + "#" + this.email + "#" + this.quyen);
     }
 
     public void xuat(){
@@ -114,6 +116,12 @@ public class nhanVien {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+    public String getQuyen() {
+        return quyen;
+    }
+    public void setQuyen(String quyen) {
+        this.quyen = quyen;
     }
 
     

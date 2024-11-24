@@ -1,8 +1,10 @@
 package quanLyBanAoNam.hoaDon;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 import quanLyBanAoNam.KhachHang.DS_KhachHang;
@@ -26,27 +28,30 @@ public class hoaDon {
     private boolean trangThai = true;
     private DS_Ao dsBan = new DS_Ao();
     Scanner sc = new Scanner(System.in);
+    @SuppressWarnings("deprecation")
+    Locale locale = new Locale("en", "EN");
+    NumberFormat nF = NumberFormat.getInstance(locale);
     
     public hoaDon(){};
 
     public hoaDon(String iDhoaDon, String ngayBan, nhanVien nhanVien, chiTietHoaDon[] dsChiTietHoaDon,
             int soLuongChiTiet, double tongGia, khachHang khachHang, boolean trangThai, DS_Ao dsBan) {
-        IDhoaDon = iDhoaDon;
+        this.IDhoaDon = iDhoaDon;
         this.ngayBan = ngayBan;
-        NhanVien = nhanVien;
+        this.NhanVien = nhanVien;
         this.dsChiTietHoaDon = dsChiTietHoaDon;
         this.soLuongChiTiet = soLuongChiTiet;
         this.tongGia = tongGia;
-        KhachHang = khachHang;
+        this.KhachHang = khachHang;
         this.trangThai = trangThai;
         this.dsBan = dsBan;
     }
 
     public hoaDon(String iDhoaDon, String ngayBan, nhanVien nhanVien, double tongGia, khachHang KhachHang, 
     boolean trangThai) {
-        IDhoaDon = iDhoaDon;
+        this.IDhoaDon = iDhoaDon;
         this.ngayBan = ngayBan;
-        NhanVien = nhanVien;
+        this.NhanVien = nhanVien;
         this.tongGia = tongGia;
         this.KhachHang = KhachHang;
         this.trangThai = trangThai;
@@ -57,7 +62,7 @@ public class hoaDon {
         return keBien.ke2() + "Hoa don: " + "\n" + 
         "ID hoa don : '" + this.IDhoaDon + '\'' + 
         "\n" + this.toStringNhap() + keBien.ke2Nho() +
-        "Tong tien : " + this.tongGia +
+        "Tong tien : " + nF.format(this.tongGia) +
         "\n Ngay ban : " + this.ngayBan +
         "\n Nhan Vien Ban : '" + this.NhanVien.getTen() + '\'' +
         "\n Khach hang : " + this.KhachHang.getTen() +
@@ -67,7 +72,7 @@ public class hoaDon {
     public String toStringNhap(){   //to string lấy các chi tiết hóa đơn
         String s = "";
         for(int i = 0; i < this.dsBan.getSoLuong(); i++){
-            s += this.dsBan.getDs()[i].toString3();
+            s += this.dsBan.getDs()[i].toString4();
             s += "So luong ban : " + this.dsChiTietHoaDon[i].getSoLuongChiTietBan() + "\n";
         }
         return(s);
@@ -157,7 +162,7 @@ public class hoaDon {
                 //thêm chi tiết hóa đơn cho dsChiTietHoaDon
                 chiTietHoaDon x = new chiTietHoaDon(ID, n);
                 them1ChiTietBan(x);
-                //thêm chi tiết hóa đơn cho dsChiTietPhieuNhap
+                //thêm chi tiết hóa đơn cho dsChiTietHoaDon
                 int soLuongNew;
                 while(true){    //kiểm tra số lượng tồn kho đủ bán
                     if(p.getAoByID(ID).getSoLuongSP() - n >= 0){
@@ -181,18 +186,27 @@ public class hoaDon {
         r.ghiDSKHVaoFile();
     }
 
-    public double tinhTongGia(){
+    public double tinhTongGia(){    //tính tổng giá của một hóa đơn
         double tong = 0;
         for(int i = 0; i < this.dsBan.getSoLuong(); i++){
-            tong += this.dsBan.getDs()[i].getGia() * this.dsChiTietHoaDon[i].getSoLuongChiTietBan();
+            tong += this.dsBan.getDs()[i].getGiaBanRa() * this.dsChiTietHoaDon[i].getSoLuongChiTietBan();
+        }
+        return(tong);
+    }
+
+    public double tinhLoiNhuan(){
+        double tong = 0;
+        for(int i = 0; i < this.dsBan.getSoLuong(); i++){
+            tong += (this.dsBan.getDs()[i].getGiaBanRa() - this.dsBan.getDs()[i].getGiaNhapVao()) * 
+            this.dsChiTietHoaDon[i].getSoLuongChiTietBan();
         }
         return(tong);
     }
 
     public void apDungKhuyenMai(){
-        System.out.println("Khach hang co ap dung khuyen mai hay khong ? (y/n)");
-        String key = sc.nextLine();
         while(true){
+            System.out.println("Khach hang co ap dung khuyen mai hay khong ? (y/n)");
+            String key = sc.nextLine();
             if(key.equals("y")){
                 double giaMoi = khuyenMai.apDungKhuyenMai(this.KhachHang.getTienTichLuy(),this.tongGia);
                 double tienTichLuyMoi = this.KhachHang.getTienTichLuy() - (this.tongGia - giaMoi);

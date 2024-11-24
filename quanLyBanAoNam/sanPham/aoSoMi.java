@@ -7,10 +7,11 @@ public class aoSoMi extends ao{
 	public aoSoMi() {
 		
 	}
-	
-	public aoSoMi(String type, String id, String ten, String size, String mau, float gia, String thuongHieu,
-			String vai, String kieuTayAo, int soLuongSP, boolean trangThai, String kieuCoAo, String kieuNutAo) {
-		super(type, id, ten, size, mau, gia, thuongHieu, vai, kieuTayAo, soLuongSP, trangThai);
+
+	public aoSoMi(String type, String id, String ten, String size, String mau, float giaNhapVao, float giaBanRa,
+			String thuongHieu, String vai, String kieuTayAo, int soLuongSP, boolean trangThai, String kieuCoAo,
+			String kieuNutAo) {
+		super(type, id, ten, size, mau, giaNhapVao, giaBanRa, thuongHieu, vai, kieuTayAo, soLuongSP, trangThai);
 		this.kieuCoAo = kieuCoAo;
 		this.kieuNutAo = kieuNutAo;
 	}

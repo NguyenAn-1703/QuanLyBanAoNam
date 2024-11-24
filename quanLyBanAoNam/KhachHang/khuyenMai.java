@@ -1,9 +1,14 @@
 package quanLyBanAoNam.KhachHang;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class khuyenMai {
     private static final double soTienToiThieuKM = 1000.0;
     private static final double tiLeTang = 0.01; // 1% của hóa đơn
+    @SuppressWarnings("deprecation")
+    static Locale locale = new Locale("en", "EN");
+    static NumberFormat nF = NumberFormat.getInstance(locale);
 
     public static double apDungKhuyenMai(double tienTichLuy, double tongGia) {  //trả về giá hóa đơn mới
         double giaMoi = tongGia;
@@ -17,7 +22,7 @@ public class khuyenMai {
             else{   //tienDu - 0, tiền tích lũy nhỏ hơn tiền đơn, giaMoi > 0, giaMoi giữ nguyên
                 tienTichLuyDu = 0;
             }
-            System.out.println("Da ap dung giam " + (tienTichLuy - tienTichLuyDu) + "d tu tien tich luy.");
+            System.out.println("Da ap dung giam " + nF.format(tienTichLuy - tienTichLuyDu) + "d tu tien tich luy.");
             return(giaMoi);
         } else {
             System.out.println("Tien tich luy khong du de su dung khuyen mai.");

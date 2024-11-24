@@ -228,11 +228,6 @@ public class DS_Ao {
 	// 	}
 	// }
 
-	// public void sapXepTheoID(){
-	// 	Arrays.sort(ds, 0, soLuong, (ao1, ao2) -> ao1.getId().compareTo(ao2.getId()));
-	// }
-
-
 	public void thongKeAo(){		//yêu cầu 2g)
 		docDSTuFile();
 		int soLuongAoSoMi, soLuongAoTheThao, soLuongAoThun, tongSoAo;
@@ -298,23 +293,24 @@ public class DS_Ao {
 					break;
 				}
 				String txt[] = line.split("#"); //tách chuỗi bằng dấu #
-				float m = Float.parseFloat(txt[5]);	//chuyển giá
-				int n = Integer.parseInt(txt[9]);	//chuyển số lượng
-				boolean p = Boolean.parseBoolean(txt[10]);	//chuyển trạng thái
+				float m1 = Float.parseFloat(txt[5]);	//chuyển giá nhập
+				float m2 = Float.parseFloat(txt[6]);	//chuyển giá bán
+				int n = Integer.parseInt(txt[10]);	//chuyển số lượng tồn kho
+				boolean p = Boolean.parseBoolean(txt[11]);	//chuyển trạng thái
 				if(txt[0].equals("SM")){
-					ao x = new aoSoMi(txt[0], txt[1], txt[2], txt[3], txt[4], m, 
-					txt[6], txt[7], txt[8], n, p, txt[11], txt[12]);
+					ao x = new aoSoMi(txt[0], txt[1], txt[2], txt[3], txt[4], m1, m2, 
+					txt[7], txt[8], txt[9], n, p, txt[12], txt[13]);
 					this.them1Ao(x);
 				}
 				else if(txt[0].equals("TT")){
-					int y = Integer.parseInt(txt[12]);	//chuyển số áo
-					ao x = new aoTheThao(txt[0], txt[1], txt[2], txt[3], txt[4], m, 
-					txt[6], txt[7], txt[8], n, p, txt[11], y, txt[13]);
+					int y = Integer.parseInt(txt[13]);	//chuyển số áo
+					ao x = new aoTheThao(txt[0], txt[1], txt[2], txt[3], txt[4], m1, m2, 
+					txt[7], txt[8], txt[9], n, p, txt[12], y, txt[14]);
 					this.them1Ao(x);
 				}
 				else if(txt[0].equals("T")){
-					ao x = new aoThun(txt[0], txt[1], txt[2], txt[3], txt[4], m, 
-					txt[6], txt[7], txt[8], n, p, txt[11]);
+					ao x = new aoThun(txt[0], txt[1], txt[2], txt[3], txt[4], m1, m2, 
+					txt[7], txt[8], txt[9], n, p, txt[12]);
 					this.them1Ao(x);
 				}
 			}

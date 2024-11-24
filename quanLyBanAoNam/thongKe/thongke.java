@@ -13,7 +13,7 @@ public abstract class thongKe {
         this.namThongKe = namThongKe;
 
     }
-    public abstract void Menu();
+
     public abstract void thongKeTong();
 
 }

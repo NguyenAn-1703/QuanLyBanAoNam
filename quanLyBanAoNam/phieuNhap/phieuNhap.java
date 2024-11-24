@@ -1,8 +1,10 @@
 package quanLyBanAoNam.phieuNhap;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 import quanLyBanAoNam.keBien.keBien;
@@ -20,7 +22,10 @@ public class phieuNhap{
     private double tongGia = 0;
     private boolean trangThai = true;
     private DS_Ao dsNhap = new DS_Ao();
-    Scanner sc = new Scanner(System.in);
+    public static Scanner sc = new Scanner(System.in);
+    @SuppressWarnings("deprecation")
+    Locale locale = new Locale("en", "EN");
+    NumberFormat nF = NumberFormat.getInstance(locale);
     
     public phieuNhap(){};
 
@@ -36,8 +41,6 @@ public class phieuNhap{
         this.dsNhap = dsNhap;
     }
 
-
-
     public phieuNhap(String IDphieuNhap, String ngayNhap, nhanVien NhanVien, double tongGia, boolean trangThai){
         this.IDphieuNhap = IDphieuNhap;
         this.ngayNhap = ngayNhap;
@@ -51,15 +54,15 @@ public class phieuNhap{
         return keBien.ke2() + "Phieu Nhap: " + "\n" + 
         "IDphieuNhap : '" + IDphieuNhap + '\'' 
         + "\n" + this.toStringNhap() + keBien.ke2Nho() +
-        "Tong gia tien : " + this.tongGia + "\n" + 
+        "Tong gia tien : " + nF.format(this.tongGia) + "\n" + 
         " ngayNhap : " + ngayNhap +
         "\n Nhan Vien Nhap : '" + this.NhanVien.getTen() + '\'' + '\n';
     }
 
-    public String toStringNhap(){
+    public String toStringNhap(){   // trả về chuỗi trong dsNhap
         String s = "";
         for(int i = 0; i < this.dsNhap.getSoLuong(); i++){
-            s += this.dsNhap.getDs()[i].toString3();
+            s += this.dsNhap.getDs()[i].toString3();    //toString3 bên sản phẩm
             s += "So luong nhap : " + this.dsChiTietPhieuNhap[i].getSoLuongChiTietNhap() + "\n";
         }
         return(s);
@@ -136,7 +139,7 @@ public class phieuNhap{
     public double tinhTongGia(){
         double tong = 0;
         for(int i = 0; i < this.dsNhap.getSoLuong(); i++){
-            tong += this.dsNhap.getDs()[i].getGia() * this.dsChiTietPhieuNhap[i].getSoLuongChiTietNhap();
+            tong += this.dsNhap.getDs()[i].getGiaNhapVao() * this.dsChiTietPhieuNhap[i].getSoLuongChiTietNhap();
         }
         return(tong);
     }
