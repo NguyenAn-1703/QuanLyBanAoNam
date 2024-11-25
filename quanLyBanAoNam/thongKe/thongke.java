@@ -11,7 +11,6 @@ public abstract class thongKe {
 
     public thongKe(String namThongKe) {
         this.namThongKe = namThongKe;
-
     }
 
     public abstract void thongKeTong();

@@ -19,9 +19,7 @@ public class DS_HoaDon {
     private int soLuong = 0;
     Scanner sc = new Scanner(System.in);
 
-    public DS_HoaDon(){
-        
-    }
+    public DS_HoaDon(){}
 
     public void them1HoaDon(hoaDon x){       //Nhập hàng 
         hoaDon[] dsnew = Arrays.copyOf(ds, soLuong + 1);

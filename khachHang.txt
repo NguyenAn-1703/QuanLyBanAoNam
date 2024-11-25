@@ -1,11 +1,11 @@
-true#1#0972012012#Nguyen Kha Vy#14000.0
-true#2#0972013013#Nguyen Minh Thu#5140.0
+true#1#0972012012#Nguyen Kha Vy#31500.0
+true#2#0972013013#Nguyen Minh Thu#43140.0
 true#3#0972014014#Ngoc Chau#0.0
 true#4#0972015015#Ngoc Anh#0.0
 true#5#0972016016#Thuy Giang#0.0
 true#6#0972017017#Dao Thi Huynh Nhu#0.0
 true#7#0972018018#Nguyen Pham Thuy Vy#0.0
 true#8#0972019019#Mai Thi Huynh Mai#0.0
-true#9#0972020020#Nguyen Ngoc Han#0.0
+true#9#0972020020#Nguyen Ngoc Han#14600.0
 true#10#0972021021#Kamado Tanjiro#0.0
 true#11#1230987651#e#0.0

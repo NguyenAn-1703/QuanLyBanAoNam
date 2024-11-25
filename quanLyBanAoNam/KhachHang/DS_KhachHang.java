@@ -12,7 +12,6 @@ import quanLyBanAoNam.Validate.Validate;
 import quanLyBanAoNam.keBien.keBien;
 
 public class DS_KhachHang {
-    // private static final String FILE_NAME = "khachHang.txt";
     
     private khachHang[] ds = new khachHang[0];
     private int soLuong = 0;
@@ -144,23 +143,6 @@ public class DS_KhachHang {
         }
     }
 
-    // public void timKiemTheoTen(){
-    //     System.out.println("Vui long nhap ten nhan vien can tim: ");
-    //     String Ten = sc.nextLine();
-    //     boolean found = false;
-
-    //     for (int i = 0; i < soLuong; i++){
-    //         if(ds[i].getTen().equalsIgnoreCase(Ten)){
-    //             System.out.println("Thong tin cua nhan vien ten: " + Ten + ": ");
-    //             ds[i].xuat();
-    //             found = true;
-    //         } 
-    //         if(!found){
-    //             System.out.println("Khong tim thay ten nhan vien can tim");
-    //         }
-    //     }
-    // }
-
     public void xoaKhachHang(){
         System.out.println("Vui long nhap ID khach hang can xoa: ");
         String ID = sc.nextLine();
@@ -262,57 +244,4 @@ public class DS_KhachHang {
             System.out.println("Loi khi ghi file: ");
         }
     }
-
-    // public void updateAccumulatedAmount(String phone, double newAmount) {
-    //     for (Customer customer : customers) {
-    //         if (customer.getPhone().equals(phone)) {
-    //             customer.setAccumulatedAmount(newAmount);
-    //             saveCustomersToFile();
-    //             System.out.println("Cập nhật thành công tiền tích lũy cho khách hàng: " + phone);
-    //             return;
-    //         }
-    //     }
-    //     System.out.println("Không tìm thấy khách hàng với số điện thoại: " + phone);
-    // }
-
-    // public Customer findCustomerByPhone(String phone) {
-    //     for (Customer customer : customers) {
-    //         if (customer.getPhone().equals(phone)) {
-    //             return customer;
-    //         }
-    //     }
-    //     return null;
-    // }
-
-    // public void saveCustomersToFile() {
-    //     try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
-    //         for (Customer customer : customers) {
-    //             writer.write(customer.toString());
-    //             writer.newLine();
-    //         }
-    //         System.out.println("Lưu dữ liệu khách hàng vào file thành công.");
-    //     } catch (IOException e) {
-    //         System.out.println("Đã xảy ra lỗi khi ghi dữ liệu vào file.");
-    //         e.printStackTrace();
-    //     }
-    // }
-
-    // private void loadCustomersFromFile() {
-    //     try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
-    //         String line;
-    //         while ((line = reader.readLine()) != null) {
-    //             String[] data = line.split(",");
-    //             if (data.length == 3) {
-    //                 String phone = data[0];
-    //                 String name = data[1];
-    //                 double accumulatedAmount = Double.parseDouble(data[2]);
-    //                 customers.add(new Customer(phone, name, accumulatedAmount));
-    //             }
-    //         }
-    //         System.out.println("Đọc dữ liệu khách hàng từ file thành công.");
-    //     } catch (IOException e) {
-    //         System.out.println("Đã xảy ra lỗi khi đọc dữ liệu từ file.");
-    //         e.printStackTrace();
-    //     }
-    // }
 }

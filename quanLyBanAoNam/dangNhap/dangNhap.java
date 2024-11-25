@@ -200,29 +200,25 @@ public class dangNhap {
 
     public static boolean chucNangBanHang(){  //trả về true nếu người dùng nhập đúng lựa chọn, ngược lại trả về false
         while(true){
-            MenuADMIN();
+            MenuBanHang();
             String key = sc.nextLine();
             if(key.equals("1")){
-                a.startUp();
-                return(true);
-            }
-            else if(key.equals("2")){
                 hd.banHang();
                 return(true);
             }
-            else if(key.equals("3")){
+            else if(key.equals("2")){
                 kh.startUp();
                 return(true);
             }
-            else if(key.equals("4")){
+            else if(key.equals("3")){
                 tkn.startUp();
                 return(true);
             }
-            else if(key.equals("5")){
+            else if(key.equals("4")){
                 tkb.startUp();
                 return(true);
             }
-            else if(key.equals("6")){
+            else if(key.equals("5")){
                 return(false);
             }
             else{
@@ -233,25 +229,21 @@ public class dangNhap {
 
     public static boolean chucNangNhapHang(){  //trả về true nếu người dùng nhập đúng lựa chọn, ngược lại trả về false
         while(true){
-            MenuBanHang();
+            MenuNhapHang();
             String key = sc.nextLine();
             if(key.equals("1")){
-                a.startUp();
-                return(true);
-            }
-            else if(key.equals("2")){
                 pn.nhapHang();
                 return(true);
             }
-            else if(key.equals("3")){
+            else if(key.equals("2")){
                 tkn.startUp();
                 return(true);
             }
-            else if(key.equals("4")){
+            else if(key.equals("3")){
                 tkb.startUp();
                 return(true);
             }
-            else if(key.equals("5")){
+            else if(key.equals("4")){
                 return(false);
             }
             else{
@@ -284,22 +276,20 @@ public class dangNhap {
     }
 
     public static void MenuBanHang(){
-        System.out.println("---MENU CHUC NANG---");
-        System.out.println("1) Quan Ly San Pham.");     
-        System.out.println("2) Quan Ly Ban Hang. ");
-        System.out.println("3) Quan Ly Khach Hang. ");  
-        System.out.println("4) Thong Ke Nhap Hang.");	
-        System.out.println("5) Thong Ke Doanh Thu.");
-        System.out.println("6) Thoat Chuong Trinh. ");
-    }
-
-    public static void MenuNhapHang(){
-        System.out.println("---MENU CHUC NANG---");
-        System.out.println("1) Quan Ly San Pham.");	
-        System.out.println("2) Quan Ly Nhap Hang.");	
+        System.out.println("---MENU CHUC NANG---");     
+        System.out.println("1) Quan Ly Ban Hang. ");
+        System.out.println("2) Quan Ly Khach Hang. ");  
         System.out.println("3) Thong Ke Nhap Hang.");	
         System.out.println("4) Thong Ke Doanh Thu.");
         System.out.println("5) Thoat Chuong Trinh. ");
+    }
+
+    public static void MenuNhapHang(){
+        System.out.println("---MENU CHUC NANG---");	
+        System.out.println("1) Quan Ly Nhap Hang.");	
+        System.out.println("2) Thong Ke Nhap Hang.");	
+        System.out.println("3) Thong Ke Doanh Thu.");
+        System.out.println("4) Thoat Chuong Trinh. ");
     }
 
 }

@@ -9,7 +9,6 @@ import quanLyBanAoNam.keBien.keBien;
 
 public class thongKeDoanhThu extends thongKe implements thongKeTheoThoiGian{
     private DS_HoaDon dsHoaDon = new DS_HoaDon();
-    private String namBan;
     @SuppressWarnings("deprecation")
     Locale locale = new Locale("en", "EN");
     NumberFormat nF = NumberFormat.getInstance(locale);
@@ -55,8 +54,8 @@ public class thongKeDoanhThu extends thongKe implements thongKeTheoThoiGian{
     public void thongKeTheoThang(){
         while(true){
             System.out.println("Nhap vao nam muon thong ke : ");
-            this.namBan = sc.nextLine();
-            if(Validate.isNam(namBan)){
+            this.namThongKe = sc.nextLine();
+            if(Validate.isNam(this.namThongKe)){
                 break;
             }
             else{
@@ -76,7 +75,7 @@ public class thongKeDoanhThu extends thongKe implements thongKeTheoThoiGian{
         dsHoaDon.docDSHoaDonTuFile();
         for(int i = 0; i < dsHoaDon.getSoLuong(); i++){    //duyệt từng hóa đơn
             String txt[] = dsHoaDon.getDs()[i].getNgayBan().split("-");
-            if(txt[2].equals(this.namBan)){  //xét giống năm thì tăng mảng
+            if(txt[2].equals(this.namThongKe)){  //xét giống năm thì tăng mảng
                 for(int j = 0; j < 12; j++){   //so sánh với từng tháng
                     if(txt[1].equals(Integer.toString(j + 1))){
                         soLuongThang[j]++;
@@ -98,8 +97,8 @@ public class thongKeDoanhThu extends thongKe implements thongKeTheoThoiGian{
     public void thongKeTheoQuy(){
         while(true){
             System.out.println("Nhap vao nam muon thong ke : ");
-            this.namBan = sc.nextLine();
-            if(Validate.isNam(this.namBan)){
+            this.namThongKe = sc.nextLine();
+            if(Validate.isNam(this.namThongKe)){
                 break;
             }
             else{
@@ -112,7 +111,7 @@ public class thongKeDoanhThu extends thongKe implements thongKeTheoThoiGian{
         dsHoaDon.docDSHoaDonTuFile();
         for(int i = 0; i < dsHoaDon.getSoLuong(); i++){ //xét từng hóa đơn 
             String txt[] = dsHoaDon.getDs()[i].getNgayBan().split("-");
-            if(txt[2].equals(this.namBan)){
+            if(txt[2].equals(this.namThongKe)){
                 for(int j = 0; j < 4; j++){ //xét từng quý
                     for(int k = 0; k < 4; k++){ //xét từng tháng trong quý
                         if(txt[1].equals(Integer.toString((j * 3 + 1) + k))){
@@ -136,8 +135,8 @@ public class thongKeDoanhThu extends thongKe implements thongKeTheoThoiGian{
     public void thongKeTheoNam(){
         while(true){
             System.out.println("Nhap vao nam muon thong ke : ");
-            this.namBan = sc.nextLine();
-            if(Validate.isNam(this.namBan)){
+            this.namThongKe = sc.nextLine();
+            if(Validate.isNam(this.namThongKe)){
                 break;
             }
             else{
@@ -150,15 +149,15 @@ public class thongKeDoanhThu extends thongKe implements thongKeTheoThoiGian{
         dsHoaDon.docDSHoaDonTuFile();
         for(int i = 0; i <  this.dsHoaDon.getSoLuong(); i++){   //xét từng hóa đơn
             String txt[] = this.dsHoaDon.getDs()[i].getNgayBan().split("-");
-            if(txt[2].equals(namBan)){
+            if(txt[2].equals(namThongKe)){
                 soLuongNam++;
                 soTienNhapNam += this.dsHoaDon.getDs()[i].getTongGia();
                 doanhThuNam += this.dsHoaDon.getDs()[i].tinhLoiNhuan();
             }
         }
         keBien.keBienNho();
-        System.out.println("So luong hoa don nam " + namBan + " : " + soLuongNam);
-        System.out.println("Tong tien ban nam " + namBan + " : " + nF.format(soTienNhapNam));
-        System.out.println("Tong doanh thu nam " + namBan + " : " + nF.format(doanhThuNam));
+        System.out.println("So luong hoa don nam " + namThongKe + " : " + soLuongNam);
+        System.out.println("Tong tien ban nam " + namThongKe + " : " + nF.format(soTienNhapNam));
+        System.out.println("Tong doanh thu nam " + namThongKe + " : " + nF.format(doanhThuNam));
     }
 }

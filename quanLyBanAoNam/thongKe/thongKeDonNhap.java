@@ -55,11 +55,10 @@ public class thongKeDonNhap extends thongKe implements thongKeTheoThoiGian{
 
     @Override
     public void thongKeTheoThang(){
-        String namNhap;
         while(true){
             System.out.println("Nhap vao nam muon thong ke : ");
-            namNhap = sc.nextLine();
-            if(Validate.isNam(namNhap)){
+            namThongKe = sc.nextLine();
+            if(Validate.isNam(namThongKe)){
                 break;
             }
             else{
@@ -78,7 +77,7 @@ public class thongKeDonNhap extends thongKe implements thongKeTheoThoiGian{
         dsNhap.docDSPhieuNhapTuFile();
         for(int i = 0; i < dsNhap.getSoLuong(); i++){
             String txt[] = dsNhap.getDs()[i].getNgayNhap().split("-");
-            if(txt[2].equals(namNhap)){
+            if(txt[2].equals(namThongKe)){
                 if(txt[1].equals("1")){     //dd/MM/yyyy
                     soLuongThang[0]++;
                     soTienNhapThang[0] += dsNhap.getDs()[i].getTongGia();
@@ -137,13 +136,13 @@ public class thongKeDonNhap extends thongKe implements thongKeTheoThoiGian{
     @Override
     public void thongKeTheoQuy(){
         System.out.println("Nhap vao nam muon thong ke : ");
-        String namNhap = sc.nextLine();
+        namThongKe = sc.nextLine();
         int[] soLuongQuy = new int[4];   //số lượng phiếu nhập trong tháng
         double[] soTienNhapQuy = new double[4];
         dsNhap.docDSPhieuNhapTuFile();
         for(int i = 0; i < dsNhap.getSoLuong(); i++){
             String txt[] = dsNhap.getDs()[i].getNgayNhap().split("-");
-            if(txt[2].equals(namNhap)){
+            if(txt[2].equals(namThongKe)){
                 if(txt[1].equals("1") || txt[1].equals("2") || txt[1].equals("3")){     //dd/MM/yyyy
                     soLuongQuy[0]++;
                     soTienNhapQuy[0] += dsNhap.getDs()[i].getTongGia();
@@ -170,18 +169,18 @@ public class thongKeDonNhap extends thongKe implements thongKeTheoThoiGian{
     @Override
     public void thongKeTheoNam(){
         System.out.println("Nhap vao nam muon thong ke : ");
-        String namNhap = sc.nextLine();
+        namThongKe = sc.nextLine();
         int soLuongNam = 0;
         double soTienNhapNam = 0;
         dsNhap.docDSPhieuNhapTuFile();
         for(phieuNhap i : this.dsNhap.getDs()){
             String txt[] = i.getNgayNhap().split("-");
-            if(txt[2].equals(namNhap)){
+            if(txt[2].equals(namThongKe)){
                 soLuongNam++;
                 soTienNhapNam += i.getTongGia();
             }
         }
-        System.out.println("So luong don nhap nam " + namNhap + " : " + soLuongNam);
-        System.out.println("Tong gia nhap nam : " + namNhap + " : " + nF.format(soTienNhapNam));
+        System.out.println("So luong don nhap nam " + namThongKe + " : " + soLuongNam);
+        System.out.println("Tong gia nhap nam : " + namThongKe + " : " + nF.format(soTienNhapNam));
     }
 }
