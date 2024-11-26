@@ -10,6 +10,7 @@ import quanLyBanAoNam.keBien.keBien;
 import quanLyBanAoNam.nhanVien.DSNV;
 import quanLyBanAoNam.nhanVien.nhanVien;
 import quanLyBanAoNam.sanPham.DS_Ao;
+import quanLyBanAoNam.taiKhoan.taiKhoan;
 
 public class DS_PhieuNhap {
     private phieuNhap[] ds = new phieuNhap[0];
@@ -28,10 +29,10 @@ public class DS_PhieuNhap {
         x.setIDphieuNhap(Integer.toString(soLuong));
     }
 
-    public void them1PhieuNhap(){
+    public void them1PhieuNhap(taiKhoan TaiKhoan){
         this.docDSPhieuNhapTuFile();
         phieuNhap x = new phieuNhap();
-        x.nhapPhieuNhap();
+        x.nhapPhieuNhap(TaiKhoan);
         them1PhieuNhap(x);
         this.ghiDSPhieuNhapVaoFile();
     }
@@ -46,7 +47,7 @@ public class DS_PhieuNhap {
         System.out.println("5) Thoat chuc nang nhap hang.");
     }
 
-    public void nhapHang(){
+    public void nhapHang(taiKhoan TaiKhoan){
         DS_Ao p = new DS_Ao();
         while(true){
             String key;
@@ -56,7 +57,7 @@ public class DS_PhieuNhap {
                 p.xuat();
             }
             else if(key.equals("2")){
-                this.them1PhieuNhap();
+                this.them1PhieuNhap(TaiKhoan);
             }
             else if(key.equals("3")){
                 this.xuat();
@@ -171,6 +172,7 @@ public class DS_PhieuNhap {
             file.close();
         } catch (Exception e) {
             System.out.println("Loi khi mo file ghi \n");
+            System.out.println(e);
         }
 
     }

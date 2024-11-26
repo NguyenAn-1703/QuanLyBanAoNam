@@ -13,7 +13,6 @@ public class thongKeDonNhap extends thongKe implements thongKeTheoThoiGian{
     Locale locale = new Locale("en", "EN");
     NumberFormat nF = NumberFormat.getInstance(locale);
 
-
     @Override
     public void thongKeTong(){
         dsNhap.docDSPhieuNhapTuFile();
@@ -58,7 +57,7 @@ public class thongKeDonNhap extends thongKe implements thongKeTheoThoiGian{
         while(true){
             System.out.println("Nhap vao nam muon thong ke : ");
             namThongKe = sc.nextLine();
-            if(Validate.isNam(namThongKe)){
+            if(Validate.isYear(namThongKe)){
                 break;
             }
             else{

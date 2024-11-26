@@ -1,7 +1,7 @@
-SM#1#Sevently Seven#XL#Trang#257000.0#350000.0#Calvin Klein#Linen#Tay ngan#24#true#Co tru#Nut bam
-SM#2#Sevently Seven#S#Trang#257000.0#350000.0#Calvin Klein#Linen#Tay ngan#38#true#Co tru#Nut bam
-SM#3#Sevently Seven#XL#Den#257000.0#350000.0#Calvin Klein#Linen#Tay ngan#21#true#Co tru#Nut bam
-SM#4#Sevently Seven#S#Den#257000.0#350000.0#Calvin Klein#Linen#Tay ngan#8#true#Co tru#Nut bam
+SM#1#Sevently Seven#XL#Trang#257000.0#350000.0#Calvin Klein#Linen#Tay ngan#8#true#Co tru#Nut bam
+SM#2#Sevently Seven#S#Trang#257000.0#350000.0#Calvin Klein#Linen#Tay ngan#6#true#Co tru#Nut bam
+SM#3#Sevently Seven#XL#Den#257000.0#350000.0#Calvin Klein#Linen#Tay ngan#22#true#Co tru#Nut bam
+SM#4#Sevently Seven#S#Den#257000.0#350000.0#Calvin Klein#Linen#Tay ngan#10#true#Co tru#Nut bam
 TT#5#Nike#XL#Xanh#554000.0#600000.0#Nike#Cotton#Tay ngan#8#true#Argentina#10#Bong da
 TT#6#Nike#XL#Xanh#554000.0#600000.0#Nike#Cotton#Tay dai#8#true#Argentina#10#Bong da
 TT#7#Nike#XL#Do#625000.0#775000.0#Nike#Cotton#Tay ngan#5#true#Portugal#7#Bong da

@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 import quanLyBanAoNam.keBien.keBien;
 import quanLyBanAoNam.sanPham.DS_Ao;
-import quanLyBanAoNam.nhanVien.DSNV;
+import quanLyBanAoNam.taiKhoan.taiKhoan;
 import quanLyBanAoNam.nhanVien.nhanVien;
 
 public class phieuNhap{
@@ -88,25 +88,11 @@ public class phieuNhap{
         soLuongChiTiet++;
     }
 
-    public void nhapPhieuNhap(){ 
+    public void nhapPhieuNhap(taiKhoan TaiKhoan){ 
         System.out.println("Ngay nhap: " + ngayNhap);
 
-        DSNV q = new DSNV();
-        q.docDSNVTuFile();
-        while(true){
-            String key;
-            System.out.print("Nhap ID nhan vien: ");
-            key = sc.nextLine();
-            String ID = key;
-            if(q.getNhanVienByID(ID) != null){
-                this.NhanVien = q.getNhanVienByID(ID);
-                break;
-            }
-            else{
-                System.out.println("Khong co nhan vien ID : " + ID + ", vui long nhap lai");
-            }
-        }
-
+        this.NhanVien = TaiKhoan.getNhanVien();
+        System.out.println("Nhan vien nhap : " + TaiKhoan.getNhanVien().getTen());
         DS_Ao p = new DS_Ao();
         p.docDSTuFile();
         while(true){    // nhập 1 danh sách các áo có sẵn, nhấn y để kết thúc

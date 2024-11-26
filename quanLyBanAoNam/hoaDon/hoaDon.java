@@ -12,9 +12,9 @@ import quanLyBanAoNam.KhachHang.khachHang;
 import quanLyBanAoNam.KhachHang.khuyenMai;
 import quanLyBanAoNam.Validate.Validate;
 import quanLyBanAoNam.keBien.keBien;
-import quanLyBanAoNam.nhanVien.DSNV;
 import quanLyBanAoNam.nhanVien.nhanVien;
 import quanLyBanAoNam.sanPham.DS_Ao;
+import quanLyBanAoNam.taiKhoan.taiKhoan;
 
 public class hoaDon {
     private String IDhoaDon;
@@ -98,24 +98,11 @@ public class hoaDon {
         soLuongChiTiet++;
     }
 
-    public void nhapHoaDon(){
+    public void nhapHoaDon(taiKhoan TaiKhoan){   
         System.out.println("Ngay ban : " + this.ngayBan);
 
-        DSNV q = new DSNV();
-        q.docDSNVTuFile();
-        while(true){    //kiểm tra nhân viên
-            String key;
-            System.out.print("Nhap ID nhan vien: ");
-            key = sc.nextLine();
-            String ID = key;
-            if(q.getNhanVienByID(ID) != null){
-                this.NhanVien = q.getNhanVienByID(ID);
-                break;
-            }
-            else{
-                System.out.println("Khong co nhan vien ID : " + ID + ", vui long nhap lai");
-            }
-        }
+        this.NhanVien = TaiKhoan.getNhanVien(); //Nhân viên bán là nhân viên đang đăng nhập
+        System.out.println("Nhan vien ban : " + this.NhanVien.getTen());
 
         DS_KhachHang r = new DS_KhachHang();
         r.docDSKHTuFile();
@@ -149,31 +136,25 @@ public class hoaDon {
                 while(true){
                     System.out.print("Vui long nhap vao so luong muon ban : ");
                     String m = sc.nextLine();    // kiểm tra số lương bán
-                    if(!m.isEmpty() && Validate.isNumber(m) &&
-                     Integer.parseInt(m) <= p.getAoByID(ID).getSoLuongSP()){
-                        n = Integer.parseInt(m);    //số lượng bán
-                        break;
+                    if(!m.isEmpty() && Validate.isNumber(m)){
+                        if(Integer.parseInt(m) >= p.getAoByID(ID).getSoLuongSP()){
+                            System.out.println("San pham ton kho khong du !!!");
+                        }
+                        else{
+                            n = Integer.parseInt(m);    //số lượng bán
+                            break;
+                        }
                     }
                     else{
-                        System.out.println("So luong nhap khong duoc de trong, phai nho hon so luong ton kho !!!");
+                        System.out.println("So luong nhap khong duoc de trong");
                     }
                 }
 
-                //thêm chi tiết hóa đơn cho dsChiTietHoaDon
-                chiTietHoaDon x = new chiTietHoaDon(ID, n);
+                chiTietHoaDon x = new chiTietHoaDon(ID, n);// thêm chi tiết hóa đơn cho dsChiTietHoaDon
                 them1ChiTietBan(x);
-                //thêm chi tiết hóa đơn cho dsChiTietHoaDon
                 int soLuongNew;
-                while(true){    //kiểm tra số lượng tồn kho đủ bán
-                    if(p.getAoByID(ID).getSoLuongSP() - n >= 0){
-                        soLuongNew = p.getAoByID(ID).getSoLuongSP() - n;    // trừ số lượng trong danh sách tồn kho
-                        break;
-                    }
-                    else{
-                        System.out.println("San pham ton kho khong du !!!");
-                    }
-                }
 
+                soLuongNew = p.getAoByID(ID).getSoLuongSP() - n;    // trừ số lượng trong danh sách tồn kho
                 p.getAoByID(ID).setSoLuongSP(soLuongNew);
                 p.ghiDSVaoFile();
             }
@@ -291,7 +272,5 @@ public class hoaDon {
 
     public void setDsBan(DS_Ao dsBan) {
         this.dsBan = dsBan;
-    }
-
-    
+    } 
 }

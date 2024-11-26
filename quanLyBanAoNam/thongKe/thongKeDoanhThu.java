@@ -55,7 +55,7 @@ public class thongKeDoanhThu extends thongKe implements thongKeTheoThoiGian{
         while(true){
             System.out.println("Nhap vao nam muon thong ke : ");
             this.namThongKe = sc.nextLine();
-            if(Validate.isNam(this.namThongKe)){
+            if(Validate.isYear(this.namThongKe)){
                 break;
             }
             else{
@@ -98,7 +98,7 @@ public class thongKeDoanhThu extends thongKe implements thongKeTheoThoiGian{
         while(true){
             System.out.println("Nhap vao nam muon thong ke : ");
             this.namThongKe = sc.nextLine();
-            if(Validate.isNam(this.namThongKe)){
+            if(Validate.isYear(this.namThongKe)){
                 break;
             }
             else{
@@ -136,7 +136,7 @@ public class thongKeDoanhThu extends thongKe implements thongKeTheoThoiGian{
         while(true){
             System.out.println("Nhap vao nam muon thong ke : ");
             this.namThongKe = sc.nextLine();
-            if(Validate.isNam(this.namThongKe)){
+            if(Validate.isYear(this.namThongKe)){
                 break;
             }
             else{

@@ -13,6 +13,7 @@ import quanLyBanAoNam.keBien.keBien;
 import quanLyBanAoNam.nhanVien.DSNV;
 import quanLyBanAoNam.nhanVien.nhanVien;
 import quanLyBanAoNam.sanPham.DS_Ao;
+import quanLyBanAoNam.taiKhoan.taiKhoan;
 
 public class DS_HoaDon {
     private hoaDon[] ds = new hoaDon[0];
@@ -29,10 +30,10 @@ public class DS_HoaDon {
         x.setIDHoaDon(Integer.toString(soLuong));
     }
 
-    public void them1HoaDon(){
+    public void them1HoaDon(taiKhoan TaiKhoan){
         this.docDSHoaDonTuFile();
         hoaDon x = new hoaDon();
-        x.nhapHoaDon();
+        x.nhapHoaDon(TaiKhoan);
         them1HoaDon(x);
         this.ghiDSHoaDonVaoFile();
     }
@@ -47,7 +48,7 @@ public class DS_HoaDon {
         System.out.println("5) Thoat chuc nang ban hang.");
     }
 
-    public void banHang(){
+    public void banHang(taiKhoan TaiKhoan){
         DS_Ao p = new DS_Ao();
         while(true){
             String key;
@@ -57,7 +58,7 @@ public class DS_HoaDon {
                 p.xuat();
             }
             else if(key.equals("2")){
-                this.them1HoaDon();
+                this.them1HoaDon(TaiKhoan);
             }
             else if(key.equals("3")){
                 this.xuat();

@@ -13,6 +13,7 @@ import quanLyBanAoNam.thongKe.thongKeDoanhThu;
 import quanLyBanAoNam.thongKe.thongKeDonNhap;
 
 public class dangNhap {
+    private static taiKhoan TaiKhoan;
 	public static DS_PhieuNhap pn = new DS_PhieuNhap();
 	public static DS_Ao a = new DS_Ao();
 	public static DSNV nv = new DSNV();
@@ -27,7 +28,7 @@ public class dangNhap {
 
     }
 
-    public static taiKhoan dangNhapTaiKhoan(){	// trả về tài khoản của nhân viên đăng nhập, người dùng nhấn x trả về null
+    public static taiKhoan dangNhapTaiKhoan(){	//trả về true nếu dùng chọn khác lựa chọn thoát chương trình, ngược lại trả về false
         DS_TaiKhoan p = new DS_TaiKhoan();
 		p.docDSTaiKhoanTuFile();
 		while(true){		//  nhấn x để thoát chương trình
@@ -74,7 +75,7 @@ public class dangNhap {
     public static void startUp(){
         while(true){
             System.out.println("DANG NHAP");
-            taiKhoan TaiKhoan = dangNhapTaiKhoan();
+            TaiKhoan = dangNhapTaiKhoan();
             if(TaiKhoan == null){
                 return;
             }
@@ -99,7 +100,7 @@ public class dangNhap {
     
                 else if(TaiKhoan.getNhanVien().getQuyen().equals("NVNH")){
                     while(true){
-                        if(chucNangNhapHang() == false){
+                        if(chucNangNhapHang(TaiKhoan) == false){
                             System.out.println("Da thoat chuong trinh");
                             break;
                         }
@@ -120,7 +121,7 @@ public class dangNhap {
         }
     }
 
-    public static boolean chucNangADMIN(){  //trả về true nếu người dùng nhập đúng lựa chọn, ngược lại trả về false
+    public static boolean chucNangADMIN(){  //trả về true nếu dùng chọn khác lựa chọn thoát chương trình, ngược lại trả về false
         while(true){
             MenuADMIN();
             String key = sc.nextLine();
@@ -129,7 +130,7 @@ public class dangNhap {
                 return(true);
             }
             else if(key.equals("2")){
-                pn.nhapHang();
+                pn.nhapHang(TaiKhoan);
                 return(true);
             }
             else if(key.equals("3")){
@@ -137,7 +138,7 @@ public class dangNhap {
                 return(true);
             }
             else if(key.equals("4")){
-                hd.banHang();
+                hd.banHang(TaiKhoan);
                 return(true);
             }
             else if(key.equals("5")){
@@ -165,7 +166,7 @@ public class dangNhap {
         }
     }
 
-    public static boolean chucNangQuanLy(){  //trả về true nếu người dùng nhập đúng lựa chọn, ngược lại trả về false
+    public static boolean chucNangQuanLy(){  //trả về true nếu dùng chọn khác lựa chọn thoát chương trình, ngược lại trả về false
         while(true){
             MenuQuanLy();
             String key = sc.nextLine();
@@ -198,12 +199,12 @@ public class dangNhap {
         }
     }
 
-    public static boolean chucNangBanHang(){  //trả về true nếu người dùng nhập đúng lựa chọn, ngược lại trả về false
+    public static boolean chucNangBanHang(){  //trả về true nếu dùng chọn khác lựa chọn thoát chương trình, ngược lại trả về false
         while(true){
             MenuBanHang();
             String key = sc.nextLine();
             if(key.equals("1")){
-                hd.banHang();
+                hd.banHang(TaiKhoan);
                 return(true);
             }
             else if(key.equals("2")){
@@ -227,12 +228,12 @@ public class dangNhap {
         }
     }
 
-    public static boolean chucNangNhapHang(){  //trả về true nếu người dùng nhập đúng lựa chọn, ngược lại trả về false
+    public static boolean chucNangNhapHang(taiKhoan TaiKhoan){  //trả về true nếu dùng chọn khác lựa chọn thoát chương trình, ngược lại trả về false
         while(true){
             MenuNhapHang();
             String key = sc.nextLine();
             if(key.equals("1")){
-                pn.nhapHang();
+                pn.nhapHang(TaiKhoan);
                 return(true);
             }
             else if(key.equals("2")){
