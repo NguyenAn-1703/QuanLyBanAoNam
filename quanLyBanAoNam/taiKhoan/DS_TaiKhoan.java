@@ -11,8 +11,8 @@ import quanLyBanAoNam.nhanVien.DSNV;
 import quanLyBanAoNam.nhanVien.nhanVien;
 
 public class DS_TaiKhoan {
-    taiKhoan[] ds = new taiKhoan[0];
-    int soLuong = 0;
+    private taiKhoan[] ds = new taiKhoan[0];
+    private int soLuong = 0;
     public static Scanner sc = new Scanner(System.in);
 
     public DS_TaiKhoan(taiKhoan[] ds, int soLuong) {

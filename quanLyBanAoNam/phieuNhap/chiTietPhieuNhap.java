@@ -3,6 +3,8 @@ package quanLyBanAoNam.phieuNhap;
 public class chiTietPhieuNhap {
     private String idChiTietNhap;
     private int soLuongChiTietNhap;
+
+    public chiTietPhieuNhap(){}
     
     public chiTietPhieuNhap(String idChiTietNhap, int soLuongChiTietNhap) {
         this.idChiTietNhap = idChiTietNhap;

@@ -13,7 +13,7 @@ public class thongKeSanPham extends thongKe{
     private DS_PhieuNhap dsPhieuNhap = new DS_PhieuNhap();
     private DS_HoaDon dsHoaDon = new DS_HoaDon();
 
-    public void Menu(){
+    public static void Menu(){
         System.out.println("Vui long nhap lua chon :");
         System.out.println("1) Thong ke ao ban theo thang. ");
         System.out.println("2) Thong ke ao nhap theo thang. ");
@@ -27,7 +27,7 @@ public class thongKeSanPham extends thongKe{
     public void startUp(){
         thongKeTong();
         while(true){
-            this.Menu();
+            Menu();
             String key = sc.nextLine();
             if(key.equals("1")){
                 this.thongKeBanTheoThang();

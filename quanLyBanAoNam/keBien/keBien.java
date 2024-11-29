@@ -16,11 +16,9 @@ public class keBien {
     public static void keBienNhanVien(){
         System.out.println("<<--------------------------Nhan Vien-------------------------->>");
     }
-
     public static String ke2(){
         return("<<--------------------------<<>>-------------------------->> \n");
     }
-
     public static String ke2Nho(){
         return("------------------------------------------------------------ \n");
     }

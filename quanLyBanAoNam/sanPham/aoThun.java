@@ -74,6 +74,11 @@ public class aoThun extends ao {
 	public String toString3(){
 		return(super.toString3() + " kieu co ao : " + this.kieuCoAo + "\n");
 	}
+
+	@Override
+	public String toString4(){
+		return(super.toString4() + " kieu co ao : " + this.kieuCoAo + "\n");
+	}
 	
 	public void xuat() {
 		System.out.println(this.toString());

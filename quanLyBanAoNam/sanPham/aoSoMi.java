@@ -97,6 +97,11 @@ public class aoSoMi extends ao{
 	public String toString3(){
 		return(super.toString3() + " kieu co ao : " + this.kieuCoAo + "\n kieu nut ao : " + this.kieuNutAo + "\n");
 	}
+
+	@Override
+	public String toString4(){
+		return(super.toString4() + " kieu co ao : " + this.kieuCoAo + "\n kieu nut ao : " + this.kieuNutAo + "\n");
+	}
 	
 	public void xuat() {
 		System.out.println(this.toString());

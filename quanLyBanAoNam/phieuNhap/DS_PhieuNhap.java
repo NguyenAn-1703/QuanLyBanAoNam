@@ -21,6 +21,11 @@ public class DS_PhieuNhap {
         
     }
 
+    public DS_PhieuNhap(phieuNhap[] ds, int soLuong) {
+        this.ds = ds;
+        this.soLuong = soLuong;
+    }
+
     public void them1PhieuNhap(phieuNhap x){       //Nhập hàng 
         phieuNhap[] dsnew = Arrays.copyOf(ds, soLuong + 1);
         dsnew[soLuong] = x;

@@ -3,6 +3,8 @@ package quanLyBanAoNam.hoaDon;
 public class chiTietHoaDon {
     private String idChiTietBan;
     private int soLuongChiTietBan;
+
+    public chiTietHoaDon(){}
     
     public chiTietHoaDon(String idChiTietBan, int soLuongChiTietBan) {
         this.idChiTietBan = idChiTietBan;

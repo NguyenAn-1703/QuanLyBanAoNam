@@ -14,7 +14,7 @@ import quanLyBanAoNam.nhanVien.nhanVien;
 
 public class phieuNhap{
     private String IDphieuNhap;
-    SimpleDateFormat dF = new SimpleDateFormat("dd-MM-yyyy");
+    public static SimpleDateFormat dF = new SimpleDateFormat("dd-MM-yyyy");
     private String ngayNhap = dF.format(new Date());
     private nhanVien NhanVien;
     private chiTietPhieuNhap[] dsChiTietPhieuNhap = new chiTietPhieuNhap[0];

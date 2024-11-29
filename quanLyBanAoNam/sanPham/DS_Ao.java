@@ -15,6 +15,13 @@ public class DS_Ao {
 	public static Scanner sc = new Scanner(System.in);
 	//làm theo file yêu cầu đồ án
 
+	public DS_Ao(ao[] ds, int soLuong) {
+		this.ds = ds;
+		this.soLuong = soLuong;
+	}
+
+	public DS_Ao(){}
+
 	public static void MenuChinh(){
 		keBien.keBienAo();
 		System.out.println("Vui long nhap lua chon.");

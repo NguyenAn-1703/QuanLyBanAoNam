@@ -22,6 +22,11 @@ public class DS_HoaDon {
 
     public DS_HoaDon(){}
 
+    public DS_HoaDon(hoaDon[] ds, int soLuong) {
+        this.ds = ds;
+        this.soLuong = soLuong;
+    }
+
     public void them1HoaDon(hoaDon x){       //Nhập hàng 
         hoaDon[] dsnew = Arrays.copyOf(ds, soLuong + 1);
         dsnew[soLuong] = x;
