@@ -13,7 +13,7 @@ import quanLyBanAoNam.nhanVien.nhanVien;
 public class DS_TaiKhoan {
     taiKhoan[] ds = new taiKhoan[0];
     int soLuong = 0;
-    Scanner sc = new Scanner(System.in);
+    public static Scanner sc = new Scanner(System.in);
 
     public DS_TaiKhoan(taiKhoan[] ds, int soLuong) {
         this.ds = ds;

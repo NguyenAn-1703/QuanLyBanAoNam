@@ -10,7 +10,7 @@ import java.io.*;
 public class DSNV {
     private nhanVien[] ds = new nhanVien[0];
     private int soLuong = 0;
-    Scanner sc = new Scanner(System.in);
+    public static Scanner sc = new Scanner(System.in);
 
     public DSNV(){
         

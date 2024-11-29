@@ -15,7 +15,7 @@ import quanLyBanAoNam.taiKhoan.taiKhoan;
 public class DS_PhieuNhap {
     private phieuNhap[] ds = new phieuNhap[0];
     private int soLuong = 0;
-    Scanner sc = new Scanner(System.in);
+    public static Scanner sc = new Scanner(System.in);
 
     public DS_PhieuNhap(){
         

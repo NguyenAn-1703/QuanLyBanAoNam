@@ -10,7 +10,7 @@ public class khachHang {
     private String sdt;
     private String ten;
     private double tienTichLuy = 0;
-    Scanner sc = new Scanner(System.in);
+    public static Scanner sc = new Scanner(System.in);
 
     // Constructor
     public khachHang(){

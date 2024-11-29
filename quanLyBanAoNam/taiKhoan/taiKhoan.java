@@ -10,7 +10,7 @@ public class taiKhoan {
     private nhanVien NhanVien;
     private String tenDangNhap;
     private String matKhau;     
-    Scanner sc = new Scanner(System.in);
+    public static Scanner sc = new Scanner(System.in);
 
     public taiKhoan(){
 

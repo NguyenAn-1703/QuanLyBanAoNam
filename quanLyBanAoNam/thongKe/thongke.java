@@ -5,7 +5,7 @@ import java.util.Scanner;
 public abstract class thongKe {
     protected String namThongKe;
 
-    Scanner sc = new Scanner(System.in);
+    public static Scanner sc = new Scanner(System.in);
 
     public thongKe(){}
 

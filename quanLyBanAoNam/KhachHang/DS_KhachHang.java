@@ -15,7 +15,7 @@ public class DS_KhachHang {
     
     private khachHang[] ds = new khachHang[0];
     private int soLuong = 0;
-    Scanner sc = new Scanner(System.in);
+    public static Scanner sc = new Scanner(System.in);
 
     public DS_KhachHang(){
         

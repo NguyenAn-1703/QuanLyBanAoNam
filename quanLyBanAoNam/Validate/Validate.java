@@ -64,4 +64,27 @@ public class Validate {
             return(false);
         }
     }
+
+    public static boolean ngayLe(String ngay){
+        String[] txt = ngay.split("-");
+        if((txt[0] + "-" + txt[1]).equals("20-11")){
+            return(true);
+        }
+        else if((txt[0] + "-" + txt[1]).equals("11-11")){
+            return(true);
+        }
+        else if((txt[0] + "-" + txt[1]).equals("21-11")){
+            return(true);
+        }
+        else if((txt[0] + "-" + txt[1]).equals("20-10")){
+            return(true);
+        }
+        else if((txt[0] + "-" + txt[1]).equals("1-1")){
+            return(true);
+        }
+        else if((txt[0] + "-" + txt[1]).equals("30-11")){    //cô có test phần giảm giá cô sửa ngày thành ngày hôm nay giúp tụi iem nhaa cô
+            return(true);                                            // thank iu so muchh <333
+        }
+        return(false);
+    }
 }

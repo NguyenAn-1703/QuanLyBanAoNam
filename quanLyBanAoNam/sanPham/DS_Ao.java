@@ -25,8 +25,9 @@ public class DS_Ao {
 		System.out.println("5) Xoa 1 ao. ");
 		System.out.println("6) Sua thong tin ao. ");
 		System.out.println("7) Tim kiem theo ID ao.");
-		System.out.println("8) Thong ke ao ton kho.");
-		System.out.println("9) Thoat chuc nang.");
+		System.out.println("8) Tim kiem theo ten ao.");
+		System.out.println("9) Thong ke ao ton kho.");
+		System.out.println("10) Thoat chuc nang.");
 		keBien.ke();
 	}
 
@@ -50,16 +51,19 @@ public class DS_Ao {
 			else if(key.equals("5")){
 				this.xoa1Ao();
 			}
-			else if(key.equals("6")){	//Tim kiem theo ID
+			else if(key.equals("6")){	
 				this.suaAo();
 			}
 			else if(key.equals("7")){	//Tim kiem theo ID
 				this.timKiemTheoID();
 			}
-			else if(key.equals("8")){	//Thong ke so luong
+			else if(key.equals("8")){	//Tim kiem theo ten
+				this.timKiemTheoTen();
+			}
+			else if(key.equals("9")){	//Thong ke so luong
 				this.thongKeAo();
 			}
-			else if(key.equals("9")){
+			else if(key.equals("10")){
 				keBien.ke();
 				System.out.println("Da thoat chuc nang.");
 				break;
@@ -142,7 +146,7 @@ public class DS_Ao {
 		System.out.println("3) Ao Thun.");
 	}
 
-	public void xoa1Ao(){
+	public void xoa1Ao(){			//yêu cầu 2e
 		System.out.println("Vui long nhap vao id ao muon xoa : ");
 		String ID = sc.nextLine();
 		ao x = getAoByID(ID);
@@ -160,7 +164,7 @@ public class DS_Ao {
 		}
 	}
 
-	public void suaAo(){			
+	public void suaAo(){			// yêu cầu 2d
 		System.out.println("Vui long nhap vao id ao muon sua : ");
 		String ID = sc.nextLine();
 		ao x = getAoByID(ID);
@@ -187,7 +191,7 @@ public class DS_Ao {
 		}
 	}
 	
-	public void timKiemTheoID(){	//Yêu cầu 2f) - còn thiếu khóa tìm kiếm **
+	public void timKiemTheoID(){	//Yêu cầu 2f
 		docDSTuFile();
 		System.out.println("Vui long nhap vao id ao can tim : ");
 		String ID = sc.nextLine();
@@ -215,20 +219,24 @@ public class DS_Ao {
 		return(null);
 	}
 
-	// public void timKiemTheoTen(String ten){	// từ từ sửa
-	// 	boolean timThay = false;
-	// 	for (int i = 0; i < soLuong; i++){
-	// 		if (ds[i].getTen().equalsIgnoreCase(ten)){
-	// 			ds[i].xuat();
-	// 			timThay = true;
-	// 		}
-	// 	}
-	// 	if (!timThay){
-	// 		System.out.println("Khong tim thay ao voi ten: " + ten);
-	// 	}
-	// }
+	public void timKiemTheoTen(){	//tìm kiếm từ chính xác đến gần đúng 2f
+		docDSTuFile();
+		System.out.println("Vui long nhap ten ao can tim");
+		String ten = sc.nextLine();
+		ten.toLowerCase();
+		for(int i = 0; i < soLuong; i++){
+			if(ds[i].getTen().toLowerCase().equals(ten)){
+				ds[i].xuat();
+			}
+		}
+		for(int i = 0; i < soLuong; i++){
+			if(ds[i].getTen().toLowerCase().indexOf(ten) != -1){
+				ds[i].xuat();
+			}
+		}
+	}
 
-	public void thongKeAo(){		//yêu cầu 2g)
+	public void thongKeAo(){		//yêu cầu 2g
 		docDSTuFile();
 		int soLuongAoSoMi, soLuongAoTheThao, soLuongAoThun, tongSoAo;
 			soLuongAoSoMi = soLuongAoTheThao = soLuongAoThun = tongSoAo = 0;

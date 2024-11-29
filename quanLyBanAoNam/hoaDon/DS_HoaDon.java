@@ -18,7 +18,7 @@ import quanLyBanAoNam.taiKhoan.taiKhoan;
 public class DS_HoaDon {
     private hoaDon[] ds = new hoaDon[0];
     private int soLuong = 0;
-    Scanner sc = new Scanner(System.in);
+    public static Scanner sc = new Scanner(System.in);
 
     public DS_HoaDon(){}
 
@@ -44,8 +44,7 @@ public class DS_HoaDon {
         System.out.println("1) Xuat danh sach san pham. "); // làm thêm phần xuất danh sách nhân viên
         System.out.println("2) Tao hoa don moi. ");
         System.out.println("3) Xuat danh sach hoa don.");
-        System.out.println("4) Xoa hoa don. ");
-        System.out.println("5) Thoat chuc nang ban hang.");
+        System.out.println("4) Thoat chuc nang ban hang.");
     }
 
     public void banHang(taiKhoan TaiKhoan){
@@ -64,42 +63,38 @@ public class DS_HoaDon {
                 this.xuat();
             }
             else if(key.equals("4")){
-                this.xoa();
-            }
-            else if(key.equals("5")){
                 break;
             }
             else{
                 System.out.println("Du lieu nhap khong hop le !!!");
             }
         }
-    }                                   //Nhập hàng
+    }                                   
 
-    public void xoa(){
-        while(true){
-            System.out.println("Vui long nhap vao id hoa don muon xoa : ");
-            String ID = sc.nextLine();
-            if(this.getHoaDonByID(ID) != null){
-                if(!this.getHoaDonByID(ID).getTrangThai()){
-                    System.out.println("Hoa don da duoc xoa");
-                    return; 
-                }
-                System.out.println("Ban co chac chan muon huy hoa don ? (y/n) ");
-                String key = sc.nextLine();
-                if(key.equals("y")){
-                    getHoaDonByID(ID).setTrangThai(false);
-                    ghiDSHoaDonVaoFile();
-                    System.out.println("Da xoa hoa don ID : " + ID);
-                    break;
-                }
-                break;
-            }
-            else{
-                return;
-            }
-        }
-        
-    }
+    // public void xoa(){   //bỏ chức năng này
+    //     while(true){
+    //         System.out.println("Vui long nhap vao id hoa don muon xoa : ");
+    //         String ID = sc.nextLine();
+    //         if(this.getHoaDonByID(ID) != null){
+    //             if(!this.getHoaDonByID(ID).getTrangThai()){
+    //                 System.out.println("Hoa don da duoc xoa");
+    //                 return; 
+    //             }
+    //             System.out.println("Ban co chac chan muon huy hoa don ? (y/n) ");
+    //             String key = sc.nextLine();
+    //             if(key.equals("y")){
+    //                 getHoaDonByID(ID).setTrangThai(false);
+    //                 ghiDSHoaDonVaoFile();
+    //                 System.out.println("Da xoa hoa don ID : " + ID);
+    //                 break;
+    //             }
+    //             break;
+    //         }
+    //         else{
+    //             return;
+    //         }
+    //     } 
+    // }
 
     @Override
     public String toString(){

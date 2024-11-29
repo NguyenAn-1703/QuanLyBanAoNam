@@ -22,8 +22,8 @@ public class ao {
 	protected boolean trangThai = true;
 	public Scanner sc = new Scanner(System.in);
 	@SuppressWarnings("deprecation")
-    Locale locale = new Locale("en", "EN");
-    NumberFormat nF = NumberFormat.getInstance(locale);
+    public static Locale locale = new Locale("en", "EN");
+    public static NumberFormat nF = NumberFormat.getInstance(locale);
 	
 	public ao() {};
 	public ao(String type, String id, String ten, String size, String mau, float giaNhapVao, float giaBanRa,

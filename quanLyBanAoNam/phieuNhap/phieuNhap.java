@@ -24,8 +24,8 @@ public class phieuNhap{
     private DS_Ao dsNhap = new DS_Ao();
     public static Scanner sc = new Scanner(System.in);
     @SuppressWarnings("deprecation")
-    Locale locale = new Locale("en", "EN");
-    NumberFormat nF = NumberFormat.getInstance(locale);
+    public static Locale locale = new Locale("en", "EN");
+    public static NumberFormat nF = NumberFormat.getInstance(locale);
     
     public phieuNhap(){};
 
@@ -189,6 +189,14 @@ public class phieuNhap{
 
     public void setTongGia(double tongGia) {
         this.tongGia = tongGia;
+    }
+
+    public int getSoLuongChiTiet() {
+        return soLuongChiTiet;
+    }
+
+    public void setSoLuongChiTiet(int soLuongChiTiet) {
+        this.soLuongChiTiet = soLuongChiTiet;
     }
 
     

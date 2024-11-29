@@ -10,8 +10,8 @@ import quanLyBanAoNam.keBien.keBien;
 public class thongKeDoanhThu extends thongKe implements thongKeTheoThoiGian{
     private DS_HoaDon dsHoaDon = new DS_HoaDon();
     @SuppressWarnings("deprecation")
-    Locale locale = new Locale("en", "EN");
-    NumberFormat nF = NumberFormat.getInstance(locale);
+    public static Locale locale = new Locale("en", "EN");
+    public static NumberFormat nF = NumberFormat.getInstance(locale);
 
 
     @Override
@@ -29,6 +29,7 @@ public class thongKeDoanhThu extends thongKe implements thongKeTheoThoiGian{
     }
 
     public void startUp(){
+        thongKeTong();
         while(true){
             this.Menu();
             String key = sc.nextLine();
@@ -66,12 +67,6 @@ public class thongKeDoanhThu extends thongKe implements thongKeTheoThoiGian{
         int[] soLuongThang = new int[12];   //số lượng hóa đơn trong tháng
         double[] soTienBanThang = new double[12];
         double[] doanhThuThang = new double[12];
-        for(int i = 0; i < 12; i++){
-            soLuongThang[i] = 0;
-        }
-        for(int i = 0; i < 12; i++){
-            soTienBanThang[i] = 0;
-        }
         dsHoaDon.docDSHoaDonTuFile();
         for(int i = 0; i < dsHoaDon.getSoLuong(); i++){    //duyệt từng hóa đơn
             String txt[] = dsHoaDon.getDs()[i].getNgayBan().split("-");
@@ -106,8 +101,9 @@ public class thongKeDoanhThu extends thongKe implements thongKeTheoThoiGian{
             }
         }
         int[] soLuongQuy = new int[4];   //số lượng hóa đơn trong quý
-        double[] soTienNhapQuy = new double[4];
+        double[] soTienBanQuy = new double[4];
         double[] doanhThuQuy = new double[4];
+
         dsHoaDon.docDSHoaDonTuFile();
         for(int i = 0; i < dsHoaDon.getSoLuong(); i++){ //xét từng hóa đơn 
             String txt[] = dsHoaDon.getDs()[i].getNgayBan().split("-");
@@ -116,7 +112,7 @@ public class thongKeDoanhThu extends thongKe implements thongKeTheoThoiGian{
                     for(int k = 0; k < 4; k++){ //xét từng tháng trong quý
                         if(txt[1].equals(Integer.toString((j * 3 + 1) + k))){
                             soLuongQuy[j]++;
-                            soTienNhapQuy[j] += dsHoaDon.getDs()[i].getTongGia();
+                            soTienBanQuy[j] += dsHoaDon.getDs()[i].getTongGia();
                             doanhThuQuy[j] += dsHoaDon.getDs()[i].tinhLoiNhuan();
                             break;
                         }
@@ -127,7 +123,7 @@ public class thongKeDoanhThu extends thongKe implements thongKeTheoThoiGian{
         for(int i = 0; i < 4; i++){
             keBien.keBienNho();
             System.out.println("So luong hoa don quy " + (i + 1) + " : " + soLuongQuy[i]);
-            System.out.println("Tong tien ban quy " + (i + 1) + " : " + nF.format(soTienNhapQuy[i]));
+            System.out.println("Tong tien ban quy " + (i + 1) + " : " + nF.format(soTienBanQuy[i]));
             System.out.println("Tong doanh thu quy " + (i + 1) + " : " + nF.format(doanhThuQuy[i]));
         }
     }

@@ -7,8 +7,8 @@ public class khuyenMai {
     private static final double soTienToiThieuKM = 1000.0;
     private static final double tiLeTang = 0.01; // 1% của hóa đơn
     @SuppressWarnings("deprecation")
-    static Locale locale = new Locale("en", "EN");
-    static NumberFormat nF = NumberFormat.getInstance(locale);
+    public static Locale locale = new Locale("en", "EN");
+    public static NumberFormat nF = NumberFormat.getInstance(locale);
 
     public static double apDungKhuyenMai(double tienTichLuy, double tongGia) {  //trả về giá hóa đơn mới
         double giaMoi = tongGia;

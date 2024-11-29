@@ -11,6 +11,7 @@ import quanLyBanAoNam.taiKhoan.DS_TaiKhoan;
 import quanLyBanAoNam.taiKhoan.taiKhoan;
 import quanLyBanAoNam.thongKe.thongKeDoanhThu;
 import quanLyBanAoNam.thongKe.thongKeDonNhap;
+import quanLyBanAoNam.thongKe.thongKeSanPham;
 
 public class dangNhap {
     private static taiKhoan TaiKhoan;
@@ -22,6 +23,7 @@ public class dangNhap {
 	public static DS_TaiKhoan tk = new DS_TaiKhoan();
 	public static thongKeDonNhap tkn = new thongKeDonNhap();
 	public static thongKeDoanhThu tkb = new thongKeDoanhThu();
+    public static thongKeSanPham tksp = new thongKeSanPham();
     public static Scanner sc = new Scanner(System.in);
 
     public dangNhap(){
@@ -158,6 +160,10 @@ public class dangNhap {
                 return(true);
             }
             else if(key.equals("9")){
+                tksp.startUp();
+                return(true);
+            }
+            else if(key.equals("10")){
                 return(false);
             }
             else{
@@ -191,6 +197,10 @@ public class dangNhap {
                 return(true);
             }
             else if(key.equals("6")){
+                tksp.startUp();
+                return(true);
+            }
+            else if(key.equals("7")){
                 return(false);
             }
             else{
@@ -220,6 +230,10 @@ public class dangNhap {
                 return(true);
             }
             else if(key.equals("5")){
+                tksp.startUp();
+                return(true);
+            }
+            else if(key.equals("6")){
                 return(false);
             }
             else{
@@ -245,6 +259,10 @@ public class dangNhap {
                 return(true);
             }
             else if(key.equals("4")){
+                tksp.startUp();
+                return(true);
+            }
+            else if(key.equals("5")){
                 return(false);
             }
             else{
@@ -263,7 +281,8 @@ public class dangNhap {
         System.out.println("6) Quan Ly Tai Khoan. ");
         System.out.println("7) Thong Ke Nhap Hang.");	
         System.out.println("8) Thong Ke Doanh Thu.");
-        System.out.println("9) Thoat Chuong Trinh. ");
+        System.out.println("9) Thong Ke San Pham.");
+        System.out.println("10) Thoat Chuong Trinh. ");
     }
 
     public static void MenuQuanLy(){
@@ -273,7 +292,8 @@ public class dangNhap {
         System.out.println("3) Quan Ly Khach Hang. ");
         System.out.println("4) Thong Ke Nhap Hang. ");	
         System.out.println("5) Thong Ke Doanh Thu. ");
-        System.out.println("6) Thoat Chuong Trinh. ");
+        System.out.println("6) Thong Ke San Pham.");
+        System.out.println("7) Thoat Chuong Trinh. ");
     }
 
     public static void MenuBanHang(){
@@ -282,7 +302,8 @@ public class dangNhap {
         System.out.println("2) Quan Ly Khach Hang. ");  
         System.out.println("3) Thong Ke Nhap Hang.");	
         System.out.println("4) Thong Ke Doanh Thu.");
-        System.out.println("5) Thoat Chuong Trinh. ");
+        System.out.println("5) Thong Ke San Pham.");
+        System.out.println("6) Thoat Chuong Trinh. ");
     }
 
     public static void MenuNhapHang(){
@@ -290,7 +311,8 @@ public class dangNhap {
         System.out.println("1) Quan Ly Nhap Hang.");	
         System.out.println("2) Thong Ke Nhap Hang.");	
         System.out.println("3) Thong Ke Doanh Thu.");
-        System.out.println("4) Thoat Chuong Trinh. ");
+        System.out.println("4) Thong Ke San Pham.");
+        System.out.println("5) Thoat Chuong Trinh. ");
     }
 
 }

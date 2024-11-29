@@ -1,13 +1,12 @@
-SM#1#Sevently Seven#XL#Trang#257000.0#350000.0#Calvin Klein#Linen#Tay ngan#8#true#Co tru#Nut bam
-SM#2#Sevently Seven#S#Trang#257000.0#350000.0#Calvin Klein#Linen#Tay ngan#6#true#Co tru#Nut bam
-SM#3#Sevently Seven#XL#Den#257000.0#350000.0#Calvin Klein#Linen#Tay ngan#22#true#Co tru#Nut bam
-SM#4#Sevently Seven#S#Den#257000.0#350000.0#Calvin Klein#Linen#Tay ngan#10#true#Co tru#Nut bam
-TT#5#Nike#XL#Xanh#554000.0#600000.0#Nike#Cotton#Tay ngan#8#true#Argentina#10#Bong da
-TT#6#Nike#XL#Xanh#554000.0#600000.0#Nike#Cotton#Tay dai#8#true#Argentina#10#Bong da
-TT#7#Nike#XL#Do#625000.0#775000.0#Nike#Cotton#Tay ngan#5#true#Portugal#7#Bong da
-TT#8#Nike#XL#Do#625000.0#775000.0#Nike#Cotton#Tay dai#0#true#Portugal#7#Bong da
-T#9#Unisex Bad Rabit#XL#Den#420000.0#620000.0#Bad Rabit#Cotton#Tay ngan#0#true#Co tron
-T#10#Unisex Bad Rabit#XXL#Den#420000.0#620000.0#Bad Rabit#Cotton#Tay ngan#2#true#Co tron
-T#11#Sevenciti#XL#Nau den#298000.0#420000.0#SEVENCITI#Cotton#Tay ngan#10#true#Co tron
-T#12#Sevenciti#XXL#Nau den#298000.0#420000.0#SEVENCITI#Cotton#Tay ngan#1#true#Co tron
-TT#13#hehe#XL#den#20000.0#21000.0#DIOR#thun#tay dai#0#false#anh#21#banh
+SM#1#Sevently Seven#XL#Trang#257000.0#350000.0#Calvin Klein#Linen#Tay ngan#86#true#Co tru#Nut bam
+SM#2#Sevently Seven#S#Trang#257000.0#350000.0#Calvin Klein#Linen#Tay ngan#86#true#Co tru#Nut bam
+SM#3#Sevently Seven#XL#Den#257000.0#350000.0#Calvin Klein#Linen#Tay ngan#86#true#Co tru#Nut bam
+SM#4#Sevently Seven#S#Den#257000.0#350000.0#Calvin Klein#Linen#Tay ngan#100#true#Co tru#Nut bam
+TT#5#Nike#XL#Xanh#554000.0#600000.0#Nike#Cotton#Tay ngan#8#true#Argentina#100#Bong da
+TT#6#Nike#XL#Xanh#554000.0#600000.0#Nike#Cotton#Tay dai#8#true#Argentina#100#Bong da
+TT#7#Nike#XL#Do#625000.0#775000.0#Nike#Cotton#Tay ngan#5#true#Portugal#100#Bong da
+TT#8#Nike#XL#Do#625000.0#775000.0#Nike#Cotton#Tay dai#0#true#Portugal#100#Bong da
+T#9#Unisex Bad Rabit#XL#Den#420000.0#620000.0#Bad Rabit#Cotton#Tay ngan#100#true#Co tron
+T#10#Unisex Bad Rabit#XXL#Den#420000.0#620000.0#Bad Rabit#Cotton#Tay ngan#100#true#Co tron
+T#11#Sevenciti#XL#Nau den#298000.0#420000.0#SEVENCITI#Cotton#Tay ngan#100#true#Co tron
+T#12#Sevenciti#XXL#Nau den#298000.0#420000.0#SEVENCITI#Cotton#Tay ngan#100#true#Co tron

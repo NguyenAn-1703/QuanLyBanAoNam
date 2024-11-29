@@ -11,7 +11,7 @@ public class nhanVien {
     private String diaChi;
     private String email;
     private String quyen = "Chua phan quyen";
-    Scanner sc = new Scanner(System.in);
+    public static Scanner sc = new Scanner(System.in);
     public nhanVien(){
     }
     public nhanVien(boolean trangThai, String id, String ten, String sdt, String diaChi, String email, String quyen) {

@@ -4,14 +4,14 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 import quanLyBanAoNam.Validate.Validate;
+import quanLyBanAoNam.keBien.keBien;
 import quanLyBanAoNam.phieuNhap.DS_PhieuNhap;
-import quanLyBanAoNam.phieuNhap.phieuNhap;
 
 public class thongKeDonNhap extends thongKe implements thongKeTheoThoiGian{
     private DS_PhieuNhap dsNhap = new DS_PhieuNhap();
     @SuppressWarnings("deprecation")
-    Locale locale = new Locale("en", "EN");
-    NumberFormat nF = NumberFormat.getInstance(locale);
+    public static Locale locale = new Locale("en", "EN");
+    public static NumberFormat nF = NumberFormat.getInstance(locale);
 
     @Override
     public void thongKeTong(){
@@ -28,6 +28,7 @@ public class thongKeDonNhap extends thongKe implements thongKeTheoThoiGian{
     }
 
     public void startUp(){
+        thongKeTong();
         while(true){
             this.Menu();
             String key = sc.nextLine();
@@ -56,8 +57,8 @@ public class thongKeDonNhap extends thongKe implements thongKeTheoThoiGian{
     public void thongKeTheoThang(){
         while(true){
             System.out.println("Nhap vao nam muon thong ke : ");
-            namThongKe = sc.nextLine();
-            if(Validate.isYear(namThongKe)){
+            this.namThongKe = sc.nextLine();
+            if(Validate.isYear(this.namThongKe)){
                 break;
             }
             else{
@@ -65,7 +66,7 @@ public class thongKeDonNhap extends thongKe implements thongKeTheoThoiGian{
             }
         }
 
-        int[] soLuongThang = new int[12];   //số lượng phiếu nhập trong tháng
+        int[] soLuongThang = new int[12];   //số lượng hóa đơn trong tháng
         double[] soTienNhapThang = new double[12];
         for(int i = 0; i < 12; i++){
             soLuongThang[i] = 0;
@@ -74,95 +75,57 @@ public class thongKeDonNhap extends thongKe implements thongKeTheoThoiGian{
             soTienNhapThang[i] = 0;
         }
         dsNhap.docDSPhieuNhapTuFile();
-        for(int i = 0; i < dsNhap.getSoLuong(); i++){
+        for(int i = 0; i < dsNhap.getSoLuong(); i++){    //duyệt từng hóa đơn
             String txt[] = dsNhap.getDs()[i].getNgayNhap().split("-");
-            if(txt[2].equals(namThongKe)){
-                if(txt[1].equals("1")){     //dd/MM/yyyy
-                    soLuongThang[0]++;
-                    soTienNhapThang[0] += dsNhap.getDs()[i].getTongGia();
-                } 
-                else if(txt[1].equals("2")){     //dd/MM/yyyy
-                    soLuongThang[1]++;
-                    soTienNhapThang[1] += dsNhap.getDs()[i].getTongGia();
-                } 
-                else if(txt[1].equals("3")){     //dd/MM/yyyy
-                    soLuongThang[2]++;
-                    soTienNhapThang[2] += dsNhap.getDs()[i].getTongGia();
-                } 
-                else if(txt[1].equals("4")){     //dd/MM/yyyy
-                    soLuongThang[3]++;
-                    soTienNhapThang[3] += dsNhap.getDs()[i].getTongGia();
-                } 
-                else if(txt[1].equals("5")){     //dd/MM/yyyy
-                    soLuongThang[4]++;
-                    soTienNhapThang[4] += dsNhap.getDs()[i].getTongGia();
-                } 
-                else if(txt[1].equals("6")){     //dd/MM/yyyy
-                    soLuongThang[5]++;
-                    soTienNhapThang[5] += dsNhap.getDs()[i].getTongGia();
-                } 
-                else if(txt[1].equals("7")){     //dd/MM/yyyy
-                    soLuongThang[6]++;
-                    soTienNhapThang[6] += dsNhap.getDs()[i].getTongGia();
-                } 
-                else if(txt[1].equals("8")){     //dd/MM/yyyy
-                    soLuongThang[7]++;
-                    soTienNhapThang[7] += dsNhap.getDs()[i].getTongGia();
-                } 
-                else if(txt[1].equals("9")){     //dd/MM/yyyy
-                    soLuongThang[8]++;
-                    soTienNhapThang[8] += dsNhap.getDs()[i].getTongGia();
-                } 
-                else if(txt[1].equals("10")){     //dd/MM/yyyy
-                    soLuongThang[9]++;
-                    soTienNhapThang[9] += dsNhap.getDs()[i].getTongGia();
-                } 
-                else if(txt[1].equals("11")){     //dd/MM/yyyy
-                    soLuongThang[10]++;
-                    soTienNhapThang[10] += dsNhap.getDs()[i].getTongGia();
-                } 
-                else if(txt[1].equals("12")){     //dd/MM/yyyy
-                    soLuongThang[11]++;
-                    soTienNhapThang[11] += dsNhap.getDs()[i].getTongGia();
-                } 
+            if(txt[2].equals(this.namThongKe)){  //xét giống năm thì tăng mảng
+                for(int j = 0; j < 12; j++){   //so sánh với từng tháng
+                    if(txt[1].equals(Integer.toString(j + 1))){
+                        soLuongThang[j]++;
+                        soTienNhapThang[j] += dsNhap.getDs()[i].getTongGia(); 
+                        break;
+                    }
+                }
             }
         }
         for(int i = 0; i < 12; i++){
-            System.out.println("So luong don nhap thang " + (i + 1) + " : " + soLuongThang[i]);
-            System.out.println("Tong gia nhap thang : " + (i + 1) + " : " + nF.format(soTienNhapThang[i]));
+            keBien.keBienNho();
+            System.out.println("So luong hoa don thang " + (i + 1) + " : " + soLuongThang[i]);
+            System.out.println("Tong tien ban thang " + (i + 1) + " : " + nF.format(soTienNhapThang[i]));
         }
     }
     @Override
     public void thongKeTheoQuy(){
-        System.out.println("Nhap vao nam muon thong ke : ");
-        namThongKe = sc.nextLine();
-        int[] soLuongQuy = new int[4];   //số lượng phiếu nhập trong tháng
+        while(true){
+            System.out.println("Nhap vao nam muon thong ke : ");
+            this.namThongKe = sc.nextLine();
+            if(Validate.isYear(this.namThongKe)){
+                break;
+            }
+            else{
+                System.out.println("Du lieu nhap khong hop le !!!");
+            }
+        }
+        int[] soLuongQuy = new int[4];   //số lượng đơn nhập trong quý
         double[] soTienNhapQuy = new double[4];
         dsNhap.docDSPhieuNhapTuFile();
-        for(int i = 0; i < dsNhap.getSoLuong(); i++){
+        for(int i = 0; i < dsNhap.getSoLuong(); i++){ //xét từng đơn nhập 
             String txt[] = dsNhap.getDs()[i].getNgayNhap().split("-");
-            if(txt[2].equals(namThongKe)){
-                if(txt[1].equals("1") || txt[1].equals("2") || txt[1].equals("3")){     //dd/MM/yyyy
-                    soLuongQuy[0]++;
-                    soTienNhapQuy[0] += dsNhap.getDs()[i].getTongGia();
-                } 
-                else if(txt[1].equals("4") || txt[1].equals("5") || txt[1].equals("6")){     //dd/MM/yyyy
-                    soLuongQuy[1]++;
-                    soTienNhapQuy[1] += dsNhap.getDs()[i].getTongGia();
-                } 
-                else if(txt[1].equals("7") || txt[1].equals("8") || txt[1].equals("9")){     //dd/MM/yyyy
-                    soLuongQuy[2]++;
-                    soTienNhapQuy[2] += dsNhap.getDs()[i].getTongGia();
-                } 
-                else if(txt[1].equals("10") || txt[1].equals("11") || txt[1].equals("12")){     //dd/MM/yyyy
-                    soLuongQuy[3]++;
-                    soTienNhapQuy[3] += dsNhap.getDs()[i].getTongGia();
-                }  
+            if(txt[2].equals(this.namThongKe)){
+                for(int j = 0; j < 4; j++){ //xét từng quý
+                    for(int k = 0; k < 4; k++){ //xét từng tháng trong quý
+                        if(txt[1].equals(Integer.toString((j * 3 + 1) + k))){
+                            soLuongQuy[j]++;
+                            soTienNhapQuy[j] += dsNhap.getDs()[i].getTongGia();
+                            break;
+                        }
+                    }
+                }
             }
         }
         for(int i = 0; i < 4; i++){
-            System.out.println("So luong don nhap quy " + (i + 1) + " : " + soLuongQuy[i]);
-            System.out.println("Tong gia nhap quy : " + (i + 1) + " : " + nF.format(soTienNhapQuy[i]));
+            keBien.keBienNho();
+            System.out.println("So luong hoa don quy " + (i + 1) + " : " + soLuongQuy[i]);
+            System.out.println("Tong tien ban quy " + (i + 1) + " : " + nF.format(soTienNhapQuy[i]));
         }
     }
     @Override
@@ -172,11 +135,11 @@ public class thongKeDonNhap extends thongKe implements thongKeTheoThoiGian{
         int soLuongNam = 0;
         double soTienNhapNam = 0;
         dsNhap.docDSPhieuNhapTuFile();
-        for(phieuNhap i : this.dsNhap.getDs()){
-            String txt[] = i.getNgayNhap().split("-");
+        for(int i = 0; i < this.dsNhap.getSoLuong(); i++){
+            String txt[] = this.dsNhap.getDs()[i].getNgayNhap().split("-");
             if(txt[2].equals(namThongKe)){
                 soLuongNam++;
-                soTienNhapNam += i.getTongGia();
+                soTienNhapNam += this.dsNhap.getDs()[i].getTongGia();
             }
         }
         System.out.println("So luong don nhap nam " + namThongKe + " : " + soLuongNam);

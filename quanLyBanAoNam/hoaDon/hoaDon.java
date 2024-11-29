@@ -18,7 +18,7 @@ import quanLyBanAoNam.taiKhoan.taiKhoan;
 
 public class hoaDon {
     private String IDhoaDon;
-    SimpleDateFormat dF = new SimpleDateFormat("dd-MM-yyyy");
+    public static SimpleDateFormat dF = new SimpleDateFormat("dd-MM-yyyy");
     private String ngayBan = dF.format(new Date());
     private nhanVien NhanVien;
     private chiTietHoaDon[] dsChiTietHoaDon = new chiTietHoaDon[0];
@@ -27,10 +27,10 @@ public class hoaDon {
     private khachHang KhachHang;
     private boolean trangThai = true;
     private DS_Ao dsBan = new DS_Ao();
-    Scanner sc = new Scanner(System.in);
+    public static Scanner sc = new Scanner(System.in);
     @SuppressWarnings("deprecation")
-    Locale locale = new Locale("en", "EN");
-    NumberFormat nF = NumberFormat.getInstance(locale);
+    public static Locale locale = new Locale("en", "EN");
+    public static NumberFormat nF = NumberFormat.getInstance(locale);
     
     public hoaDon(){};
 
@@ -164,6 +164,9 @@ public class hoaDon {
         }
         this.tongGia = this.tinhTongGia();
         this.apDungKhuyenMai();
+        if(Validate.ngayLe(ngayBan)){
+            this.tongGia *= 0.7f;   // Cô test phần giảm giá ngày lễ cô qua Folder Validate chỉnh giúp iem nha cô...
+        }
         r.ghiDSKHVaoFile();
     }
 
